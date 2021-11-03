@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row bg-info">
+  <div class="row justify-content-center bg-info ">
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end">
-      <div class="right-pop">
-        <p>リファレンスとは、</p>
-        <p>あなたの迷いに対して</p>
-        <p>ちょっとだけ手助けするSNSです</p> 
+    <div class="d-flex justify-content-end ">
+      <div class="right-pop py-5">
+        <h5>リファレンスとは、</h5>
+        <h5>あなたの迷いに対して</h5>
+        <h5>ちょっとだけ手助けするSNSです</h5> 
       </div>
     </div>
   </div>
@@ -27,11 +27,48 @@
     <%# -- ↑改行↑ -- %>
 <%# -- [fin]右側吹き出し --%>
 
-<%# --右側吹き出し--  %> 
+<%# --左側吹き出し--  %> 
+  <div class="col">
+    <div class="d-flex justify-content-start">
+      <div class="left-pop py-4">
+        <p>今日のランチは何を食べよう。</p>
+         <div class="d-flex flex-column">
+         <%= image_tag 'about_image.jpeg'%>
+        <%= link_to "中華",root_path,class:"btn btn-info mt-3" %>
+        <%= link_to "イタリアン",root_path,class:"btn btn-info mt-3" %>
+         </div>
+      </div>
+    </div>
+  </div>
+    <div class="w-100"></div>
+    <%# -- ↑改行↑ -- %>
+<%# -- [fin]左側吹き出し --%>
+
+<%# --左側吹き出し--  %> 
   <div class="col">
     <div class="d-flex justify-content-start">
       <div class="left-pop">
-        <h3 class="m-3">たとえば…</h3>
+        <p>今日のランチは何を食べよう。</p>
+         <div class="d-flex flex-column">
+         <%= image_tag 'about_image.jpeg'%>
+        <%= link_to "中華",root_path,class:"btn btn-info mt-3" %>
+        <%= link_to "イタリアン",root_path,class:"btn btn-info mt-3" %>
+         </div>
+      </div>
+    </div>
+  </div>
+    <div class="w-100"></div>
+    <%# -- ↑改行↑ -- %>
+<%# -- [fin]左側吹き出し --%>
+
+
+<%# --右側吹き出し--  %> 
+  <div class="col">
+    <div class="d-flex justify-content-end ">
+      <div class="right-pop py-5">
+        <h5 class="py-5">このような感じで、<br/>
+        あなたの…
+        小さな迷いも 大きさ迷いも<br/> 仲間が答えてくれます</h5> 
       </div>
     </div>
   </div>
@@ -39,18 +76,25 @@
     <%# -- ↑改行↑ -- %>
 <%# -- [fin]右側吹き出し --%>
 
-<%# --右側吹き出し--  %> 
+このような感じで あなたの 小さな迷いも 大きさ迷いも 仲間が答えてくれます。 仲間の意見を参考に あなたの決断を手助けするSNSです。
+
+
+
+<%# --左側吹き出し--  %> 
   <div class="col">
     <div class="d-flex justify-content-start">
       <div class="left-pop">
-        <h3 class="m-3">たとえば…</h3>
+        <h2>新規登録しますか？</h2>
+         <div class="d-flex flex-column">
+        <%= link_to "新規登録する",new_user_registration_path,class:"btn btn-danger btn-lg m-3" %>
+        <%= link_to "戻る",root_path,class:"btn btn-info btn-lg m-3" %>
+         </div>
       </div>
     </div>
   </div>
     <div class="w-100"></div>
     <%# -- ↑改行↑ -- %>
-<%# -- [fin]右側吹き出し --%>
-
+<%# -- [fin]左側吹き出し --%>
 
 
   </div>

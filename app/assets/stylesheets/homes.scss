@@ -1,13 +1,14 @@
 h1 {
   font-family: 'Times New Roman', Times, serif;
+  padding-top: 150px;
 }
 
 /* 右側　*/
 .right-pop {
   position: relative;
   display: inline-block;
-  margin: 1.5em 15px 1.5em 0;
-  padding: 7px 10px;
+  margin: 1.5em 150px 1.5em 0;
+  padding: 15px 10px;
   min-width: 120px;
   max-width: 100%;
   color: #555;
@@ -31,19 +32,18 @@ h1 {
   padding: 0;
 }
 
-
-
 /* 左側　*/
 .left-pop {
   position: relative;
   display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
+  margin: 1.5em 0px 1.5em 150px;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
   color: #555;
   font-size: 16px;
   background: #e0edff;
+  border-radius: 15px;
 }
 
 .left-pop :before {
