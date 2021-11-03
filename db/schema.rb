@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_073926) do
     t.text "post_body"
     t.text "select_a"
     t.text "select_b"
-    t.integer "post_img"
+    t.string "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

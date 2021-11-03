@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       # ーー選択肢A文章
       t.text :select_b
       # ーー選択肢Bの文章
-      t.integer :post_img
+      t.string :post_image_id
 
       t.timestamps
     end
