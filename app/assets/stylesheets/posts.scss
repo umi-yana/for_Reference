@@ -3,6 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+/* 右側　*/
+.right-ballon {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 150px 1.5em 0;
+  padding: 15px 10px;
+  min-width: 700px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+
+.right-ballon :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.right-ballon p {
+  margin: 0;
+  padding: 0;
+}
+
+
 .left_ballon .face_icon {
   float: left;
   margin-right: -90px;
@@ -25,7 +56,7 @@
   display: inline-block;
   margin: 1.5em 0px 1.5em 150px;
   padding: 7px 10px;
-  min-width: 120px;
+  min-width: 700px;
   max-width: 100%;
   color: #555;
   font-size: 16px;

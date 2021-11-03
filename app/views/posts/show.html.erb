@@ -1,3 +1,6 @@
+<%= render "layouts/header" %>
+<%#ーーー ヘッダー　ーーー%>
+
 <div class="container-fluid">
   <div class="row">
   
@@ -10,9 +13,9 @@
     </div>
       <div class="d-flex justify-content-start">
         <div class="post-left">
-          <p class="text-break m-4"><%= @post.post_body %></p>
+          <h4 class="text-break m-4"><%= @post.post_body %></h4>
           <div class="d-flex flex-column">
-            <%= attachment_image_tag @post,:post_image,style:'object-fit: cover;  width: 90%; height: 90%;' %>
+            <%= attachment_image_tag @post,:post_image,style:'object-fit: cover;  width: 60%; height: 90%; margin: 0 20%;' %>
             <%= link_to "A.#{@post.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
             <%= link_to "B.#{@post.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
 

@@ -1,21 +1,12 @@
-<%= render "layouts/header" %>
-<%#ーーー ヘッダー　ーーー%>
-
-<div class="container-fluid">
-  <div class="row ">
-    <%# --左側吹き出し--  %> 
-
-    <div class="col text-center">
-    <h3>タイムライン</h3>
-    </div>
-    <div class="w-100"></div>
-<%# --　新規投稿用吹き出し --%>
+<div class="container">
+  <div class="row">
     <div class="col">
+      <%# --　新規投稿用吹き出し --%>
       <div class="d-flex justify-content-start">
         <div class="left-pop py-2">
           <h2 class='text-center'>新規投稿</h2>
           <div class="d-flex flex-column">
-            <%= form_with model:@post_new,local:true do |f| %>
+            <%= form_with model:@post,local:true do |f| %>
             <div class="form-group">
                 <%= f.label :post_body,"投稿本文" %>
                 <%= f.text_area :post_body,class:'w-100' %>
@@ -32,7 +23,6 @@
               </div>
               <%= f.label:post_image,"画像選択" %>
               <%= f.attachment_field :post_image %>
-              
               <div class="form-group text-center">
               <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
               </div>
@@ -45,25 +35,9 @@
       <%# -- ↑改行↑ -- %>
     <%# -- [fin]左側吹き出し --%>
 
-<%# 投稿all %>
-<% @posts.each do |posts| %>
-  <%#ーーー 投稿者判断　ーーー%>
-  <% if posts.user_id == current_user.id %>
-
-    <%#= -----投稿者側の投稿内容 ----- %>
-    <%= render partial: "current-user-post" ,locals: {posts: posts} %>
-  
-  <% else %>
-
-    <%#= -----利用者の側の投稿内容 ----- %>
-    <%= render partial: "user-post" ,locals: {posts: posts} %>
-
-  <% end %>
-
-<% end %>
-
-
+    </div>
   </div>
 </div>
 
 
+edit
