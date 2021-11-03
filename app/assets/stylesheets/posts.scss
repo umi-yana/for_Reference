@@ -1,3 +1,52 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.left_ballon .face_icon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+  min-height: 10em;
+    display: table-cell;
+    vertical-align: middle 
+}
+
+.left_ballon .face_icon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px rgb(182, 235, 182);
+  border-radius: 50%;
+}
+
+/* 左側　*/
+.left_ballon .post-left{
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0px 1.5em 150px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: rgb(182, 235, 182);
+  border-radius: 15px;
+}
+
+.left_ballon .post-left :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid rgb(182, 235, 182);
+}
+
+.left_ballon .post-left p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
