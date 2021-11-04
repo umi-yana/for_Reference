@@ -9,7 +9,7 @@
     <h3>タイムライン</h3>
     </div>
     <div class="w-100"></div>
-<%# --　新規投稿用吹き出し --%>
+    <%# --　新規投稿用吹き出し --%>
     <div class="col">
       <div class="d-flex justify-content-start">
         <div class="left-pop py-2">
@@ -44,10 +44,14 @@
       <div class="w-100"></div>
       <%# -- ↑改行↑ -- %>
     <%# -- [fin]左側吹き出し --%>
+  </div>
+  <%# ----------------------------固定------------------------------------------%>
 
-<%# 投稿all %>
-<% @posts.each do |posts| %>
-<div class="bg-info clearfix">
+
+  <%# 投稿all %>
+  <div class="row justify-content-between">
+  <% @posts.each do |posts| %>
+
   <%#ーーー 投稿者判断　ーーー%>
   <% if posts.user_id == current_user.id %>
 
@@ -60,7 +64,7 @@
     <%= render partial: "user-post" ,locals: {posts: posts} %>
 
   <% end %>
-</div>
+  </div>
 <% end %>
 
 
