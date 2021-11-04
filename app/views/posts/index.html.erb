@@ -1,7 +1,7 @@
 <%= render "layouts/header" %>
 <%#ーーー ヘッダー　ーーー%>
-
-<div class="container-fluid">
+<div class="bg-info">
+<div class="container-fluid ">
   <div class="row ">
     <%# --左側吹き出し--  %> 
 
@@ -49,7 +49,7 @@
 
 
   <%# 投稿all %>
-  <div class="row justify-content-between">
+  <div class="row">
   <% @posts.each do |posts| %>
 
   <%#ーーー 投稿者判断　ーーー%>
@@ -57,9 +57,7 @@
 
     <%#= -----投稿者側の投稿内容 ----- %>
     <%= render partial: "current-user-post" ,locals: {posts: posts} %>
-  
   <% else %>
-
     <%#= -----利用者の側の投稿内容 ----- %>
     <%= render partial: "user-post" ,locals: {posts: posts} %>
 
@@ -72,3 +70,4 @@
 </div>
 
 
+</div>

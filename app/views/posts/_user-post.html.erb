@@ -1,21 +1,59 @@
-  <%# --左側吹き出し--  %>
-<div class="d-flex justify-content-end">
-      <div class="right-ballon">
-        <h5 class="text-break text-center"><%= posts.post_body %></h5>
-        <div class="d-flex flex-column">
-          <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 40%; height: 90%; content-center' %>
-          <%= link_to "A.#{posts.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
-          <%= link_to "B.#{posts.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
-        </div>
-        <div class="d-flex flex-column text-right">
-        <%= link_to "詳細を見る",post_path(posts.id),class:"right-block" %>
-        <%= posts.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="w-100"></div>
+  <%# --右側吹き出し--  %>
+    <div class="balloon_light mt-3">
+      <div class="icon"><%= posts.user.user_name %></div>
+        <h3 class="text-break"><%= posts.post_body %></h3>
+            <div class="d-flex flex-column">
+              <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>
+              <%= link_to "A.#{posts.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
+              <%= link_to "B.#{posts.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
+            </div>
+            <div class="d-flex flex-column text-right">
+            <%= link_to "詳細を見る",post_path(posts.id),class:"right-block" %>
+            <%= posts.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+            </div>
+               <div class="w-100"></div>
     <%# -- ↑改行↑ -- %>
   <%# -- [fin]左側吹き出し --%>
-</div> 
+  </div> 
 </div>
+
+
+
+<%# ----------user_post_style--------------%>
+<style>
+
+/* 吹き出し本体 */
+.balloon_light{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #555;
+  background-color: rgb(182, 235, 182);
+  margin-right: 200px;          /* 右に余白を設ける */
+  margin-left: 50%;
+}
+/* 画像 - 絶対配置で右上に配置 */
+.balloon_light .icon{
+  position: absolute;
+  right: -200px;
+  top: 0;
+op: 0;
+}
+/* 三角アイコン */
+.balloon_light::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -15px;
+  top: 20px;
+  border-left: 15px solid rgb(182, 235, 182);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+
+</style> 
+
+
