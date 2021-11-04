@@ -1,21 +1,19 @@
-<%= render "layouts/header" %>
-<%#ーーー ヘッダー　ーーー%>
-
 <div class="container-fluid">
   <div class="row">
   
   <%#　ーーーー 投稿詳細　ーーーーー %>
+  <div class="row justify-content-between">
 <div class="col-6">
-  <div class="left_ballon">
+  <div class="left_ballon-edit">
     <div class="face_icon mt-5">
       <%#= link_to current_user.post_image %>
       <%#= @post.user_name %>
     </div>
       <div class="d-flex justify-content-start">
         <div class="post-left">
-          <h4 class="text-break m-4"><%= @post.post_body %></h4>
+          <p class="text-break m-4"><%= @post.post_body %></p>
           <div class="d-flex flex-column">
-            <%= attachment_image_tag @post,:post_image,style:'object-fit: cover;  width: 60%; height: 90%; margin: 0 20%;' %>
+            <%= attachment_image_tag @post,:post_image,style:'object-fit: cover;  width: 90%; height: 90%;' %>
             <%= link_to "A.#{@post.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
             <%= link_to "B.#{@post.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
 
@@ -38,20 +36,33 @@
 <%#　ーーーー Comment　ーーーーー %>
 
 <%# --右側吹き出し--  %> 
-  <div class="col">
+  <div class="col-5">
+  <%#ーーー ここからeach文%ーーーーーーー　%>
     <div class="d-flex justify-content-end ">
-      <div class="right-pop">
-        <h5>コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h5> 
-        <div class="d-flex flex-column text-right">
-        <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-        </div>
+      <div class="right-pop-edit">
+        <h5>コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h5> 
+          <div class="d-flex flex-column text-right">
+          <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+          </div>
       </div>
     </div>
-  </div>
-    <div class="w-100"></div>
+      <div class="w-100"></div>
     <%# -- ↑改行↑ -- %>
-<%# -- [fin]右側吹き出し --%>
- </div>
+<%#ーーー ここでeach文終わりーーーーーーー　%>　
+
+<%#ーーー ここからeach文%ーーーーーーー　%>
+    <div class="d-flex justify-content-end ">
+      <div class="right-pop-edit">
+        <h5>コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h5> 
+          <div class="d-flex flex-column text-right">
+          <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+          </div>
+      </div>
+    </div>
+      <div class="w-100"></div>
+    <%# -- ↑改行↑ -- %>
+<%#ーーー ここでeach文終わりーーーーーーー　%>　
+
 
   </div>
 </div>

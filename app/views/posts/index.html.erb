@@ -47,6 +47,7 @@
 
 <%# 投稿all %>
 <% @posts.each do |posts| %>
+<div class="bg-info clearfix">
   <%#ーーー 投稿者判断　ーーー%>
   <% if posts.user_id == current_user.id %>
 
@@ -59,7 +60,7 @@
     <%= render partial: "user-post" ,locals: {posts: posts} %>
 
   <% end %>
-
+</div>
 <% end %>
 
 

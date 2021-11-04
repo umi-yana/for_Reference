@@ -10,10 +10,10 @@
   display: inline-block;
   margin: 1.5em 150px 1.5em 0;
   padding: 15px 10px;
-  min-width: 700px;
+  min-width: 650px;
   max-width: 100%;
   color: #555;
-  font-size: 16px;
+  font-size: 20px;
   background: #e0edff;
   border-radius: 15px;
 }
@@ -80,4 +80,90 @@
 }
 
 
+.right-ballon-edit {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 150px 1.5em 0;
+  padding: 15px 10px;
+  min-width: 50px;
+  max-width: 50px;
+  color: #555;
+  font-size: 20px;
+  background: #e0edff;
+  border-radius: 15px;
+}
 
+.right-ballon :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.right-ballon p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* show-左側　*/
+.left_ballon-edit .post-left{
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0px 1.5em 150px;
+  padding: 7px 10px;
+  min-width: 400px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: rgb(182, 235, 182);
+  border-radius: 15px;
+}
+
+.left_ballon-edit .post-left :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid rgb(182, 235, 182);
+}
+
+.left_ballon-edit .post-left p {
+  margin: 0;
+  padding: 0;
+}
+
+/* show右側　*/
+/* 右側　*/
+.right-pop-edit {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 150px 1.5em 0;
+  padding: 5px 10px;
+  min-width: 400px;
+  max-width: 600px;
+  color: #555;
+  font-size: 10px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+
+.right-pop-edit :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.right-pop-edit p {
+  margin: 0;
+  padding: 0;
+}
