@@ -4,7 +4,7 @@
     <div class="col-4 m-4 ">
       <div class="center-block">
         <div class="user_photo itmes-center ">
-          <%= attachment_image_tag @user,:user_photo,class:'users_image',fallback:'no_imag_user.png',size: "200x200",class:'justify-content-center' %>
+          <%= attachment_image_tag @user,:user_photo,fallback:'no_imag_user.png',size: "200x200" %>
         </div>
         <div class="text-center"><% @user.user_name %></div>
         <div class="follower text-center">

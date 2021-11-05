@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_073926) do
     t.string "user_name"
     t.string "user_content"
     t.string "password"
-    t.string "user_photo"
+    t.string "user_photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
