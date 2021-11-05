@@ -1,6 +1,10 @@
   <%# --右側吹き出し--  %>
     <div class="balloon_light mt-3">
-      <div class="icon"><%= posts.user.user_name %></div>
+      <div class="icon">
+      <%= attachment_image_tag posts,:post_image,size:'20x20' do%>
+      <%= posts.user.user_name %>
+      <% end %>
+      </div>
         <h3 class="text-break"><%= posts.post_body %></h3>
             <div class="d-flex flex-column">
               <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>

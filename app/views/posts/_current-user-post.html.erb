@@ -1,9 +1,10 @@
   <%# --左側吹き出し--  %>
 <div class="col-6 mt-3">
   <div class="balloon_left">
-      <div class="text-center">
-      <%= posts.user.user_name %>
-      </div>
+      <div class="icon"><%= link_to user_path(posts.user_id) do%>
+      <%= attachment_image_tag posts,:post_image,class:'post_user_image',fallback:'no_imag_user.png' %>
+      <% end %>
+      <%= posts.user.user_name %></div>
       <h3 class="text-break"><%= posts.post_body %></h3>
           <div class="d-flex flex-column">
             <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>
@@ -35,8 +36,12 @@
 /* 画像 - 絶対配置で左上に配置 */
 .balloon_left .icon{
   position: absolute;
-  left: -200px;
-  top: 0;
+  left: -620px;
+  top: 20px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 /* 三角アイコン */
 .balloon_left::before{
@@ -52,6 +57,13 @@
   border-bottom: 15px solid transparent;
 }
 
+.balloon_left .post_user_image {
+  object-fit: cover;
+  width: 12%;
+  height: 90%;
+  margin: 0 auto;
+  border-radius: 50%;
+}
 
 
 </style> 
