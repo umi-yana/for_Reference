@@ -38,6 +38,18 @@ class PostsController < ApplicationController
 
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:success] = '削除成功しました。'
+      redirect_to posts_url
+    else
+      flash[:error] = '削除できません'
+      render :edit
+    end
+  end
+  
+
 private
 def post_params
   params.require(:post).permit(:user_id, :post_body,:select_a,:select_b,:post_image )

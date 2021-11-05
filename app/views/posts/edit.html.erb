@@ -25,6 +25,7 @@
               <%= f.attachment_field :post_image %>
               <div class="form-group text-center">
               <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
+              <%= link_to "削除", post_path(@post),method: :DELETE,class:'btn btn-danger btn-lg m2' %>
               </div>
             <% end %>
           </div>

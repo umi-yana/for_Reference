@@ -1,10 +1,13 @@
   <%# --右側吹き出し--  %>
     <div class="balloon_light mt-3">
-      <div class="icon">
-      <%= attachment_image_tag posts,:post_image,size:'20x20' do%>
-      <%= posts.user.user_name %>
+      <div class="icon"><%= link_to user_path(posts.user_id) do%>
+      <%= attachment_image_tag posts,:post_image,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+            <div class="d-flex flex-column">
+      <%= posts.user.user_name %></div>
       <% end %>
       </div>
+      <div class="d-flex flex-column">
+      <%= posts.user.user_name %></div>
         <h3 class="text-break"><%= posts.post_body %></h3>
             <div class="d-flex flex-column">
               <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>
@@ -41,7 +44,9 @@
   position: absolute;
   right: -200px;
   top: 0;
-op: 0;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 50px;
 }
 /* 三角アイコン */
 .balloon_light::before{
