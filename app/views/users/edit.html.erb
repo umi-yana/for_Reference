@@ -1,11 +1,10 @@
 <div class="container">
   <div class="text-center">
-    <div class="row">
-     <div class="col">
-     <div class="user_photo">
-     <%= attachment_image_tag @user,:user_photo %>
-     </div>
+    <div class="row ">
+     <div class="col-6  ">
     <%= form_with model:@user,local:true do |f| %>
+    <div class="d-flex flex-column">
+    <%= attachment_image_tag @user,:user_photo,id: "preview",fallback:'no_imag_user.png'%>
     <%= f.label:user_photo,"画像選択" %>
     <%= f.attachment_field :user_photo %>
     <%= f.label:user_name,"ユーザーネーム" %>
@@ -14,20 +13,49 @@
     <%= f.text_area :email %>
     <%= f.label:user_content,"e-mail" %>
     <%= f.text_area :user_content %>
-    <%= f.submit"編集する",class:"btn btn-primary"%>
+    <%= f.submit"編集する",class:"btn btn-primary mt-4"%>
     <% end %>
     <%= link_to "退会する"%>
-    <%= link_to "戻る"%>
+    <%= link_to "戻る",:back, method: :get %>
     </div>
   </div>
   </div>
 </div>
+    </div>
+
+
+
+
 
 
 <style>
-.img.attachment.user.user_photo{
-    max-width: 50%;
-    max-height: 200px;
+ .user_photo {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
+}
+
+
 </style>
+
+<script>
+// 画像プレビュー機能
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#preview').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_user_photo").change(function(){
+    readURL(this);
+  });
+});
+</script>

@@ -1,16 +1,17 @@
-<div class="container-fluid">
+<div class="container ">
   <div class="row">
   
   <%#　ーーーー 投稿詳細　ーーーーー %>
-  <div class="row">
-<div class="col-6 ">
+<div class="col-6">
   <div class="left_ballon-edit">
+  <div class="icon"><%= link_to user_path(@post.user_id) do%>
+      <%= attachment_image_tag @post,:post_image,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+      <div class="d-flex flex-column"><%= @post.user.user_name %></div>
+      <% end %>
+      </div>
       <div class="d-flex justify-content-start">
         <div class="post-left">
-         <div class="face_icon ">
-          <%#= link_to current_user.post_image %>
-          <%= link_to @post.user.user_name, user_path(@post.user_id) %>
-        </div>
+
           <p class="text-break m-4"><%= @post.post_body %></p>
           <div class="d-flex flex-column">
             <%= attachment_image_tag @post,:post_image %>
@@ -33,36 +34,122 @@
 </div>
   <%#　ーーーー (End)投稿詳細　ーーーーー %>
 
+
 <%#　ーーーー Comment　ーーーーー %>
 
 <%# --右側吹き出し--  %> 
   <div class="col-5">
-  <%#ーーー ここからeach文%ーーーーーーー　%>
-    <div class="d-flex justify-content-end ">
-      <div class="right-pop-edit">
-        <h5>コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h5> 
-          <div class="d-flex flex-column text-right">
-          <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-          </div>
-      </div>
-    </div>
-      <div class="w-100"></div>
-    <%# -- ↑改行↑ -- %>
-<%#ーーー ここでeach文終わりーーーーーーー　%>　
+
 
 <%#ーーー ここからeach文%ーーーーーーー　%>
-    <div class="d-flex justify-content-end ">
-      <div class="right-pop-edit">
-        <h5>コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h5> 
-          <div class="d-flex flex-column text-right">
-          <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-          </div>
+    <%# --右側吹き出し--  %>
+    <div class="balloon_light mt-3  ">
+      <div class="icon d-flex justify-content-start"><%= link_to user_path(@post.user_id) do%>
+      <%= attachment_image_tag @post,:post_image,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+            <div class="d-flex flex-column justify-content-end">
+      <%= @post.user.user_name %></div>
+      <% end %>
       </div>
-    </div>
-      <div class="w-100"></div>
+
+        <h3 class="text-break">コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</h3>
+
+            <div class="d-flex flex-column text-right">
+            <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+            </div>
+               <div class="w-100"></div>
+    <%# -- ↑改行↑ -- %>
+  <%# -- [fin]左側吹き出し --%>
+  </div> 
+</div>
+
     <%# -- ↑改行↑ -- %>
 <%#ーーー ここでeach文終わりーーーーーーー　%>　
 
 
   </div>
 </div>
+
+
+
+<style>
+
+/* show-左側　*/
+.left_ballon-edit .post-left{
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0px 1.5em 50px;
+  padding: 7px 10px;
+  min-width: 90%;
+  max-width: 80%;
+  color: #555;
+  font-size: 16px;
+  background: rgb(182, 235, 182);
+  border-radius: 15px;
+}
+
+.left_ballon-edit 
+.post-left :before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: -30px;
+  margin-top: -20px;
+  border: 10px solid transparent;
+  border-right: 30px solid rgb(182, 235, 182);
+}
+
+/* 画像 - 絶対配置で左上に配置 */
+.left_ballon-edit .icon{
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  color: #000;
+}
+
+
+.left_ballon-edit .post_user_image {
+  object-fit: cover;
+  width: 12%;
+  height: 90%;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+/* ---------------------------- */
+
+/* 吹き出し本体 */
+.balloon_light{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #555;
+  background-color: rgb(182, 235, 182);
+  margin: auto;          /* 右に余白を設ける */
+}
+/* 画像 - 絶対配置で右上に配置 */
+.balloon_light .icon{
+  position: absolute;
+  right: -200px;
+  top: 0;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 50px;
+}
+/* 三角アイコン */
+.balloon_light::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -15px;
+  top: 20px;
+  border-left: 15px solid rgb(182, 235, 182);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+
+
+
+</style> 
