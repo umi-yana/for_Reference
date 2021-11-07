@@ -7,12 +7,16 @@
     <%= attachment_image_tag @user,:user_photo,id: "preview",fallback:'no_imag_user.png'%>
     <%= f.label:user_photo,"画像選択" %>
     <%= f.attachment_field :user_photo %>
+
     <%= f.label:user_name,"ユーザーネーム" %>
     <%= f.text_area :user_name %>
+
     <%= f.label:email,"e-mail" %>
     <%= f.text_area :email %>
-    <%= f.label:user_content,"e-mail" %>
+
+    <%= f.label:user_content,"プロフィール" %>
     <%= f.text_area :user_content %>
+    
     <%= f.submit"編集する",class:"btn btn-primary mt-4"%>
     <% end %>
     <%= link_to "退会する"%>

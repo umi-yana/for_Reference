@@ -10,8 +10,28 @@
         <h3 class="text-break"><%= posts.post_body %></h3>
             <div class="d-flex flex-column">
               <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>
-              <%= link_to "A.#{posts.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
-              <%= link_to "B.#{posts.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
+                        <%# -------------------条件分岐-------------------------%>
+              <% if current_user_select = posts.post_selects.find_by(user_id: current_user.id ) %><%# もしユーザーが投稿に対して、選択したことがあるか？否か？ %>
+                <% if current_user_select.is_select == "A" %> <%# そのユーザーが過去に"A"だったら、"A"はdelete　"B"はupdate %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  YES
+                <% elsif current_user_select.is_select == "B" %> <%# そのユーザーが過去に"B"だったら、"A"はupdate　"B"はdelete %>
+                   <%= link_to "A.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  NO
+                  <% elsif current_user_select.is_select == "delete" %>
+                  <%= link_to "A.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  したことない
+                  <% end %>
+              <% else %><%# もしユーザーが投稿に対して、選択していなかったら、両方ともcreate %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,is_select:"A"),method: :POST,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,is_select:"B"),method: :POST,class:"text-break btn btn-info btn-lg mt-3" %>
+                  したことない
+              <% end %>
+          <%# -------------------（fin）条件分岐-------------------------%>
+
             </div>
             <div class="d-flex flex-column text-right">
             <%= link_to "詳細を見る",post_path(posts.id),class:"right-block" %>

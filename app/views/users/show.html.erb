@@ -4,10 +4,12 @@
     <div class="col-4 m-4 ">
       <div class="center-block">
         <div class="user_photo itmes-center ">
-          <%= attachment_image_tag @user,:user_photo,fallback:'no_imag_user.png',size: "200x200" %>
+          <%= attachment_image_tag @user,:user_photo,fallback:'no_imag_user.png' %>
         </div>
-        <div class="text-center"><% @user.user_name %></div>
-        <div class="follower text-center">
+
+        <div class="text-center mt-4"><%= @user.user_name %></div>
+
+        <div class="follower text-center mt-4">
         フォロ数：５人
         </div>
         
@@ -15,13 +17,14 @@
         フォロ-：５人
         </div>
       
-        <div class="user_profile_body text-center">
-        <p><%= @user.user_content %></p>
+        <div class="user_profile_body text-center mt-4">
+        <p class='text-break'><%= @user.user_content %></p>
         </div>
         
         <div class="edit-user-btn text-center">
          <% if current_user == @user %>
           <%= link_to "編集する",edit_user_path(@user),class:"btn btn-primary" %>
+          <%= link_to "戻る",posts_path,class:"btn btn-primary" %>
         <% end %>
         </div>
 
@@ -93,12 +96,14 @@
   border-bottom: 15px solid transparent;
 }
 
-.balloon_left .post_user_image {
-  object-fit: cover;
-  width: 12%;
-  height: 90%;
-  margin: 0 auto;
-  border-radius: 50%;
+.user_photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    margin-left:35px;
 }
 
 
