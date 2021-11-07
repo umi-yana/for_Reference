@@ -50,16 +50,16 @@
 
   <%# 投稿all %>
   <div class="row">
-  <% @posts.each do |posts| %>
+  <% @posts.each do |post| %>
 
   <%#ーーー 投稿者判断　ーーー%>
-  <% if posts.user_id == current_user.id %>
+  <% if post.user_id == current_user.id %>
 
     <%#= -----投稿者側の投稿内容 ----- %>
-    <%= render partial: "current-user-post" ,locals: {posts: posts} %>
+    <%= render partial: "current-user-post" ,locals: {post: post} %>
   <% else %>
     <%#= -----利用者の側の投稿内容 ----- %>
-    <%= render partial: "user-post" ,locals: {posts: posts} %>
+    <%= render partial: "user-post" ,locals: {post: post} %>
 
   <% end %>
   </div>

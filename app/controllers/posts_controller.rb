@@ -7,6 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment =Comment.new
+    @comments = @post.comments
   end
   
 
@@ -40,13 +42,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:success] = '削除成功しました。'
-      redirect_to posts_url
-    else
-      flash[:error] = '削除できません'
-      render :edit
-    end
+    @post.destroy
+    redirect_to posts_path
   end
   
 

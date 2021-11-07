@@ -1,12 +1,12 @@
 class PostSelectsController < ApplicationController
 
   def create
- post_select = PostSelect.new
- post_select.is_select = params[:is_select]
- post_select.user_id = current_user.id
- post_select.post_id = params[:post_id]
- post_select.save
- redirect_to posts_path
+ @post = PostSelect.new
+ @post.is_select = params[:is_select]
+ @post.user_id = current_user.id
+ @post.post_id = params[:post_id]
+ @post.save
+ # redirect_back(fallback_location: root_path)
   end
 
 
@@ -18,9 +18,10 @@ class PostSelectsController < ApplicationController
   
 
   def update
-  post_select = PostSelect.find(params[:id])
-  post_select.update(is_select: params[:is_select])
-  redirect_to posts_path
+  @post_select = PostSelect.find(params[:id])
+  @post = @post_select.post 
+  @post_select.update(is_select: params[:is_select])
+  # redirect_back(fallback_location: root_path)
   end
   
 

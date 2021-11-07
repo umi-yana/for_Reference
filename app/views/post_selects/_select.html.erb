@@ -1,0 +1,34 @@
+
+<% if current_user_select = post.post_selects.find_by(user_id: current_user.id ) %><%# もしユーザーが投稿に対して、選択したことがあるか？否か？ %>
+  <% if current_user_select.is_select == "A" %> <%# そのユーザーが過去に"A"だったら、"A"はdelete　"B"はupdate %>
+    <%= link_to "A.#{post.select_a}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"update-btn1 text-break btn btn-info btn-lg mt-3 text-white-50",id:'post_id#{}', remote:true %>
+    <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"update-btn2 text-break btn btn-primary btn-lg mt-3",remote:true %>
+    YES
+  <% elsif current_user_select.is_select == "B" %> <%# そのユーザーが過去に"B"だったら、"A"はupdate　"B"はdelete %>
+    <%= link_to "A.#{post.select_a}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"update-btn3 text-break btn btn-primary btn-lg mt-3",remote:true %>
+    <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"update-btn4 text-break btn btn-info btn-lg mt-3 text-white-50",remote:true %>
+    NO
+  <% elsif current_user_select.is_select == "delete" %>
+    <%= link_to "A.#{post.select_b}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"update-btn5 text-break btn btn-primary btn-lg mt-3 ",remote:true %>
+    <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"update-btn6 text-break btn btn-primary btn-lg mt-3 ",remote:true %>
+    したことない
+  <% end %>
+<% else %><%# もしユーザーが投稿に対して、選択していなかったら、両方ともcreate %>
+  <%= link_to "A.#{post.select_a}",post_post_selects_path(post_id:post.id,is_select:"A"),method: :POST,class:"create-btn1 text-break btn btn-primary btn-lg mt-3",remote:true %>
+  <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,is_select:"B"),method: :POST,class:"create-btn text-break btn btn-primary btn-lg mt-3",remote:true %>
+  したことない
+<% end %>
+
+
+
+<%#
+
+ [post] = Post.allをeach で回している。
+
+
+
+
+
+
+
+%>
