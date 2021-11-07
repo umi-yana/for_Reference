@@ -1,1 +1,1 @@
-$("#select-test").html("<%= j(render "select" ,post: @post ) %>");
+$("#select-test<%= @post.post_id %>").html("<%= j(render "select" ,post: @post ) %>");

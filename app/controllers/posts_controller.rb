@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     @post_new = Post.new
     @posts = Post.all.order(id: "DESC") 
+    @select_count_a = PostSelect.where(is_select: "A")
   end
 
   def show
