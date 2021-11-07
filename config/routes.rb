@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/about' => "homes#about"
   resources :posts do
     resource :post_selects,only: [:create, :destroy,:update]
+    resources :comments,only:[:create,:destroy]
   end
   resources :users
 

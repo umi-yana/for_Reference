@@ -3,10 +3,13 @@ class PostsController < ApplicationController
   def index
     @post_new = Post.new
     @posts = Post.all.order(id: "DESC") 
+    @select_count_a = PostSelect.where(is_select: "A")
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment =Comment.new
+    @comments = @post.comments
   end
   
 
@@ -40,13 +43,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:success] = '削除成功しました。'
-      redirect_to posts_url
-    else
-      flash[:error] = '削除できません'
-      render :edit
-    end
+    @post.destroy
+    redirect_to posts_path
   end
   
 
