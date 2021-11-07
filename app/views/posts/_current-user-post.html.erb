@@ -1,19 +1,42 @@
   <%# --左側吹き出し--  %>
 <div class="col-6 mt-3">
   <div class="balloon_left">
-      <div class="icon"><%= link_to user_path(posts.user_id) do%>
-      <%= attachment_image_tag posts,:post_image,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
-      <div class="d-flex flex-column"><%= posts.user.user_name %></div>
+      <div class="icon">
+        <%= link_to user_path(posts.user_id) do%>
+        <%= attachment_image_tag posts.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png'%>
+        <div class="user_name_line mt-2"><%= posts.user.user_name %></div>
       <% end %>
       </div>
       <h3 class="text-break"><%= posts.post_body %></h3>
           <div class="d-flex flex-column">
             <%= attachment_image_tag posts,:post_image,style:'object-fit: cover;  width: 60%; height: 90%;' %>
-            <%= link_to "A.#{posts.select_a}",root_path,class:"text-break btn btn-danger btn-lg m-3" %>
-            <%= link_to "B.#{posts.select_b}",root_path,class:"text-break btn btn-info btn-lg m-3" %>
+          <%# -------------------条件分岐-------------------------%>
+              <% if current_user_select = posts.post_selects.find_by(user_id: current_user.id ) %><%# もしユーザーが投稿に対して、選択したことがあるか？否か？ %>
+                <% if current_user_select.is_select == "A" %> <%# そのユーザーが過去に"A"だったら、"A"はdelete　"B"はupdate %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  YES
+                <% elsif current_user_select.is_select == "B" %> <%# そのユーザーが過去に"B"だったら、"A"はupdate　"B"はdelete %>
+                   <%= link_to "A.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"delete"),method: :PATCH,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  NO
+                  <% elsif current_user_select.is_select == "delete" %>
+                  <%= link_to "A.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"A"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,id:current_user_select.id,is_select:"B"),method: :PATCH,class:"text-break btn btn-info btn-lg mt-3" %>
+                  したことない
+                  <% end %>
+              <% else %><%# もしユーザーが投稿に対して、選択していなかったら、両方ともcreate %>
+                  <%= link_to "A.#{posts.select_a}",post_post_selects_path(post_id:posts.id,is_select:"A"),method: :POST,class:"text-break btn btn-danger btn-lg mt-3" %>
+                  <%= link_to "B.#{posts.select_b}",post_post_selects_path(post_id:posts.id,is_select:"B"),method: :POST,class:"text-break btn btn-info btn-lg mt-3" %>
+                  したことない
+              <% end %>
+          <%# -------------------（fin）条件分岐-------------------------%>
+
           </div>
           <div class="d-flex flex-column text-right">
-            <%= link_to "詳細を見る",post_path(posts.id),class:"right-block" %>
+          <div class="text-righ">
+          <%= link_to "詳細を見る",post_path(posts.id),class:"right-block" %>
+          </div>
             <%= posts.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
           </div>
               <div class="w-100"></div>
@@ -37,8 +60,7 @@
 /* 画像 - 絶対配置で左上に配置 */
 .balloon_left .icon{
   position: absolute;
-  left: -620px;
-  top: 20px;
+  left: -155px;
   color: #000;
   display: flex;
   flex-direction: column;
@@ -59,11 +81,12 @@
 }
 
 .balloon_left .post_user_image {
-  object-fit: cover;
-  width: 12%;
-  height: 90%;
-  margin: 0 auto;
-  border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 

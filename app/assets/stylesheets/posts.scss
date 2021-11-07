@@ -110,36 +110,6 @@
 }
 
 
-/* show-左側　*/
-.left_ballon-edit .post-left{
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0px 1.5em 150px;
-  padding: 7px 10px;
-  min-width: 400px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: rgb(182, 235, 182);
-  border-radius: 15px;
-}
-
-.left_ballon-edit 
-.post-left :before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: -30px;
-  margin-top: -20px;
-  border: 10px solid transparent;
-  border-right: 30px solid rgb(182, 235, 182);
-}
-
-.left_ballon-edit .post-left p {
-  margin: 0;
-  padding: 0;
-}
-
 
 
 /* show右側　*/
