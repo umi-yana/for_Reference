@@ -4,7 +4,7 @@
       <div class="icon">
         <%= link_to user_path(post.user_id) do%>
         <%= attachment_image_tag post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png'%>
-        <div class="user_name_line mt-2"><%= post.user.user_name %></div>
+        <div class="user_name_line text-white mt-2"><%= post.user.user_name %></div>
       <% end %>
       </div>
       <h3 class="text-break"><%= post.post_body %></h3>
