@@ -11,7 +11,7 @@
       <div class="d-flex justify-content-start">
         <div class="post-left">
 
-          <p class="text-break m-4"><%= @post.post_body %></p>
+          <h5 class="text-break m-4"><%= @post.post_body %></h5>
           <div class="d-flex flex-column">
             <%= attachment_image_tag @post,:post_image %>
             
@@ -43,14 +43,15 @@
     <%# --右側吹き出し　コメント入力機構--  %>
     <div class="balloon_light mt-3  ">
       <div class="icon d-flex justify-content-start"><%= link_to user_path(@post.user_id) do%>
-      <%= attachment_image_tag current_user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+      <%= attachment_image_tag current_user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
         <div class="d-flex flex-column justify-content-end">
           <%= current_user.user_name %></div>
           <% end %>
         </div>
             <%# -----------コメント入力機構-------%>
             <%= form_with(model:[@post,@comment],local:true) do |comment| %>
-              <%= comment.text_area :content,class:'w-100' %>
+                <h3 class='text-center '>コメント入力</h3>
+              <%= comment.text_area :content ,class:'w-75'%>
               <%= comment.submit"決定",class:'box-right btn btn-info'%>
             <% end %>
              <%# ----------(fin)コメント入力機構-------%>
@@ -63,12 +64,18 @@
   <% @comments.each do |comment| %>
       <div class="balloon_light mt-5  ">
         <div class="icon d-flex justify-content-start"><%= link_to user_path(@post.user_id) do%>
-          <%= attachment_image_tag comment.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+          <%= attachment_image_tag comment.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
           <div class="d-flex flex-column justify-content-end"><%= comment.user.user_name %></div>
           <% end %>
         </div>
-          <h3 class="text-break"><%= comment.content %></h3>
+          <h6 class="text-break"><%= comment.content %></h6>
               <div class="d-flex flex-column text-right">
+
+              　<%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
+                <% if comment.user == current_user %>
+                <%= link_to "コメント削除",post_comment_path(comment.post_id,comment.id),method: :delete %>
+                <% end %>
+                <%#ーーーーーーー (fin）もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
                 <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
               </div>
                 <div class="w-100"></div>
@@ -85,9 +92,9 @@
 .left_ballon-edit .post-left{
   position: relative;
   display: inline-block;
-  margin: 1.5em 0px 1.5em 50px;
+  margin: 1.5em 0px 1.5em 80px;
   padding: 7px 10px;
-  min-width: 90%;
+  min-width:80%;
   max-width: 80%;
   color: #555;
   font-size: 16px;
@@ -116,11 +123,13 @@
 
 
 .left_ballon-edit .post_user_image {
-  object-fit: cover;
-  width: 12%;
-  height: 90%;
-  margin: 0 auto;
-  border-radius: 50%;
+     width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 /* ---------------------------- */
@@ -132,7 +141,7 @@
   border-radius: 10px;
   color: #555;
   background-color: rgb(182, 235, 182);
-  margin: auto;          /* 右に余白を設ける */
+  margin-left: 10px;          /* 右に余白を設ける */
 }
 /* 画像 - 絶対配置で右上に配置 */
 .balloon_light .icon{
@@ -143,6 +152,7 @@
   text-align: center;
   margin-right: 50px;
 }
+
 /* 三角アイコン */
 .balloon_light::before{
   content: '';
@@ -156,6 +166,16 @@
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
 }
+
+.balloon_light .post_user_image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+
+
 
 
 

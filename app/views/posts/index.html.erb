@@ -1,12 +1,11 @@
 <%= render "layouts/header" %>
 <%#ーーー ヘッダー　ーーー%>
-<div class="bg-info">
 <div class="container-fluid ">
   <div class="row ">
     <%# --左側吹き出し--  %> 
 
     <div class="col text-center">
-    <h3>タイムライン</h3>
+    <h1 class="timeline-title">My TimeLine</h1>
     </div>
     <div class="w-100"></div>
     <%# --　新規投稿用吹き出し --%>
@@ -41,6 +40,7 @@
         </div>
       </div>
     </div>
+    </div>
       <div class="w-100"></div>
       <%# -- ↑改行↑ -- %>
     <%# -- [fin]左側吹き出し --%>
@@ -50,24 +50,31 @@
 
   <%# 投稿all %>
   <div class="row">
-  <% @posts.each do |post| %>
-
-  <%#ーーー 投稿者判断　ーーー%>
-  <% if post.user_id == current_user.id %>
-
-    <%#= -----投稿者側の投稿内容 ----- %>
-    <%= render partial: "current-user-post" ,locals: {post: post} %>
-  <% else %>
-    <%#= -----利用者の側の投稿内容 ----- %>
-    <%= render partial: "user-post" ,locals: {post: post} %>
-
+    <% @posts.each do |post| %>
+      <%#ーーー 投稿者判断　ーーー%>
+      <% if post.user_id == current_user.id %>
+        <%#= -----投稿者側の投稿内容 ----- %>
+        <%= render partial: "current-user-post" ,locals: {post: post} %>
+      <% else %>
+        <%#= -----利用者の側の投稿内容 ----- %>
+        <%= render partial: "user-post" ,locals: {post: post} %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
-<% end %>
 
 
-  </div>
-</div>
 
 
-</div>
+
+
+<style>
+body {
+  background-color:#17a2b8;
+}
+.timeline-title {
+  font-family : 'Times New Roman', Times, serif;
+  font-size: 50px;
+  color:white;
+  background-color:
+}
+</style>

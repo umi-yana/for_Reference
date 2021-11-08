@@ -1,9 +1,9 @@
   <%# --右側吹き出し--  %>
     <div class="balloon_light mt-3  ">
       <div class="icon d-flex justify-content-start"><%= link_to user_path(post.user_id) do%>
-      <%= attachment_image_tag post,:post_image,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
-            <div class="d-flex flex-column justify-content-end">
-      <%= post.user.user_name %></div>
+      <%= attachment_image_tag  post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
+            <div class="text-white d-flex flex-column justify-content-end ">
+      <%= post.user.user_name %>q</div>
       <% end %>
       </div>
 
@@ -62,6 +62,15 @@
   border-left: 15px solid rgb(182, 235, 182);
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
+}
+
+.balloon_light .post_user_image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 
