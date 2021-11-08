@@ -49,11 +49,9 @@
           <% end %>
         </div>
             <%# -----------コメント入力機構-------%>
-            <%= form_with(model:[@post,@comment],local:true) do |comment| %>
-                <h3 class='text-center '>コメント入力</h3>
-              <%= comment.text_area :content ,class:'w-75'%>
-              <%= comment.submit"決定",class:'box-right btn btn-info'%>
-            <% end %>
+            <div class="comment_area">
+              <%= render "comment-create",post:@post, comment:@comment %>
+              </div>
              <%# ----------(fin)コメント入力機構-------%>
                <div class="w-100"></div>
     <%# -- ↑改行↑ -- %>
