@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :comments,only:[:create,:destroy]
   end
   resources :users
-
+  get 'post/ranking' => 'posts#ranking'
 end

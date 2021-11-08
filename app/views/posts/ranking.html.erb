@@ -1,0 +1,29 @@
+<%= render "layouts/header" %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    
+      <h4>投稿数RANKING</h4>
+      <% @all_ranks.each do |note| %>
+      <%= note.user_name %>
+      <% end %>
+ 
+    </div>
+    <div class="col">
+      <h4>comment ranking</h4>
+      <% @all_ranks_select.each do |note| %>
+      <%= note.post_body %>
+      <% end %>
+    </div>
+    <div class="col">
+      <h4>タグランキング</h4>
+      <% @all_ranks_tag.each.with_index(1) do |tag,i| %>
+      <div class="ranking-tag">第<%= i %>位</div>
+      <%= tag.tag_name %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+@all_ranks_select
