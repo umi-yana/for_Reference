@@ -4,19 +4,23 @@ class PostsController < ApplicationController
     @post_new = Post.new
     @posts = Post.all.order(id: "DESC") 
     @select_count_a = PostSelect.where(is_select: "A")
+    @tag_list = Tag.all.order(id: "DESC") 
   end
 
   def show
     @post = Post.find(params[:id])
     @comment =Comment.new
     @comments = @post.comments.all.order(id: "DESC") 
+    @post_tags = @post.tags 
   end
-  
+
 
   def create
     @posts = Post.new(post_params)
     @posts.user_id = current_user.id
+    tag_list = params[:post][:tag_name].split("#")
     if @posts.save
+      @posts.save_tag(tag_list)
       flash[:success] = "投稿しました"
       redirect_to posts_path
     else

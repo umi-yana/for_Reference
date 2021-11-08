@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_07_031101) do
+ActiveRecord::Schema.define(version: 2021_11_08_065648) do
 
   create_table "comments", force: :cascade do |t|
     t.string "user_id"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(version: 2021_11_07_031101) do
     t.text "select_a"
     t.text "select_b"
     t.string "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_lists", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_tag_lists_on_post_id"
+    t.index ["tag_id"], name: "index_tag_lists_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

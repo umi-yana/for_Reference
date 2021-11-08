@@ -1,0 +1,5 @@
+  <%= form_with(model:[post,comment],remote:true) do |comment| %>
+  <h3 class='text-center '>コメント入力</h3>
+  <%= comment.text_area :content ,class:'w-75'%>
+  <%= comment.submit"決定",class:'box-right btn btn-info'%>
+  <% end %>

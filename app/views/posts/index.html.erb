@@ -31,6 +31,9 @@
               </div>
               <%= f.label:post_image,"画像選択" %>
               <%= f.attachment_field :post_image %>
+
+              <%= f.label :tag_name %>
+              <%= f.text_field :tag_name%>
               
               <div class="form-group text-center">
               <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
@@ -46,7 +49,6 @@
     <%# -- [fin]左側吹き出し --%>
   </div>
   <%# ----------------------------固定------------------------------------------%>
-
 
   <%# 投稿all %>
   <div class="row">
