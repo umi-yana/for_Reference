@@ -5,6 +5,7 @@
               <%= link_to "for_Reference",root_path,class:"header-title navbar-brand" %>
                 <div class="collapse navbar-collapse">
                   <ul class="navbar-nav ml-auto">
+                    <li><%= link_to "Ranking",post_ranking_path,class:"fas fa-users nav-link text-light" %></li>
                     <li><%= link_to "My_page",user_path(current_user),class:"fas fa-users nav-link text-light" %></li>
                     <li><%= link_to "My_timeline",posts_path,class:"fas fa-comments  nav-link text-light" %> </li>
                     <li><%= link_to "logout",destroy_user_session_path,method: :delete,class:"fas fa-sign-out-alt nav-link text-light" %></li>
