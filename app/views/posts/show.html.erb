@@ -1,3 +1,4 @@
+<%= render "layouts/header" %>
 <div class="container ">
   <div class="row">
   <%#　ーーーー 投稿詳細　ーーーーー %>
@@ -16,7 +17,7 @@
             <%= attachment_image_tag @post,:post_image %>
           <%# -------------------条件分岐-------------------------%>
           <div id="select-test" class='d-flex flex-column' >
-          <%= render "post_selects/select" ,post: @post %>
+            <%= render "post_selects/select" ,post: @post %>
           </div>
           <%# -------------------（fin）条件分岐-------------------------%>
               <i class="fas fa-tag mt-3"><%= @post.tags.map(&:tag_name).join('#')%></i>
