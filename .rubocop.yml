@@ -1,7 +1,9 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
-#ここにはrubocopでコード解析したくないファイルやフォルダを指定します
+ # 検索方法$ bundle exec rubocop --require rubocop-airbnb
+ 
+#コード解析しない内容
 AllCops:
   Exclude:
     - 'db/**/*'

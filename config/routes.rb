@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   resources :users
   get 'post/ranking' => 'posts#ranking'
+  get '/search' => 'searchs#search'
 end
