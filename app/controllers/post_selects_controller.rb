@@ -1,11 +1,12 @@
 class PostSelectsController < ApplicationController
   def create
-    @post = PostSelect.new
-    @post.is_select = params[:is_select]
-    @post.user_id = current_user.id
-    @post.post_id = params[:post_id]
-    @post.save
-    redirect_back(fallback_location: root_path)
+    post_select = PostSelect.new
+    post_select.is_select = params[:is_select]
+    post_select.user_id = current_user.id
+    post_select.post_id = params[:post_id]
+    post_select.save
+    @post = post_select.post
+    #redirect_back(fallback_location: root_path)
   end
 
   def destroy
