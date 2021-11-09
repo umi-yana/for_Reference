@@ -2,18 +2,17 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post_new = Post.new
-    @posts = Post.all.order(id: "DESC") 
+    @posts = Post.all.order(id: "DESC")
     @select_count_a = PostSelect.where(is_select: "A")
-    @tag_list = Tag.all.order(id: "DESC") 
+    @tag_list = Tag.all.order(id: "DESC")
   end
 
   def show
     @post = Post.find(params[:id])
-    @comment =Comment.new
-    @comments = @post.comments.all.order(id: "DESC") 
-    @post_tags = @post.tags 
+    @comment = Comment.new
+    @comments = @post.comments.all.order(id: "DESC")
+    @post_tags = @post.tags
   end
-
 
   def create
     @posts = Post.new(post_params)
@@ -28,11 +27,11 @@ class PostsController < ApplicationController
       render :index
     end
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -42,7 +41,6 @@ class PostsController < ApplicationController
       flash[:error] = "エラーが発生しました。"
       render :edit
     end
-
   end
 
   def destroy
@@ -50,7 +48,6 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
 
   def ranking
     @all_ranks = User.find(Post.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
@@ -61,9 +58,9 @@ class PostsController < ApplicationController
     # 投稿(post)の中でコメント(comment)されたPost_id(被投稿ページ）が多いものを3位までピックアップする
   end
 
-private
-def post_params
-  params.require(:post).permit(:user_id, :post_body,:select_a,:select_b,:post_image )
-end
+  private
 
+  def post_params
+    params.require(:post).permit(:user_id, :post_body, :select_a, :select_b, :post_image)
+  end
 end

@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.order(id: "DESC") 
+    @posts = @user.posts.all.order(id: "DESC")
   end
 
   def index
     @post = Post.all
   end
-
 
   def edit
     @user = User.find(params[:id])
@@ -15,19 +14,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-      if @user.update(user_params)
-        flash[:success] = "User was successfully updated"
-        redirect_to @user
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    if @user.update(user_params)
+      flash[:success] = "User was successfully updated"
+      redirect_to @user
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
   end
 
-private
-def user_params
-  params.require(:user).permit(:email, :user_name,:user_content,:user_photo )
-end
-  
-  
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :user_name, :user_content, :user_photo)
+  end
 end
