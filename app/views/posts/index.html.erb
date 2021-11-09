@@ -15,6 +15,7 @@
           <h2 class='text-center'>新規投稿</h2>
           <div class="d-flex flex-column">
             <%= form_with model:@post_new,local:true do |f| %>
+              <%= render 'layouts/error_msg', model: f.object %>
             <div class="form-group">
                 <%= f.label :post_body,"投稿本文" %>
                 <%= f.text_area :post_body,class:'w-100' %>
