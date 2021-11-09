@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="col-xs-12">
+    <% if @model == "post" %>
+    <h1>投稿内容検索キーワード <span>'<%= @value %>'</span>について</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Introduction</th>
+            </tr>
+        </thead>
+    <% @datas.each do |post| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(post, :post_image, size:'40x40') %>
+                </th>
+                <th>
+                    <%= post.user.user_name %>
+                </th>
+                <th>
+                    <%= post.post_body %>
+                </th>
+            </tr>
+        </tbody>
+    <% end %>
+    <% elsif @model == "tag" %>
+    <h2>Books search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+            </tr>
+        </thead>
+        <% @datas.each do |tag| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= tag.tag_name %>
+                </th>
+            </tr>
+        </tbody>
+        <% end %>
+    <% end %>
+    </table>
+  </div>
+</div>

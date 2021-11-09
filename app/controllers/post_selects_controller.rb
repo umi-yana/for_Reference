@@ -5,7 +5,7 @@ class PostSelectsController < ApplicationController
     @post.user_id = current_user.id
     @post.post_id = params[:post_id]
     @post.save
-     redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
