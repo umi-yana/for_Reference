@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
+    
       <div class="d-flex align-items-center justify-content-center" style="height: 90vh;">
       <h1 class='p-5'>Sign up</h1>
 
@@ -10,12 +11,12 @@
 
         <div class="field mt-3">
           <%= f.label :ユーザーネーム %><br />
-          <%= f.text_field :user_name, autofocus: true,class:"form-control",id:"exampleFormControlInput1" %>
+          <%= f.text_field :user_name, autofocus: true,class:"form-control",id:"exampleFormControlInput1",placeholder:"user_name" %>
         </div>
 
         <div class="field mt-3">
           <%= f.label :Eメール %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",id:"exampleFormControlInput1"  %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",id:"exampleFormControlInput1",placeholder:"sample@example.com"  %>
         </div>
         
         <div class="field mt-3">
