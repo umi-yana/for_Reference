@@ -1,5 +1,5 @@
 <%= form_with url:search_path, method: :get, local: true do |f| %>
         <%= f.text_field 'search[value]',placeholder:"検索項目" %>
         <%= f.select 'search[model]', options_for_select({ "投稿" => "post", "タグ" => "tag" }) %>
-        <%= f.submit :"部分検索ｓ" %>
+        <%= f.submit :"部分検索" %>
       <% end %>
