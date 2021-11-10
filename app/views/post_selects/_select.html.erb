@@ -11,8 +11,8 @@
     <%= link_to "B.#{post.select_b} 評価数:#{post.post_selects.where(is_select: "B").count}", post_post_selects_path(post_id:post.id, id:current_user_select.id, is_select:"B" ), method: :PATCH, class:"text-break btn btn-primary btn-lg mt-3 ", remote:true %>
   <% end %>
 <% else %><%# もしユーザーが投稿に対して、選択していなかったら、両方ともcreate %>
-  <%= link_to "A.#{post.select_a}",post_post_selects_path(post_id:post.id,is_select:"A"),method: :POST,class:"text-break btn btn-primary btn-lg mt-3"  %>
-  <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,is_select:"B"),method: :POST,class:"text-break btn btn-primary btn-lg mt-3" %>
+  <%= link_to "A.#{post.select_a}",post_post_selects_path(post_id:post.id,is_select:"A"),method: :POST,class:"text-break btn btn-primary btn-lg mt-3", remote:true   %>
+  <%= link_to "B.#{post.select_b}",post_post_selects_path(post_id:post.id,is_select:"B"),method: :POST,class:"text-break btn btn-primary btn-lg mt-3", remote:true  %>
 <% end %>
 
 
