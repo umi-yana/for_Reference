@@ -73,3 +73,9 @@ gem 'pry-byebug'
 
 gem 'rubocop-airbnb'
 gem 'bootstrap4-kaminari-views'
+
+# デプロイ用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

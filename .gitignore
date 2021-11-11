@@ -32,3 +32,5 @@
 
 /vendor/*
 !/vendor/.keep
+
+/.env
