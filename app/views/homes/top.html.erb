@@ -7,8 +7,9 @@
            <h1 class='display-4' >for_Refalence</h1>
              <p>あなたの悩みに対して</p>
             <p>ちょっとだけ手助けをします</p>
-            <%= link_to "新規登録",about_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
-          <%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
+            <%= link_to "新規登録",new_user_registration_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
+          <%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-3 w-50' %> 
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:'btn btn-primary btn-lg mt-5 w-50' %>
          </div>
         </div>
       </div>
