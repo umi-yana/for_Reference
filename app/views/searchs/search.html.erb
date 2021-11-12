@@ -1,50 +1,66 @@
+<%= render "layouts/header" %>
+<%#ーーー ヘッダー　ーーー%>
+
 <div class="container">
-  <div class="col-xs-12">
+  <div class="col-xs-12 mt-4">
     <% if @model == "post" %>
-    <h1>投稿内容検索キーワード <span>'<%= @value %>'</span>について</h1>
-    <table class="table">
-        <thead>
+      <h1>投稿内容検索キーワード <span>'<%= @value %>'</span></h1>
+        <table class="table">
+          <thead>
             <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Introduction</th>
+              <th></th>
+              <th class='w-25'>ユーザーネーム</th>
+              <th>投稿内容</th>
+              <th>選択内容<th>
             </tr>
-        </thead>
-    <% @datas.each do |post| %>
-        <tbody>
-            <tr>
-                <th>
-                    <%= attachment_image_tag(post, :post_image, size:'40x40') %>
-                </th>
-                <th>
-                    <%= post.user.user_name %>
-                </th>
-                <th>
-                    <%= post.post_body %>
-                </th>
-            </tr>
-        </tbody>
-    <% end %>
+          </thead>
+            <% @datas.each do |post| %>
+              <tbody>
+                <tr>
+                  <th>
+                  </th>
+                    <th clss='text-break d-flex align-items-center justify-content-center'>
+                    <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %>
+                    <%= link_to post.user.user_name, user_path(post.user.id) %> 
+                    </th>
+                    <th class='text-break d-flex align-items-center justify-content-center'>
+                    <%= link_to post.post_body,post_path(post) %>
+                    </th>
+                    <th id="select-test<%= post.id %>" class='w-30'>
+                    <%= render "post_selects/select" ,post: post %>
+                    </th>
+                </tr>
+              </tbody>
+            <% end %>
+
+
     <% elsif @model == "tag" %>
-    <h2>Books search for '<%= @value %>'</h2>
-    <table class="table">
-        <thead>
+      <h2>タグ検索結果 '<%= @value %>'</h2>
+        <table class="table">
+          <thead>
             <tr>
+            <th></th>
+              <th style="width: 15%">タグ</th>
+              <th >投稿者</th>
+              <th>投稿内容</th>
+              <th>選択内容</th>
+            </tr>
+          </thead>
+            <% @datas.each do |tag| %>
+              <tbody>
+                <tr>
                 <th></th>
-                <th>Title</th>
-                <th>Opinion</th>
-            </tr>
-        </thead>
-        <% @datas.each do |tag| %>
-        <tbody>
-            <tr>
-                <th>
-                    <%= tag.tag_name %>
-                </th>
-            </tr>
-        </tbody>
-        <% end %>
+                  <th class='fas fa-tag text-break'><%= tag.tag_name %></th>
+                     <% @tag_post.each do |tag_post| %>
+                    <th class='text-break'><%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %></th>
+                    <th class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></th>
+                    <th id="select-test<%= tag_post.post.id %>" class='w-30'>
+                    <%= render "post_selects/select" ,post: tag_post.post %></th>
+                    <% end %>
+                </tr>
+              </tbody>
+            <% end %>
+        </table>
     <% end %>
-    </table>
   </div>
 </div>

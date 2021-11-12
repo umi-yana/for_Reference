@@ -19,4 +19,7 @@ class User < ApplicationRecord
   end
   
 
+
+  validates :user_name, length: { in: 1..10 }  
+
 end
