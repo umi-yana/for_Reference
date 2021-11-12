@@ -3,6 +3,7 @@
     <div class="row ">
      <div class="col-6  ">
     <%= form_with model:@user,local:true do |f| %>
+    <%= render 'layouts/error_msg', model: f.object %>
     <div class="d-flex flex-column">
     <%= attachment_image_tag @user,:user_photo,id: "preview",fallback:'no_imag_user.png'%>
     <%= f.label:user_photo,"画像選択" %>
