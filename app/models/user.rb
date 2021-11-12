@@ -20,6 +20,6 @@ class User < ApplicationRecord
   
 
 
-  validates :user_name, length: { in: 1..10 }  
-
+  validates :user_name, presence: true, length: { maximum: 11 }
+  validates :user_content, length: { maximum: 120 }
 end
