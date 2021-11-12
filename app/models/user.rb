@@ -9,4 +9,17 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   attachment :user_photo
+
+  def self.guest
+    find_or_create_by!(email: 'gest@gest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.user_name = 'ゲスト'
+    end
+  end
+  
+
+
+  validates :user_name, presence: true, length: { maximum: 11 }
+  validates :user_content, length: { maximum: 120 }
 end

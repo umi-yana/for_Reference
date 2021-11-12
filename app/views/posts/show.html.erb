@@ -20,7 +20,7 @@
             <%= render "post_selects/select" ,post: @post %>
           </div>
           <%# -------------------（fin）条件分岐-------------------------%>
-              <i class="fas fa-tag mt-3"><%= @post.tags.map(&:tag_name).join('#')%></i>
+              <%= @post.tags.map(&:tag_name).join('#') %>
             <%# ------投稿者なら投稿編集を表示する------- %>
             <% if @post.user_id == current_user.id %>
               <%= link_to "投稿編集", edit_post_path,class:'btn btn-danger btn-lg m-4' %>
