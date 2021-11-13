@@ -13,7 +13,7 @@ class PostSelectsController < ApplicationController
     post_select = PostSelect.find(params[:id])
     @post = post_select.post
     post_select.destroy
-  # redirect_back(fallback_location: root_path)
+  # redirect_back(fallback_location: root_path) 非同期処理のためコメントアウト
   end
 
   def update

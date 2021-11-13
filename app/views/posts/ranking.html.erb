@@ -1,23 +1,23 @@
 <%= render "layouts/header" %>
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-4 mt-5">
     
       <h4>投稿数RANKING</h4>
       <table class="table">
-  <thead class="thead-lignt">
+  <tbody class="thead-lignt mt-5">
     <tr>
      <% @all_ranks.each.with_index(1) do |note,i| %>
       <th>第<%= i %>位</th>
-      <td><%= note.user_name %></td>
+      <th><%= note.user_name %></th>
       </tr>
       <% end %>
-  </thead>
+  </tbody>
 </table>
 
  
     </div>
-    <div class="col-4">
+    <div class="col-4 mt-5">
       <h4>comment ranking</h4>
       <% @all_ranks_select.each do |note| %>
       <%= note.post_body %>
@@ -25,13 +25,13 @@
     </div>
 
 
-    <div class="col-4">
+    <div class="col-4 mt-5">
     <table class="table">
       <h4 class='text-center'>タグランキング</h4>
       <thead class="thead-lignt">
       <% @all_ranks_tag.each.with_index(1) do |tag,i| %>
       <tr>
-      <th>第<%= i %>位</th>
+      <th><h3>第<%= i %>位</h3>第<%= i %>位</th>
       <td><%= tag.tag_name %></td>
       </tr>
       <% end %>
@@ -41,4 +41,9 @@
 
   </div>
 </div>
+
+
+<style>
+
+</style>
 
