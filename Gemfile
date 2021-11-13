@@ -73,3 +73,7 @@ gem 'pry-byebug'
 
 gem 'rubocop-airbnb'
 gem 'bootstrap4-kaminari-views'
+
+gem 'rails-i18n'
+gem 'chartkick'
+gem 'devise-i18n'

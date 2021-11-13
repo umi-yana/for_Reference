@@ -13,14 +13,14 @@ class Post < ApplicationRecord
     current_tags = tags.pluck(:tag_name) unless tags.nil?
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
-      old_tags.each do |old|
-        post_tags.delete PostTag.find_by(tag_name: old)
-      end
+    old_tags.each do |old|
+      post_tags.delete PostTag.find_by(tag_name: old)
+    end
 
-      new_tags.each do |new|
-        new_post_tag = Tag.find_or_create_by(tag_name: new)
-        tags << new_post_tag
-      end
+    new_tags.each do |new|
+      new_post_tag = Tag.find_or_create_by(tag_name: new)
+      tags << new_post_tag
+    end
   end
 
   # validates :post_body, presence: true, length: { maximum: 120 }
