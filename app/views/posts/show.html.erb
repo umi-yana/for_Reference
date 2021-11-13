@@ -64,10 +64,9 @@
   <%# -- [fin]コメント表示機構 --%>
 </div>
 
-<%= pie_chart @post.post_selects.group(:is_select).count,
-refresh: '0' %>
-<%= line_chart url, refresh: 1 %>
-
+<div class="chart" id='select_chart'>
+<%= render 'chart_show',post: @post %>
+</div>
 
 
 <style>

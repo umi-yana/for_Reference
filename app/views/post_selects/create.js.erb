@@ -2,3 +2,5 @@
 $("#select-test<%= @post.id %>").html("<%= j(render "post_selects/select" ,post: @post ) %>");
 $("#select-test").html("<%= j(render "select" ,post: @post ) %>");
 
+　
+$("#select_chart").html("<%= j(render "posts/chart_show",post: @post ) %>");
