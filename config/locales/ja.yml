@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        user_name: 名前
+        user_content: 自己紹介
+    errors:
+      messages:

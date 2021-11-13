@@ -17,8 +17,6 @@ class User < ApplicationRecord
       user.user_name = 'ゲスト'
     end
   end
-  
-
 
   validates :user_name, presence: true, length: { maximum: 11 }
   validates :user_content, length: { maximum: 120 }

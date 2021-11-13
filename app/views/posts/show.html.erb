@@ -64,6 +64,10 @@
   <%# -- [fin]コメント表示機構 --%>
 </div>
 
+<%= pie_chart @post.post_selects.group(:is_select).count,
+refresh: '0' %>
+<%= line_chart url, refresh: 1 %>
+
 
 
 <style>

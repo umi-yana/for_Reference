@@ -4,10 +4,7 @@ class SearchsController < ApplicationController
     @value = params["search"]["value"]
     @datas = search_for(@model, @value)
     @tag_post = TagList.where(tag_id: @datas)
-    
   end
-
-
 
   private
 
