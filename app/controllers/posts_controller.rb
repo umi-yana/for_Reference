@@ -2,9 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post_new = Post.new
-    @posts = Post.order(id: "DESC").page(params[:page]).per(20)
-    @select_count_a = PostSelect.where(is_select: "A")
-    @tag_list = Tag.all.order(id: "DESC")
+    @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
+    @tag_list = Tag.includes(:post).all.order(id: "DESC")
   end
 
   def show
@@ -12,6 +11,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.all.order(id: "DESC")
     @post_tags = @post.tags
+  
   end
 
   def create

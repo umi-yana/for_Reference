@@ -12,6 +12,7 @@ class PostSelectsController < ApplicationController
   def destroy
     post_select = PostSelect.find(params[:id])
     post_select.delete
+    redirect_back(fallback_location: root_path)
   end
 
   def update
