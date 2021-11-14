@@ -3,11 +3,11 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end ">
-      <div class="right-pop py-5">
-        <h5>リファレンスとは、</h5>
-        <h5>あなたの迷いに対して</h5>
-        <h5>ちょっとだけ手助けするSNSです</h5> 
+    <div class=" d-flex justify-content-end ">
+      <div class="right-pop-first">
+        <h2>リファレンスとは...</h2>
+        <h4>あなたの迷いに対してあなたの迷いに対して<br/>
+        ちょっとだけ手助けするSNSです</h4> 
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end">
+    <div class="ef d-flex justify-content-end">
       <div class="right-pop">
         <h3 class="m-3">たとえば…</h3>
       </div>
@@ -29,14 +29,13 @@
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-start">
+    <div class="ef d-flex justify-content-start">
       <div class="left-pop py-4">
-        <p>今日のランチは何を食べよう。</p>
-         <div class="d-flex flex-column">
-         <%= image_tag 'about_image.jpeg'%>
-        <%= link_to "中華",root_path,class:"btn btn-info mt-3" %>
-        <%= link_to "イタリアン",root_path,class:"btn btn-info mt-3" %>
-         </div>
+        <h5>今日のランチは何を食べよう。</h5>
+        <div class="d-flex flex-column">
+          <button type="button" class="btn btn-info mt-3">A.中華</button>
+          <button type="button" class="btn btn-info mt-3">B.イタリアン</button>
+        </div>
       </div>
     </div>
   </div>
@@ -45,30 +44,17 @@
 <%# -- [fin]左側吹き出し --%>
 
 <%# --左側吹き出し--  %> 
-  <div class="col">
-    <div class="d-flex justify-content-start">
-      <div class="left-pop">
-        <p>今日のランチは何を食べよう。</p>
-         <div class="d-flex flex-column">
-         <%= image_tag 'about_image.jpeg'%>
-        <%= link_to "中華",root_path,class:"btn btn-info mt-3" %>
-        <%= link_to "イタリアン",root_path,class:"btn btn-info mt-3" %>
+   <div class="col">
+    <div class="ef d-flex justify-content-end">
+      <div class="right-pop">
+      <h5>この車を買う予定ですが、<br/>
+      新車にするか、中古車か迷っています。<br/>
+      どちらがいいと思いますか？</h5>
+        <div class="d-flex flex-column">
+         <%= image_tag 'about_car.jpeg',size:'350x400',style:'object-fit: cover; height: 30%;'%>
+        <button type="button" class="btn btn-info mt-3">A.新車</button>
+        <button type="button" class="btn btn-info mt-3">B.中古車</button>
          </div>
-      </div>
-    </div>
-  </div>
-    <div class="w-100"></div>
-    <%# -- ↑改行↑ -- %>
-<%# -- [fin]左側吹き出し --%>
-
-
-<%# --右側吹き出し--  %> 
-  <div class="col">
-    <div class="d-flex justify-content-end ">
-      <div class="right-pop py-5">
-        <h5 class="py-5">このような感じで、<br/>
-        あなたの…
-        小さな迷いも 大きさ迷いも<br/> 仲間が答えてくれます</h5> 
       </div>
     </div>
   </div>
@@ -76,24 +62,42 @@
     <%# -- ↑改行↑ -- %>
 <%# -- [fin]右側吹き出し --%>
 
-このような感じで あなたの 小さな迷いも 大きさ迷いも 仲間が答えてくれます。 仲間の意見を参考に あなたの決断を手助けするSNSです。
+
+<%# --右側吹き出し--  %> 
+  <div class="col">
+    <div class="ef d-flex justify-content-end ">
+      <div class="right-pop">
+        <h5 class="about-text">
+          このような感じで、あなたの…<br/>
+          <span>小さな迷いも</span><br/>
+          <span>大きさ迷いも</span><br/> 
+          仲間が答えてくれます。<br/>
+          そして、あなたも仲間の悩みを解決する手伝いができます。
+          </h5> 
+      </div>
+    </div>
+  </div>
+    <div class="w-100"></div>
+    <%# -- ↑改行↑ -- %>
+<%# -- [fin]右側吹き出し --%>
 
 
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-start">
+    <div class="ef d-flex justify-content-start">
       <div class="left-pop">
-      <% if current_user.email == 'gest@gest.com'%>
-      <%= link_to "アプリを見る", posts_path %>
-      <%= link_to '制作者情報を見る', posts_path %>
-
-      <% else %>
-      <h2>さっそく始める！！</h2>
-         <div class="d-flex flex-column">
+      <% if current_user == nil %>
+      <div class="d-flex flex-column">
+          <h2>さっそく始める！！</h2>
         <%= link_to "始める",posts_path,class:"btn btn-danger btn-lg m-3" %>
         <%= link_to "やめる",destroy_user_session_path,method: :delete,class:"btn btn-info btn-lg m-3" %>
+        </div>
 
+      <% elsif current_user.email == 'gest@gest.com' %>
+      <h2>さっそく始める！！</h2>
+        <%= link_to "アプリを見る", posts_path ,class:"btn btn-danger btn-lg m-3" %>
+        <%= link_to '制作者情報を見る', posts_path ,class:"btn btn-info btn-lg m-3" %>
       <% end %>
          </div>
       </div>
@@ -107,3 +111,30 @@
   </div>
 </div>
 
+<style>
+.about-text {
+      line-height: 50px;
+}
+
+span{
+  color:red;
+  font-size:30px
+}
+</style>
+
+<script>
+$(function(){
+  $(".ef").css({opacity:"0"});
+  $(window).scroll(function (){
+    $(".ef").each(function(){
+      var post_top = $(this).offset().top;
+      var roll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (roll > post_top - windowHeight + windowHeight/1.5){
+        $(this).animate({ opacity: 1 }, { duration: 1000})
+      }
+    });
+  });
+});
+
+</script>
