@@ -3,11 +3,11 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end ">
-      <div class="right-pop py-5">
-        <h5>リファレンスとは、<br/>
-        あなたの迷いに対して<br/>
-        ちょっとだけ手助けするSNSです</h5> 
+    <div class=" d-flex justify-content-end ">
+      <div class="right-pop-first">
+        <h2>リファレンスとは...</h2>
+        <h4>あなたの迷いに対してあなたの迷いに対して<br/>
+        ちょっとだけ手助けするSNSです</h4> 
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end">
+    <div class="ef d-flex justify-content-end">
       <div class="right-pop">
         <h3 class="m-3">たとえば…</h3>
       </div>
@@ -29,7 +29,7 @@
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-start">
+    <div class="ef d-flex justify-content-start">
       <div class="left-pop py-4">
         <h5>今日のランチは何を食べよう。</h5>
         <div class="d-flex flex-column">
@@ -45,7 +45,7 @@
 
 <%# --左側吹き出し--  %> 
    <div class="col">
-    <div class="d-flex justify-content-end">
+    <div class="ef d-flex justify-content-end">
       <div class="right-pop">
       <h5>この車を買う予定ですが、<br/>
       新車にするか、中古車か迷っています。<br/>
@@ -65,7 +65,7 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-end ">
+    <div class="ef d-flex justify-content-end ">
       <div class="right-pop">
         <h5 class="about-text">
           このような感じで、あなたの…<br/>
@@ -85,20 +85,19 @@
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="d-flex justify-content-start">
+    <div class="ef d-flex justify-content-start">
       <div class="left-pop">
       <% if current_user == nil %>
       <div class="d-flex flex-column">
+          <h2>さっそく始める！！</h2>
         <%= link_to "始める",posts_path,class:"btn btn-danger btn-lg m-3" %>
         <%= link_to "やめる",destroy_user_session_path,method: :delete,class:"btn btn-info btn-lg m-3" %>
         </div>
 
       <% elsif current_user.email == 'gest@gest.com' %>
       <h2>さっそく始める！！</h2>
-      <div class="d-flex flex-column">
         <%= link_to "アプリを見る", posts_path ,class:"btn btn-danger btn-lg m-3" %>
         <%= link_to '制作者情報を見る', posts_path ,class:"btn btn-info btn-lg m-3" %>
-         </div>
       <% end %>
          </div>
       </div>
@@ -122,3 +121,20 @@ span{
   font-size:30px
 }
 </style>
+
+<script>
+$(function(){
+  $(".ef").css({opacity:"0"});
+  $(window).scroll(function (){
+    $(".ef").each(function(){
+      var post_top = $(this).offset().top;
+      var roll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (roll > post_top - windowHeight + windowHeight/1.5){
+        $(this).animate({ opacity: 1 }, { duration: 1000})
+      }
+    });
+  });
+});
+
+</script>
