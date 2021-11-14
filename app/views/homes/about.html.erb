@@ -86,7 +86,7 @@
 <%# --左側吹き出し--  %> 
   <div class="col">
     <div class="ef d-flex justify-content-start">
-      <div class="left-pop">
+      <div class="left-pop-end">
       <% if current_user == nil %>
       <div class="d-flex flex-column">
           <h2>さっそく始める！！</h2>
@@ -106,8 +106,6 @@
     <div class="w-100"></div>
     <%# -- ↑改行↑ -- %>
 <%# -- [fin]左側吹き出し --%>
-
-
   </div>
 </div>
 
@@ -120,9 +118,14 @@ span{
   color:red;
   font-size:30px
 }
+
+body{
+  background-color: info;
+}
 </style>
 
 <script>
+$("html,body").animate({scrollTop:$('.left-pop-end').offset().bootom});
 $(function(){
   $(".ef").css({opacity:"0"});
   $(window).scroll(function (){
@@ -130,7 +133,7 @@ $(function(){
       var post_top = $(this).offset().top;
       var roll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (roll > post_top - windowHeight + windowHeight/1.5){
+      if (roll > post_top - windowHeight + windowHeight/2){
         $(this).animate({ opacity: 1 }, { duration: 1000})
       }
     });
