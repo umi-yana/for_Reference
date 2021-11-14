@@ -3,7 +3,7 @@
 .right-pop {
   position: relative;
   display: inline-block;
-  margin: 15em 150px 1.5em 0;
+  margin: 5vh 5vw 5vh 5vw;
   padding: 15px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -23,10 +23,6 @@
   border-left: 15px solid #b6ebb6;
 }
 
-.right-pop p {
-  margin: 0;
-  padding: 0;
-}
 
 
 
@@ -34,7 +30,7 @@
 .right-pop-first {
   position: relative;
   display: inline-block;
-  margin: 12em 40px 1.5em 0;
+  margin: 30vh 5vw ;
   padding: 50px 60px;
   min-width: 120px;
   max-width: 100%;
@@ -62,7 +58,7 @@
 .left-pop {
   position: relative;
   display: inline-block;
-  margin: 10em 0px 1.5em 150px;
+  margin: 5vh 5vw 5vh 5vw;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -82,7 +78,26 @@
   border-right: 15px solid #e0edff;
 }
 
-.left-pop p {
-  margin: 0;
-  padding: 0;
+/* about-左側　*/
+.left-pop-end {
+  position: relative;
+  display: inline-block;
+  margin: 5vh 60vw 40vh 5vw;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+
+.left-pop-end :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
 }
