@@ -12,7 +12,14 @@ Rails.application.routes.draw do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
   end
-  resources :users
-  get 'post/ranking' => 'posts#ranking'
-  get '/search' => 'searchs#search'
+  
+  resources :users do
+  resource :relationships, only: [:create, :destroy]
+  get 'followings' => 'relationships#followings', as: 'followings'
+  get 'followers' => 'relationships#followers', as: 'followers'
+end
+
+get 'post/ranking' => 'posts#ranking'
+get '/search' => 'searchs#search'
+
 end

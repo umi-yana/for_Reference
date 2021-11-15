@@ -9,7 +9,7 @@
 
         <h3 class="text-break"><%= post.post_body %></h3>
             <div class="d-flex flex-column">
-              <%= attachment_image_tag post,:post_image,style:'object-fit: cover; height: 90%;' %>
+              <%= attachment_image_tag post,:post_image %>
               <%# -------------------条件分岐-------------------------%>
               <div id="select-test<%= post.id %>" class="d-flex flex-column text-right">
                   <%= render "post_selects/select" ,post: post %>
@@ -80,6 +80,11 @@
     background-position: center;
     object-fit: cover;
 }
+
+.balloon_light .post_image{
+  width:100%;
+}
+
 
 .comment-icon{
   color:#007bff;
