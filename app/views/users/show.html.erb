@@ -11,13 +11,17 @@
         <div class="text-center mt-4"><%= @user.user_name %></div>
 
         <div class="follower text-center mt-4">
-        フォロ数：５人
+            <% if @user.is_followed_by?(current_user) %>
+              <%= link_to user_relationships_path(@user),method: :delete do %>
+              <botton class="btn btn-danger">フォロー解除</botton>
+              <% end %>
+            <% else %>
+              <%= link_to user_relationships_path(@user),method: :post do %>
+              <botton class="btn btn-primary">フォロー</botton>
+              <% end %>
+            <% end %>
         </div>
         
-        <div class="follower text-center">
-        フォロ-：５人
-        </div>
-      
         <div class="user_profile_body text-center mt-4">
         <p class='text-break'><%= @user.user_content %></p>
         </div>
