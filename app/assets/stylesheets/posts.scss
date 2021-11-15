@@ -1,7 +1,27 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* 新規投稿画面-左側　*/
+.input-left-pop {
+  position: relative;
+  display: inline-block;
+  margin: 1vh 5vw 5vh 5vw;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+
+.input-left-pop :before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
 
 
 /* 右側　*/
@@ -28,10 +48,6 @@
   border-left: 15px solid #e0edff;
 }
 
-.right-ballon p {
-  margin: 0;
-  padding: 0;
-}
 
 .right-ballon :before{
   float: left;
@@ -135,11 +151,6 @@
   margin-top: -15px;
   border: 15px solid transparent;
   border-left: 15px solid #e0edff;
-}
-
-.right-pop-edit p {
-  margin: 0;
-  padding: 0;
 }
 
 .post-left h3 {

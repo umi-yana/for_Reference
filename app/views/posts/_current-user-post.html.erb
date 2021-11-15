@@ -9,7 +9,7 @@
       </div>
       <h3 class="text-break"><%= post.post_body %></h3>
           <div class="d-flex flex-column">
-            <%= attachment_image_tag post,:post_image,style:'object-fit: cover; height: 90%;' %>
+            <%= attachment_image_tag post,:post_image %>
           <%# -------------------条件分岐-------------------------%>
             <div id="select-test<%= post.id %>" class="d-flex flex-column" >
             <%= render "post_selects/select" ,post: post %>
@@ -28,7 +28,7 @@
           </div>
           <div class="d-flex flex-column text-right mt-2">
           <div class="text-righ">
-          <%= link_to "詳細を見る",post_path(post.id),class:"right-block" %>
+          <%= link_to "詳細を見る",post_path(post.id) %>
           </div>
             <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
           </div>
