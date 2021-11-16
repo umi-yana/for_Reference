@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   attachment :user_photo
 
+  # ーーーーーーゲストログインーーーーー
   def self.guest
     find_or_create_by!(email: 'gest@gest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -32,10 +33,16 @@ class User < ApplicationRecord
     def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
     end
+  # ーーーーーーーーー（fin）フォロー機能ーーーーーーーー  
 
 
+  # ---------退会機能　trueだったら、ログイン　falseだったら、ログインできない。
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
 
 
+    # -------バリデーションーーーーーー
   validates :user_name, presence: true, length: { maximum: 11 }
   validates :user_content, length: { maximum: 120 }
 end

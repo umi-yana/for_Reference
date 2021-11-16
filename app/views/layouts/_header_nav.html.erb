@@ -15,16 +15,36 @@
           <li class="nav-item">
             <div class="nav-link"><%= link_to "My_page",user_path(current_user),class:"fas fa-users text-light " %></div>
           </li>
-          <li class="nav-item">
-            <div class="nav-link"><%= link_to "Ranking",post_ranking_path,class:"fas fa-users text-light" %></div>
-          </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-external-link-alt">Other_links</i>
+              </div>
+
+                <%# ------ドロップダウンリスト----  %>
+              <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                  <%# ------ランキング----  %>
+                <%= link_to "Ranking",post_ranking_path,class:"dropdown-item fas fa-users mt-3 " %>
+                  <%# ------ログアウト----  %>
+                <%= link_to "logout",destroy_user_session_path,method: :delete,class:"dropdown-item fas fa-sign-out-alt mt-3",id:'dropdown-logout' %>
+              </div>
+                <%# ------（fin）ドロップダウンリスト----  %>
+
           <li class="nav-item">
             <div class="nav-link"><%= render 'searchs/form' %></div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link"><%= link_to "logout",destroy_user_session_path,method: :delete,class:"fas fa-sign-out-alt text-light" %></div>
           </li>
         </ul>
       </div>
     </nav>
     <% end %>
+
+
+    <style>
+    #dropdown-logout {
+    color:white;
+    background-color: red;
+    font-weight: bold;
+    border: solid 3px gray;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    
+    </style>

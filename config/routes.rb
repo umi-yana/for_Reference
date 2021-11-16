@@ -19,7 +19,12 @@ Rails.application.routes.draw do
   get 'followers' => 'relationships#followers', as: 'followers'
 end
 
+# ランキングページ
 get 'post/ranking' => 'posts#ranking'
+# サーチ機能
 get '/search' => 'searchs#search'
 
+# 退会機能
+get 'user/unsubscribe' => 'users#unsubscribe'
+put "/users/:id/withdraw" => "users#withdraw", as: 'users_withdraw'
 end

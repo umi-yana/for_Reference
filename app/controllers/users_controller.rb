@@ -20,6 +20,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = current_user
+    @user.update(is_valid: false)
+    reset_session
+    flash[:notice] = "ご利用ありがとうございました。またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
+
   private
 
   def user_params

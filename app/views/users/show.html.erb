@@ -11,9 +11,11 @@
         <div class="text-center mt-4"><%= @user.user_name %></div>
 
 
+
         <%# ーーーーーーーーーーーフォロー機能ーーーーーーーーーーーー %>
         <div class="follower text-center mt-4" id="following<%= @user.id %>">
           <%= render "users/following" ,user: @user %>
+
         </div>
         <%# ーーーーーーーーーーー(fin)フォロー機能ーーーーーーーーーーーー %>
 
