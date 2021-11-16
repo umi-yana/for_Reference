@@ -25,7 +25,6 @@ get 'post/ranking' => 'posts#ranking'
 get '/search' => 'searchs#search'
 
 # 退会機能
-get 'user/unsubscribe' => 'homes#unsubscribe'
-get 'user/withdraw' => 'homes#withdraw'
-
+get 'user/unsubscribe' => 'users#unsubscribe'
+put "/users/:id/withdraw" => "users#withdraw", as: 'users_withdraw'
 end

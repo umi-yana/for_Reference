@@ -4,8 +4,6 @@ class RelationshipsController < ApplicationController
   def create
     following = current_user.relationships.build(follower_id: params[:user_id])
     
-    binding.pry
-    
     following.save
     redirect_back(fallback_location: root_path)
   end
