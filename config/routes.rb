@@ -12,7 +12,14 @@ Rails.application.routes.draw do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
   end
+
+  # 問い合わせ機能
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
   
+  # フォロー機能
   resources :users do
   resource :relationships, only: [:create, :destroy]
   get 'followings' => 'relationships#followings', as: 'followings'
@@ -27,4 +34,8 @@ get '/search' => 'searchs#search'
 # 退会機能
 get 'user/unsubscribe' => 'users#unsubscribe'
 put "/users/:id/withdraw" => "users#withdraw", as: 'users_withdraw'
+
+
+
+
 end
