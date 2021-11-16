@@ -10,28 +10,22 @@
 
         <div class="text-center mt-4"><%= @user.user_name %></div>
 
-        <div class="follower text-center mt-4">
-        <% if @user.is_valid == false %>
-          <botton class="btn btn-danger">退会済みユーザー</botton>
-        
-        <% else %>
-            <% if @user.is_followed_by?(current_user) %>
-              <%= link_to user_relationships_path(@user),method: :delete do %>
-              <botton class="btn btn-danger">フォロー解除</botton>
-              <% end %>
-            <% else %>
-              <%= link_to user_relationships_path(@user),method: :post do %>
-              <botton class="btn btn-primary">フォロー</botton>
-              <% end %>
-            <% end %>
-        <% end %>
-            
+
+
+        <%# ーーーーーーーーーーーフォロー機能ーーーーーーーーーーーー %>
+        <div class="follower text-center mt-4" id="following<%= @user.id %>">
+          <%= render "users/following" ,user: @user %>
+
         </div>
-        
+        <%# ーーーーーーーーーーー(fin)フォロー機能ーーーーーーーーーーーー %>
+
+
+
+
         <div class="user_profile_body text-center mt-4">
         <p class='text-break'><%= @user.user_content %></p>
         </div>
-        
+
         <div class="edit-user-btn text-center">
          <% if current_user == @user %>
           <%= link_to "編集する",edit_user_path(@user),class:"btn btn-primary" %>
