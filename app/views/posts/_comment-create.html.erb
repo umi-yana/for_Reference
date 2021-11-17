@@ -8,12 +8,12 @@
           <% end %>
 
         </div>
-          <h6 class="text-break"><%= comment.content %></h6>
+          <h6 class="text-break"><%= simple_format(comment.content) %></h6>
               <div class="d-flex flex-column text-right">
-                
+
               　<%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
                 <% if comment.user == current_user %>
-                <%= link_to "コメント削除",post_comment_path(comment.post_id,comment.id),method: :delete %>
+                <%= link_to "コメント削除",post_comment_path(comment.post_id,comment.id),method: :delete,remoto:true %>
                 <% end %>
                 <%#ーーーーーーー (fin）もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
                 <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
