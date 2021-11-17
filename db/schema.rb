@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_055712) do
   create_table "contacts", force: :cascade do |t|
     t.string "contact_name", null: false
     t.string "contact_email", null: false
-    t.integer "contact_subject", default: 0, null: false
+    t.string "contact_subject", null: false
     t.text "contact_message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

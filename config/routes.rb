@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
-  get 'done', to: 'contacts#done', as: 'done'
+  get 'thanks', to: 'contacts#thanks', as: 'thanks'
   
   # フォロー機能
   resources :users do
