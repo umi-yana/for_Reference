@@ -13,34 +13,40 @@
       <div class="d-flex justify-content-start">
         <div class="left-pop py-2">
           <h2 class='text-center'>新規投稿</h2>
-          <div class="d-flex flex-column">
+          
             <%= form_with model:@post_new,local:true do |f| %>
               <%= render 'layouts/error_msg', model: f.object %>
-            <div class="form-group ">
-                <%= f.label :post_body,"投稿本文" %>
-                <%= f.text_area :post_body,class:'w-100',placeholder:"本文(~120文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"5"  %>
+
+                <div class="d-flex flex-column">
+                    <div class="form-group ">
+                    <%= f.label :post_body,"投稿本文" %>
+                    <%= f.text_area :post_body,class:'w-100',placeholder:"本文(~120文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"5"  %>
+                    </div>
+
+                    <div class="d-flex flex-row text-center">
+                      <div class="form-group">
+                      <%= f.label :select_a,"選択肢A" %>
+                      <%= f.text_area :select_a,placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
+                      </div>
+
+                      <div class="form-group ml-5">
+                      <%= f.label:select_b,"選択肢B" %>
+                      <%= f.text_area :select_b,class:'h-200',placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
+                      </div>
+                    </div>
+                      <%= f.text_field :tag_name,class:"form-control",placeholder:"タグネーム" %>
                 </div>
-              <div class="d-flex flex-row text-center">
-              <div class="form-group">
-                <%= f.label :select_a,"選択肢A" %>
-                <%= f.text_area :select_a,placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
-                </div>
-                <div class="form-group ml-5">
-                <%= f.label:select_b,"選択肢B" %>
-                <%= f.text_area :select_b,class:'h-200',placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
-              </div>
-              </div>
-                <%= f.text_field :tag_name,class:"form-control",placeholder:"タグネーム" %>
-              </div>
-                <div class="image mt-5"><Z/div>
-                <%= f.label:post_image,"画像選択" %>
-                <%= f.attachment_field :post_image %>
-                </div>
-              <div class="form-group text-center">
-              <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
-              </div>
+
+                  <div class="image mt-5">
+                    <%= f.label:post_image,"画像選択" %>
+                    <%= f.attachment_field :post_image %>
+                  </div>
+
+                    <div class="form-group text-center">
+                      <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
+                    </div>
+                    
             <% end %>
-          </div>
         </div>
       </div>
     </div>
@@ -65,8 +71,7 @@
     </div>
   <% end %>
   <%= paginate @posts, theme: 'twitter-bootstrap-4',class:'text-center' %>
-
-
+</div>
 
 
 
