@@ -1,38 +1,41 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
+    <div class="col">
       <div class="mx-auto">
-        <div class="text-center">
+        <div class="d-flex flex-row text-center">
           <div class="top-title">
-           <h1>for_Reference</h1>
+           <h1>for_Refalence</h1>
              <p>あなたの悩みに対して</p>
             <p>ちょっとだけ手助けをします</p>
-            <%= link_to "新規登録",about_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
-          <%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-1 w-50' %> 
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:'btn btn-primary btn-lg mt-3 w-70' %>
+            <div><%= link_to "新規登録",about_path,class:'btn btn-primary btn-lg mt-5 w-50' %> </div>
+          <div><%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-1 w-50' %> </div>
+          <div><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:'btn btn-primary btn-lg mt-3 w-70' %></div>
          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-5">
-    <%= image_tag 'top-image.jpg' %>
-    </div>
+
   </div>
 </div>
 
 
 <style>
-img {
+.container-fluid {
+  background-image: url("<%= asset_path('to.jpg') %>");
   height: 100vh;
   width:auto;
   object-fit: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
 }
 
 .top-title{
 position: absolute;
-  top: -10%;
+  top: 100rem;
   right: 0;
   bottom: 0;
   left: 0;
@@ -43,7 +46,7 @@ position: absolute;
 
 .top-title h1 {
   font-family: 'Times New Roman', Times, serif;
-  font-size:55px;
+  font-size:150px;
 }
 
 
