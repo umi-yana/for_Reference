@@ -7,7 +7,7 @@
         <div class="user_name_line text-break text-white mt-2"><%= post.user.user_name %></div>
       <% end %>
       </div>
-      <h3 class="text-break"><%= post.post_body %></h3>
+      <h3 class="text-break"><%=simple_format(post.post_body) %></h3>
           <div class="d-flex flex-column">
             <%= attachment_image_tag post,:post_image %>
           <%# -------------------条件分岐-------------------------%>

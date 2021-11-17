@@ -8,30 +8,25 @@
           <%= attachment_image_tag @user,:user_photo,fallback:'no_imag_user.png' %>
         </div>
 
-        <div class="text-center mt-4"><%= @user.user_name %></div>
+          <h3 class="text-center mt-4"><%= @user.user_name %></h3>
 
+          <%# ーーーーーーーーーーーフォロー機能ーーーーーーーーーーーー %>
+          <div class="follower text-center mt-4" id="following<%= @user.id %>">
+            <%= render "users/following" ,user: @user %>
+          </div>
+          <%# ーーーーーーーーーーー(fin)フォロー機能ーーーーーーーーーーーー %>
 
+          <div class="user_profile_body text-center mt-4">
+            <p class='text-break'><%= simple_format(@user.user_content) %></p>
+          </div>
 
-        <%# ーーーーーーーーーーーフォロー機能ーーーーーーーーーーーー %>
-        <div class="follower text-center mt-4" id="following<%= @user.id %>">
-          <%= render "users/following" ,user: @user %>
+          <div class="text-center">
+            <% if current_user == @user %>
+              <div class="edit-user-btn"><%= link_to "編集する",edit_user_path(@user),class:"btn btn-primary" %></div>
+            <% end %>
 
-        </div>
-        <%# ーーーーーーーーーーー(fin)フォロー機能ーーーーーーーーーーーー %>
-
-
-
-
-        <div class="user_profile_body text-center mt-4">
-        <p class='text-break'><%= @user.user_content %></p>
-        </div>
-
-        <div class="edit-user-btn text-center">
-         <% if current_user == @user %>
-          <%= link_to "編集する",edit_user_path(@user),class:"btn btn-primary" %>
-        <% end %>
-        <%= link_to "戻る",posts_path,class:"btn btn-primary" %>
-        </div>
+            <div class="edit-user-btn mt-3"><%= link_to "戻る",posts_path,class:"btn btn-primary" %></div>
+          </div>
 
       </div>
     </div>
