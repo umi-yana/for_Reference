@@ -23,9 +23,10 @@ class Post < ApplicationRecord
     end
   end
 
-  # validates :post_body, presence: true, length: { maximum: 120 }
-  # validates :select_a, presence: true, length: { maximum: 50 }
-  # validates :select_b, presence: true, length: { maximum: 50 }
+   validates :post_body, presence: true, length: { maximum: 120 }
+   validates :select_a, presence: true, length: { maximum: 50 }
+   validates :select_b, presence: true, length: { maximum: 50 }
+   validates :select_b, length: { maximum: 12 }
 
-  # ！！！！！！！本番時にコメントアウトする！！！！！！！！！！
+ 
 end
