@@ -23,8 +23,10 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました"
       redirect_to posts_path
     else
-      flash[:error] = "エラーが発生しました。"
-      render :index
+      @post_new = Post.new(post_params)
+      @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
+      @tag_list = Tag.includes(:post).all.order(id: "DESC")
+      render "index"
     end
   end
 
