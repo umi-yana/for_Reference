@@ -1,12 +1,14 @@
   <%# --左側吹き出し--  %>
+  <div class="row">
 <div class="col-6 mt-3">
-  <div class="balloon_left">
+  <div class="balloon_left justify-content-center">
       <div class="icon">
         <%= link_to user_path(post.user_id) do%>
-        <%= attachment_image_tag post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png'%>
-        <div class="user_name_line text-break text-white mt-2"><%= post.user.user_name %></div>
-      <% end %>
+          <%= attachment_image_tag post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png'%>
+            <div class="user_name_line text-break text-white mt-2"><%= post.user.user_name %></div>
+        <% end %>
       </div>
+
       <h3 class="text-break"><%=simple_format(post.post_body) %></h3>
           <div class="d-flex flex-column">
             <%= attachment_image_tag post,:post_image %>
@@ -35,6 +37,7 @@
               <div class="w-100"></div>
               <%# -- ↑改行↑ -- %>
   </div> 
+</div>
 </div>
 <%# -- [fin]左側吹き出し --%>
 
