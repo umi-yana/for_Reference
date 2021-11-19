@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">＃</th>
+            <th scope="col">ユーザー名前</th>
+            <th scope="col">概要</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td scope="row">
+              <%= link_to user_path(user) do %>
+              <%= attachment_image_tag user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'100x100' %>
+              <% end %>
+              <td><%= link_to user_path(user) do %>
+              <%= user.user_name %></td>
+              <td><%= user.user_content %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
