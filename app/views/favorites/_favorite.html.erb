@@ -1,0 +1,17 @@
+<%# -----------いいね機能----------------- %>
+  <% if post.favorited_by?(current_user) %>
+  <div class="text-right ">
+    <%= link_to post_favorites_path(post.id),method: :delete,remote:true do %>
+    お気に入り<i class="fas fa-star"></i><%= post.favorites.count %></td>
+    <% end %>
+  </div>
+  <% else %>
+  <div class="text-right">
+    <%= link_to post_favorites_path(post.id),method: :post,remote:true do %>
+    お気に入り<i class="far fa-star"></i><%= post.favorites.count %></td>
+    <% end %>
+  </div>
+<% end %>
+
+<%# ーーーーーーーいいね機能　部分テンプレートフォーマットーーーーーーーーー
+ <% render "favorites/favorite","post: post" %>
