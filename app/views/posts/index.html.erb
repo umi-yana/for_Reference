@@ -25,6 +25,8 @@
           <%= link_to 'ランキング',post_ranking_path,class:"btn btn-primary btn btn-primary mt-2" %>
         </div>
 
+        <%= link_to 'お気に入り',user_favorite_show_path(current_user.id) %>
+
         </div>
       </div>
     </div>
