@@ -9,6 +9,12 @@
           <% end %>
         </div>
 
+            <%# ----------いいね機能------- %>
+            <div class="favorite_buttons_<%= post.id %>">
+              <%= render "favorites/favorite",post: post %>
+            </div>
+            <%# ----------いいね機能------- %>
+            
         <h3 class="text-break"><%=simple_format(post.post_body) %></h3>
             <div class="d-flex flex-column">
               <%= attachment_image_tag post,:post_image %>

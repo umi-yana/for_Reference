@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "homes#top"
-  
+
   namespace :users do
     get 'sessions/new_guest'
   end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :posts do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
-    resources :favorites, only:[:create, :destroy]
+    resource :favorites, only:[:create, :destroy]
   end
 
   # 問い合わせ機能
