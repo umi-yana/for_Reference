@@ -1,0 +1,20 @@
+
+<div class="contaner justify-item-center">
+ <% @favorites.each do |post| %>
+ <%= render "posts/user-post",post: post.post %>
+<% end %>
+</div>
+
+
+<style>
+.row {
+  margin-right:50px;
+  margin-left:-650px;
+  padding:50px;
+}
+
+</style>
+
+
+
+

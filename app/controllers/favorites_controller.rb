@@ -13,4 +13,9 @@ class FavoritesController < ApplicationController
     favorite.destroy
     # redirect_back(fallback_location: root_path)
   end
+
+
+  def show
+    @favorites = current_user.favorites
+  end
 end
