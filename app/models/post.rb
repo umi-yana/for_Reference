@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :tag_lists, dependent: :destroy
   has_many :tags, through: :tag_lists
+  has_many :favorites,dependent: :destroy
 
   attachment :post_image
 
@@ -22,6 +23,13 @@ class Post < ApplicationRecord
       tags << new_post_tag
     end
   end
+
+  #　ーーーーーー favorited機能ーーーーーーーーー
+  def favorited_by?(user)
+      favorites.where(user_id: user.id).exists?
+  end
+
+
 
    validates :post_body, presence: true, length: { maximum: 120 }
    validates :select_a, presence: true, length: { maximum: 50 }
