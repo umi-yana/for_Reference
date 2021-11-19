@@ -22,7 +22,7 @@
             <%= f.submit"編集する",class:"btn btn-primary mt-4"%>
             <% end %>
             <div class="user_edit_btn d-flex flex-column text-center">
-              <%= link_to "戻る",:back, method: :get,class:'btn btn-info mt-3' %>
+              <%= link_to "戻る",user_path(@user),class:'btn btn-info mt-3' %>
               <%= link_to "退会する",user_unsubscribe_path,class:'btn btn-danger mt-5 mb-5' %>
             </div>
 

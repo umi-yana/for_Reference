@@ -1,7 +1,11 @@
 <%# --------フォロー数------ %>
   <div class="follow-count">
+  <%= link_to user_followings_path(user) do %>
     <h5>フォロー数:<%= user.followings.count %></h5>
+    <% end %>
+  <%= link_to  user_followers_path(user) do %>
     <h5>フォロワー数:<%= user.followers.count %></h5>
+    <% end %>
   </div>
 <%# --------(fin)フォロー数------ %>
 
