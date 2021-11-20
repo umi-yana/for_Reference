@@ -1,102 +1,58 @@
 <%= render "layouts/header_nav" %>
 <%#ーーー ヘッダー　ーーー%>
-<div class="post_index_background">
-  <div class="container-fluid ">
-    <div class="row ">
-    <%= notice %>
-      <%# --左側吹き出し--  %> 
+<div class="container-fluid ">
+  <div class="row ">
+  <%= notice %>
+    <%# --左側吹き出し--  %> 
 
-    <div class="col text-center">
-      <h1 class="timeline-title">My TimeLine</h1>
+   <div class="col text-center">
+    <h1 class="timeline-title">My TimeLine</h1>
+    </div>
+    <div class="w-100"></div>
+    <%# --　新規投稿用吹き出し --%>
+    <div class="col">
+      <div class="d-flex justify-content-start">
+        <div class="new-post-leftpop text-center ">
+        <h3>ようこそ！<%=current_user.user_name %>様</h3>
+          <!-- Button trigger modal -->
+        <div class="d-flex flex-column">
+          <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
+          新規投稿する。
+          </button>
+
+          <%= link_to 'マイページ',user_path(current_user.id),class:"btn btn-primary btn btn-primary mt-4" %>
+
+          <%= link_to 'ランキング',post_ranking_path,class:"btn btn-primary btn btn-primary mt-2" %>
+        </div>
+
+        <%= link_to 'お気に入り',user_favorite_show_path(current_user.id) %>
+
+        </div>
       </div>
+    </div>
+    </div>
       <div class="w-100"></div>
-      <%# --　新規投稿用吹き出し --%>
-      <div class="col">
-        <div class="d-flex justify-content-start">
-          <div class="new-post-leftpop text-center ">
-          <h3>ようこそ！<%=current_user.user_name %>様</h3>
-            <!-- Button trigger modal -->
-          <div class="d-flex flex-column">
-            <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
-            新規投稿する。
-            </button>
-
-            <%= link_to 'マイページ',user_path(current_user.id),class:"btn btn-primary btn btn-primary mt-4" %>
-
-            <%= link_to 'ランキング',post_ranking_path,class:"btn btn-primary btn btn-primary mt-2" %>
-          </div>
-
-          <%= link_to 'お気に入り',user_favorite_show_path(current_user.id) %>
-
-          </div>
-        </div>
-      </div>
-      </div>
-        <div class="w-100"></div>
-        <%# -- ↑改行↑ -- %>
-      <%# -- [fin]左側吹き出し --%>
-    </div>
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-5" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="new-form">
-                <%= form_with model:@post_new,local:true do |f| %>
-                  <%= render 'layouts/error_msg', model: f.object %>
-                        
-                        <div class="form-group ">
-                          <%= f.label :post_body,"投稿本文" %>
-                          <%= f.text_area :post_body,placeholder:"本文(~120文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"5"  %>
-                        </div>
-
-                        <div class="form-group">
-                          <%= f.label :select_a,"選択肢A" %>
-                          <%= f.text_area :select_a,placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
-                        </div>
-
-                        <div class="form-group">
-                          <%= f.label:select_b,"選択肢B" %>
-                          <%= f.text_area :select_b,class:'h-200',placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
-                        </div>
-
-                        <%= f.text_field :tag_name,class:"form-control",placeholder:"タグネーム" %>
-
-                      <div class="image mt-3">
-                        <%= f.label:post_image,"画像選択" %>
-                        <%= f.attachment_field :post_image %>
-                      </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
-              <div class="form-group text-center">
-                <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%# ----------------------------固定------------------------------------------%>
-
-    <%# 投稿all %>
-      <% @posts.each do |post| %>
-        <%#ーーー 投稿者判断　ーーー%>
-        <% if post.user_id == current_user.id %>
-          <%#= -----投稿者側の投稿内容 ----- %>
-          <%= render partial: "current-user-post" ,locals: {post: post} %>
-        <% else %>
-          <%#= -----利用者の側の投稿内容 ----- %>
-          <%= render partial: "user-post" ,locals: {post: post} %>
-        <% end %>
-      </div>
-    <% end %>
-    <%= paginate @posts, theme: 'twitter-bootstrap-4',class:'text-center' %>
+      <%# -- ↑改行↑ -- %>
+    <%# -- [fin]左側吹き出し --%>
   </div>
-</div>
 
 
+<%= render "posts/new-post",post_new: @post_new %>
+  <%# ----------------------------固定------------------------------------------%>
+
+  <%# 投稿all %>
+  <div class="posts_index">
+    <%= render 'posts/post_index',posts: @posts %>
+  </div>
+  <%= paginate @posts, theme: 'twitter-bootstrap-4',class:'text-center' %>
+
+
+
+<style>
+body {
+  background-color:#17a2b8;
+}
+
+</style>
 
 

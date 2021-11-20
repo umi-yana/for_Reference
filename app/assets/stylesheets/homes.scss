@@ -1,7 +1,6 @@
 .homes {
 
   .container-fluid {
-    background-image: url("<%= asset_path('to.jpg') %>");
     height: 100vh;
     width:auto;
     object-fit: cover;
