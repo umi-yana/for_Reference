@@ -1,78 +1,59 @@
 <%= render "layouts/header_nav" %>
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <h1 class='ranking-title mt-5'><i class="fas fa-medal"></i>Ranking<i class="fas fa-medal"></i></h1>
-  </div>
 
-    <div class="row mt-3">
-      <%# ---投稿者ランキング--- %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <h1 class='ranking-title mt-5'><i class="fas fa-medal"></i>Ranking<i class="fas fa-medal"></i></h1>
+    </div>
+
+      <div class="row mt-3">
+        <%# ---投稿者ランキング--- %>
+          <div class="col-4 mt-2">
+            <table class="table">
+              <h3 class='tag-header'><i class="fas fa-user-alt"></i>Most post_user</h3>
+                <thead class="ranking-td ">
+                  <% @all_ranks_user.each.with_index(1) do |user,i| %>
+                    <tr>
+                      <td><h3 class="text-center ">第<%= i %>位</h3></td>
+                      <td><h5><%= link_to user.user_name, user_path(user) %></h5></td>
+                    </tr>
+                  <% end %>
+                </thead>
+            </table>
+          </div>
+
+
+        <%# ---コメントランキング--- %>
         <div class="col-4 mt-2">
           <table class="table">
-            <h3 class='tag-header'><i class="fas fa-user-alt"></i>Most post_user</h3>
+            <h3 class='tag-header'><i class="fas fa-comments"></i>Most Commnet</h3>
               <thead class="ranking-td ">
-                <% @all_ranks_user.each.with_index(1) do |user,i| %>
-                  <tr>
-                    <td><h3 class="text-center ">第<%= i %>位</h3></td>
-                    <td><h5><%= link_to user.user_name, user_path(user) %></h5></td>
-                  </tr>
+                <% @all_ranks_select.each.with_index(1) do |comment,i| %>
+                <tr>
+                  <td><h3 class="text-center ">第<%= i %>位</h3></td>
+                  <td><h5><%= link_to comment.post_body,post_path(comment.id) %></h5></td>
+                </tr>
                 <% end %>
               </thead>
           </table>
         </div>
 
-
-      <%# ---コメントランキング--- %>
-      <div class="col-4 mt-2">
-        <table class="table">
-          <h3 class='tag-header'><i class="fas fa-comments"></i>Most Commnet</h3>
-            <thead class="ranking-td ">
-              <% @all_ranks_select.each.with_index(1) do |comment,i| %>
-              <tr>
-                <td><h3 class="text-center ">第<%= i %>位</h3></td>
-                <td><h5><%= link_to comment.post_body,post_path(comment.id) %></h5></td>
-              </tr>
-              <% end %>
-            </thead>
-        </table>
+        <%# ---タグランキング--- %>
+        <div class="col-4 mt-2">
+          <table class="table">
+            <h3 class='tag-header'><i class="fas fa-tags"></i>Most Tags</h3>
+              <thead class="ranking-td ">
+                <% @all_ranks_tag.each.with_index(1) do |tag,i| %>
+                <tr>
+                  <td><h3 class="text-center ">第<%= i %>位</h3></td>
+                  <td><h5><%= link_to tag.tag_name,post_path(tag.post_ids) %></h5></td>
+                </tr>
+                <% end %>
+              </thead>
+          </table>
+        </div>
       </div>
-
-      <%# ---タグランキング--- %>
-      <div class="col-4 mt-2">
-        <table class="table">
-          <h3 class='tag-header'><i class="fas fa-tags"></i>Most Tags</h3>
-            <thead class="ranking-td ">
-              <% @all_ranks_tag.each.with_index(1) do |tag,i| %>
-              <tr>
-                <td><h3 class="text-center ">第<%= i %>位</h3></td>
-                <td><h5><%= link_to tag.tag_name,post_path(tag.post_ids) %></h5></td>
-              </tr>
-              <% end %>
-            </thead>
-        </table>
-      </div>
-    </div>
-
-
-</div>
-
-
-<style>
-.table th, .table td {
-    padding-top: 3.75rem;
-}
-
-.tag-header {
-  text-align: center;
-}
-
-h3 {
-  text-align: center
-}
+  </div>
 
 
 
-h1.ranking-title.mt-5{
- color:#b2c93c;
-}
-</style>
 
