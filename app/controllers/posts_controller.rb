@@ -2,20 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post_new = Post.new
-    #@posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
     @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
-    @post_select_list_a = []
-    @post_select_list_b = []
-    @post_select_all =  PostSelect.all.pluck('post_id, is_select, user_id')
-    @post_select_all.each do |ps|
-      if ps[1] == "A" 
-        @post_select_list_a << ps
-      else
-        @post_select_list_b << ps
-      end
-    end
-
-    
     @tag_list = Tag.includes(:post).all.order(id: "DESC")
 
   end
@@ -34,13 +21,12 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split("#")
     if @posts.save
       @posts.save_tag(tag_list)
-      @post_new = Post.new(post_params)
-      @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
       # redirect_to posts_path
     else
       @post_new = Post.new(post_params)
       @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
-       render "index"
+      @tag_list = Tag.includes(:post).all.order(id: "DESC")
+      render "index"
     end
   end
 

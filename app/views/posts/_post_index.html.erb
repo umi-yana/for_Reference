@@ -27,7 +27,7 @@
                         <%= attachment_image_tag post,:post_image %>
                       <%# -------------------条件分岐-------------------------%>
                         <div id="select-test<%= post.id %>" class="d-flex flex-column" >
-                        <%= render "post_selects/select" ,post: post, post_select_all: @post_select_all.select { |n| n.first == post.id }, post_select_list_a: @post_select_list_a.select { |n| n.first == post.id } %>
+                        <%= render "post_selects/select" ,post: post %>
                         </div>
                       <%# -------------------（fin）条件分岐------------------------%>
                       <%# -------------------タグ表示-------------------------%>
