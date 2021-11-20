@@ -1,7 +1,7 @@
 <!-- ナビゲーションバー -->
  <% if user_signed_in? %>    
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
-      <div class="navbar-brand"><%= link_to "for_Reference",root_path,class:"header-title navbar-brand text-light" %></div>
+      <div class="navbar-brand"><%= link_to "for_Reference", posts_path,class:"header-title navbar-brand text-light" %></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,19 +10,28 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <div class="nav-link" href="#"><%= link_to "My_timeline",posts_path,class:"fas fa-comments  text-light" %> <span class="sr-only">(current)</span></ｄ>
+            <div class="nav-link"><%= link_to "My_timeline",posts_path,class:"fas fa-comments  text-light" %> <span class="sr-only">(current)</span></ｄ>
           </li>
           <li class="nav-item">
             <div class="nav-link"><%= link_to "My_page",user_path(current_user),class:"fas fa-users text-light " %></div>
           </li>
-          <li class="nav-item">
-            <div class="nav-link"><%= link_to "Ranking",post_ranking_path,class:"fas fa-users text-light" %></div>
-          </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-external-link-alt">Other_links</i>
+              </div>
+
+                <%# ------ドロップダウンリスト----  %>
+              <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                  <%# ------ランキング----  %>
+                <%= link_to "Ranking",post_ranking_path,class:"dropdown-item fas fa-users mt-3 " %>
+                  <%# ------ログアウト----  %>
+                <%= link_to "contact",new_contact_path,class:"dropdown-item far fa-paper-plane mt-3"%>
+                <%= link_to "logout",destroy_user_session_path,method: :delete,class:"dropdown-item fas fa-sign-out-alt mt-3",id:'dropdown-logout' %>
+              </div>
+                <%# ------（fin）ドロップダウンリスト----  %>
+
           <li class="nav-item">
             <div class="nav-link"><%= render 'searchs/form' %></div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link"><%= link_to "logout",destroy_user_session_path,method: :delete,class:"fas fa-sign-out-alt text-light" %></div>
           </li>
         </ul>
       </div>

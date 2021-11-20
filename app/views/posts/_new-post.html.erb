@@ -1,0 +1,40 @@
+<div class="modal fade" id="exampleModal" tabindex="-5" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="new-form">
+              <%= form_with model:@post_new,remote:true do |f| %>
+                <%= render 'layouts/error_msg', model: f.object %>
+                      <div class="form-group ">
+                        <%= f.label :post_body,"投稿本文" %>
+                        <%= f.text_area :post_body,placeholder:"本文(~120文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"5"  %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.label :select_a,"選択肢A" %>
+                        <%= f.text_area :select_a,placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.label:select_b,"選択肢B" %>
+                        <%= f.text_area :select_b,class:'h-200',placeholder:"選択肢内容(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
+                      </div>
+
+                      <%= f.text_field :tag_name,class:"form-control",placeholder:"タグネーム" %>
+
+                    <div class="image mt-3">
+                      <%= f.label:post_image,"画像選択" %>
+                      <%= f.attachment_field :post_image %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+                        <div class="form-group text-center">
+                          <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
+                        </div>
+                    </div>
+                    <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

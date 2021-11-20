@@ -1,147 +1,415 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.posts {
+  /* post_index
+    新規投稿画面-左側　*/
+  .input-left-pop {
+    position: relative;
+    display: inline-block;
+    margin: 1vh 5vw 5vh 5vw;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 15px;
+  }
+
+  .input-left-pop :before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+  }
+
+
+  /* 右側　*/
+  .right-ballon {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 150px 1.5em 0;
+    padding: 15px 10px;
+    min-width: 500px;
+    max-width: 70%;
+    color: #555;
+    font-size: 20px;
+    background: #e0edff;
+    border-radius: 15px;
+  }
+
+  .right-ballon :before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
+
+
+  .right-ballon :before{
+    float: left;
+    margin-right: -90px;
+    width: 80px;
+    min-height: 10em;
+      display: table-cell;
+      vertical-align: middle 
+  }
+
+
+  .left_ballon .face_icon img{
+    width: 90%;
+    height: auto;
+    border: solid 3px rgb(182, 235, 182);
+    border-radius: 50%;
+  }
+
+
+  /* 左側　*/
+  .left_ballon .post-left{
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0px 1.5em 150px;
+    padding: 7px 10px;
+    min-width: 700px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: rgb(182, 235, 182);
+    border-radius: 15px;
+  }
+
+  .left_ballon .post-left :before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid rgb(182, 235, 182);
+  }
+
+
+  .icon-left{
+    margin: auto;
+  }
+
+
+  .right-ballon-edit {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 150px 1.5em 0;
+    padding: 15px 10px;
+    min-width: 500px;
+    max-width: 70%;
+    color: #555;
+    font-size: 20px;
+    background: #e0edff;
+    border-radius: 15px;
+  }
+
+  .right-ballon :before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
+
+
+  .post_index_background {
+    background-color: #16a2b8;
+  }
+
+
+  /* show右側　*/
+  /* 右側　*/
+  .right-pop-edit {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 150px 1.5em 0;
+    padding: 5px 10px;
+    min-width: 400px;
+    max-width: 600px;
+    color: #555;
+    font-size: 10px;
+    background: #e0edff;
+    border-radius: 15px;
+  }
+
+  .right-pop-edit :before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
+
+  .post-left h3 {
+    overflow-wrap: break-word;
+  }
+
+
+  /* ----------post_show------------------ */
+
+  .left_ballon-edit .post-left{
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0px 1.5em 80px;
+    padding: 7px 10px;
+    min-width:80%;
+    max-width: 80%;
+    color: #555;
+    font-size: 16px;
+    background: rgb(182, 235, 182);
+    border-radius: 15px;
+  }
+
+  .left_ballon-edit 
+  .post-left :before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: -30px;
+    margin-top: -20px;
+    border: 10px solid transparent;
+    border-right: 30px solid rgb(182, 235, 182);
+  }
+
+  /* 画像 - 絶対配置で左上に配置 */
+  .left_ballon-edit .icon{
+    position: absolute;
+    left: -40px;
+    top: 50px;
+    color: #000;
+  }
+
+
+  .left_ballon-edit .post_user_image {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+  }
+
+  /* 吹き出し本体 */
+  .show-balloon_light{
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color: #555;
+    background-color: rgb(182, 235, 182);
+    margin-left: 10px;          /* 右に余白を設ける */
+  }
+  /* 画像 - 絶対配置で右上に配置 */
+  .show-balloon_light .icon{
+    position: absolute;
+    right: -200px;
+    top: 0;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 50px;
+  }
+
+  /* 三角アイコン */
+  .show-balloon_light::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    right: -15px;
+    top: 20px;
+    border-left: 15px solid rgb(182, 235, 182);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+
+  .show-balloon_light .post_user_image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+  }
+
+  /* ----------post-ranking------------------ */
+    .table th, .table td {
+        padding-top: 3.75rem;
+    }
+    
+    .tag-header {
+      text-align: center;
+    }
+    
+    h3 {
+      text-align: center
+    }
+    
+    h1.ranking-title.mt-5{
+    color:#b2c93c;
+    }
+
+  /* ----------post-index------------------ */
 
 
 
-/* 右側　*/
-.right-ballon {
+  body {
+    background-color:#17a2b8;
+  }
+
+  .timeline-title {
+    font-family : 'Times New Roman', Times, serif;
+    font-size: 50px;
+    color:white;
+  }
+  
+  /* about-左側　*/
+  .new-post-leftpop {
+    position: relative;
+    margin: 7vh 15vw 5vh 15vw;
+    padding: 20px 50px;
+    color: #555;
+    font-size: 16px;
+    background: #ffffff;
+    border-radius: 15px;
+  }
+  
+  .new-post-leftpop:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #ffffff;
+  }
+
+
+
+  .left-pop-edit img{
+      padding-top: 20px;
+        width: auto; 
+        max-width: 600px;
+        max-height:350px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+  }
+
+
+ /* ----------user_post_style-------------- */
+
+  /* 吹き出し本体 */
+  .balloon_light{
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color: #555;
+    background-color: rgb(182, 235, 182);
+    margin-right: 200px;          /* 右に余白を設ける */
+    margin-left: 50%;
+  }
+  /* 画像 - 絶対配置で右上に配置 */
+  .balloon_light .icon{
+    position: absolute;
+    right: -200px;
+    top: 0;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 50px;
+  }
+  /* 三角アイコン */
+  .balloon_light::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    right: -15px;
+    top: 20px;
+    border-left: 15px solid rgb(182, 235, 182);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+
+  .balloon_light .post_user_image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+  }
+
+  .balloon_light .post_image{
+    width:100%;
+  }
+
+  .comment-icon{
+    color:#007bff;
+  }
+
+
+
+  /* 吹き出し本体 */
+.balloon_left{
   position: relative;
-  display: inline-block;
-  margin: 1.5em 150px 1.5em 0;
-  padding: 15px 10px;
-  min-width: 500px;
-  max-width: 70%;
+  padding: 20px;
+  border-radius: 10px;
   color: #555;
-  font-size: 20px;
-  background: #e0edff;
-  border-radius: 15px;
+  background-color: #e0edff;
+  margin-left: 200px;          /* 左に余白を設ける */
 }
-
-.right-ballon :before {
-  content: "";
+/* 画像 - 絶対配置で左上に配置 */
+.balloon_left .icon{
   position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-left: 15px solid #e0edff;
+  left: -155px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
-
-.right-ballon p {
-  margin: 0;
-  padding: 0;
-}
-
-.right-ballon :before{
-  float: left;
-  margin-right: -90px;
-  width: 80px;
-  min-height: 10em;
-    display: table-cell;
-    vertical-align: middle 
-}
-
-
-.left_ballon .face_icon img{
-  width: 90%;
-  height: auto;
-  border: solid 3px rgb(182, 235, 182);
-  border-radius: 50%;
-}
-
-
-/* 左側　*/
-.left_ballon .post-left{
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0px 1.5em 150px;
-  padding: 7px 10px;
-  min-width: 700px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: rgb(182, 235, 182);
-  border-radius: 15px;
-}
-
-.left_ballon .post-left :before {
-  content: "";
+/* 三角アイコン */
+.balloon_left::before{
+  content: '';
   position: absolute;
-  top: 50%;
-  left: -30px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-right: 15px solid rgb(182, 235, 182);
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 15px solid #e0edff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.balloon_left .post_user_image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.comment-icon{
+  color:#007bff;
+
 }
 
 
-.icon-left{
-  margin: auto;
-}
-
-
-.right-ballon-edit {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 150px 1.5em 0;
-  padding: 15px 10px;
-  min-width: 500px;
-  max-width: 70%;
-  color: #555;
-  font-size: 20px;
-  background: #e0edff;
-  border-radius: 15px;
-}
-
-.right-ballon :before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-left: 15px solid #e0edff;
-}
-
-.right-ballon p {
-  margin: 0;
-  padding: 0;
-}
-
-
-
-
-/* show右側　*/
-/* 右側　*/
-.right-pop-edit {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 150px 1.5em 0;
-  padding: 5px 10px;
-  min-width: 400px;
-  max-width: 600px;
-  color: #555;
-  font-size: 10px;
-  background: #e0edff;
-  border-radius: 15px;
-}
-
-.right-pop-edit :before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-left: 15px solid #e0edff;
-}
-
-.right-pop-edit p {
-  margin: 0;
-  padding: 0;
-}
-
-.post-left h3 {
-  overflow-wrap: break-word;
 }

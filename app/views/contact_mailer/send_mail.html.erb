@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5">
+    <h3 class="text-center">問い合わせ内容</h3>
+      <div class="card">
+        <div class="card-body">
+
+        <h5 class="card-title">お名前</h5>
+        <p class="card-text"><%= @contact.contact_name %></p>
+
+        <h5 class="card-title">ご連絡先</h5>
+        <p class="card-text"><%= @contact.contact_email %></p>
+
+        <h5 class="card-title">ご用件</h5>
+        <p class="card-text"><%= @contact.contact_subject %></p>
+
+        <h5 class="card-title">メッセージ</h5>
+        <p class="card-text"><%= @contact.contact_message %></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+

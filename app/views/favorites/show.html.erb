@@ -1,0 +1,92 @@
+<%#= render "layouts/header_nav" %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <% if @favorites_list.nil? %>
+      <h2 class="text-center">お気に入り登録がありません</h2>
+    <% else %>
+      <% @favorites_list.each do |favorites_list| %>
+          <div class="d-flex justify-content-start">
+              <div class="favorites-balloon_light">
+                <h5 class="text-break m-4"><%= favorites_list.post_body %></h5>
+                  <div class="d-flex flex-column">
+                    <%= attachment_image_tag favorites_list,:post_image %>
+                      <%# -------------------条件分岐-------------------------%>
+                      <div id="select-test" class='d-flex flex-column' >
+                        <%= render "post_selects/select" ,post: favorites_list %>
+                      </div>
+                        <%# -------------------（fin）条件分岐-------------------------%>
+                        <%= favorites_list.tags.map(&:tag_name).join('#') %>
+
+                  </div>
+                    <div class="d-flex flex-column text-right">
+                      <%= favorites_list.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                    </div>
+              </div>
+            </div>
+
+        <% end %>
+    <% end %>
+
+    </div>
+</div>
+
+
+<style>
+
+
+/* 吹き出し本体 */
+.favorites-balloon_light{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #555;
+  background-color: rgb(182, 235, 182);
+  margin-left: 10px;          /* 右に余白を設ける */
+}
+/* 画像 - 絶対配置で右上に配置 */
+.favorites-balloon_light .icon{
+  position: absolute;
+  right: -200px;
+  top: 0;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 50px;
+}
+
+/* 三角アイコン */
+.favorites-balloon_light::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -15px;
+  top: 20px;
+  border-left: 15px solid rgb(182, 235, 182);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.favorites-balloon_light .post_user_image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+
+
+}
+
+
+
+
+
+
+
+</style>
+
+
+
+

@@ -1,13 +1,12 @@
 class SearchsController < ApplicationController
+  before_action :authenticate_user!
+  
   def search
     @model = params["search"]["model"]
     @value = params["search"]["value"]
     @datas = search_for(@model, @value)
     @tag_post = TagList.where(tag_id: @datas)
-    
   end
-
-
 
   private
 

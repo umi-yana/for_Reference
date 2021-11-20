@@ -1,165 +1,72 @@
-<%= render "layouts/header" %>
-<div class="container ">
-  <div class="row">
-  <%#　ーーーー 投稿詳細　ーーーーー %>
-<div class="col-6">
-  <div class="left_ballon-edit">
-  <div class="icon"><%= link_to user_path(@post.user_id) do%>
-      <%= attachment_image_tag @post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
-      <div class="d-flex flex-column"><%= @post.user.user_name %></div>
-      <% end %>
-      </div>
-      <div class="d-flex justify-content-start">
-        <div class="post-left">
-
-          <h5 class="text-break m-4"><%= @post.post_body %></h5>
-          <div class="d-flex flex-column">
-            <%= attachment_image_tag @post,:post_image %>
-          <%# -------------------条件分岐-------------------------%>
-          <div id="select-test" class='d-flex flex-column' >
-            <%= render "post_selects/select" ,post: @post %>
-          </div>
-          <%# -------------------（fin）条件分岐-------------------------%>
-              <%= @post.tags.map(&:tag_name).join('#') %>
-            <%# ------投稿者なら投稿編集を表示する------- %>
-            <% if @post.user_id == current_user.id %>
-              <%= link_to "投稿編集", edit_post_path,class:'btn btn-danger btn-lg m-4' %>
-            <% end %>
-            <%# ------(fin)投稿者なら投稿編集を表示する------- %>
-          </div>
-            <div class="d-flex flex-column text-right">
-              <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-            </div>
-        </div>
-      </div>
-  </div>
-</div>
-  <%#　ーーーー (End)投稿詳細　ーーーーー %>
-
-
-<%# --右側コメント入力（Comment）--  %> 
-  <div class="col-5">
-    <%# --右側吹き出し　コメント入力機構--  %>
-    <div class="balloon_light mt-3  ">
-      <div class="icon d-flex justify-content-start"><%= link_to user_path(@post.user_id) do%>
-      <%= attachment_image_tag current_user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
-        <div class="d-flex flex-column justify-content-end">
-          <%= current_user.user_name %></div>
+<%= render "layouts/header_nav" %>
+  <div class="container mt-5 ">
+    <div class="row ">
+    <%#　ーーーー 投稿詳細　ーーーーー %>
+    <div class="col-6">
+      <div class="left_ballon-edit mt-5">
+        <div class="icon"><%= link_to user_path(@post.user_id) do%>
+          <%= attachment_image_tag @post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+          <div class="d-flex flex-column text-center"><%= @post.user.user_name %></div>
           <% end %>
         </div>
-            <%# -----------コメント入力機構-------%>
-           <%= form_with(model:[@post,@comment],remote:true) do |f| %>
+
+          <div class="d-flex justify-content-start">
+            <div class="post-left">
+              <h5 class="text-break m-4"><%= @post.post_body %></h5>
+                <div class="d-flex flex-column">
+                  <%= attachment_image_tag @post,:post_image %>
+                    <%# -------------------条件分岐-------------------------%>
+                    <div id="select-test" class='d-flex flex-column' >
+                      <%= render "post_selects/select" ,post: @post %>
+                    </div>
+                      <%# -------------------（fin）条件分岐-------------------------%>
+                      <%= @post.tags.map(&:tag_name).join('#') %>
+                        <%# ------投稿者なら投稿編集を表示する------- %>
+                        <% if @post.user_id == current_user.id %>
+                          <%= link_to "投稿編集", edit_post_path,class:'btn btn-danger btn-lg m-4' %>
+                        <% end %>
+                        <%# ------(fin)投稿者なら投稿編集を表示する------- %>
+                </div>
+                  <div class="d-flex flex-column text-right">
+                    <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                  </div>
+            </div>
+          </div>
+            <%# ーーーーーーーーグラフ表示ーーーーーーー %>
+            <div class="chart mt-2 mb-5" id='select_chart'>
+              <%= render 'chart_show',post: @post,legend: false %>
+            </div>
+            <%# ーーーーーーーーグラフ表示ーーーーーーー %>
+      </div>
+    </div>
+    <%#　ーーーー (End)投稿詳細　ーーーーー %>
+
+    <%# --右側コメント入力（Comment）--  %> 
+    <div class="col-5">
+      <%# --右側吹き出し　コメント入力機構--  %>
+      <div class="show-balloon_light mt-5  ">
+        <div class="icon d-flex justify-content-start"><%= link_to user_path(current_user.id) do%>
+          <%= attachment_image_tag current_user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
+            <div class="d-flex flex-column justify-content-end">
+              <%= current_user.user_name %>
+            </div>
+          <% end %>
+        </div>
+          <%# -----------コメント入力機構-------%>
+          <%= form_with(model:[@post,@comment],remote:true) do |f| %>
             <%= render 'layouts/error_msg', model: f.object %>
             <h3 class='text-center '>コメント入力</h3>
             <%= f.text_area :content ,class:'w-75 comment_area_field'%>
             <%= f.submit"決定",class:'box-right btn btn-info'%>
-            <% end %>
-             <%# ----------(fin)コメント入力機構-------%>
-               <div class="w-100"></div>
-    <%# -- ↑改行↑ -- %>
-  <%# -- [fin]右吹き出し --%>
+          <% end %>
+          <%# ----------(fin)コメント入力機構------%>
+            <div class="w-100"></div>
+            <%# -- ↑改行↑ -- %>
+      </div>
+      <%# -- コメント表示機構 --%>
+        <%= render "comment-create",post:@post, comments:@comments %>
+      <%# -- [fin]コメント表示機構 --%>
   </div>
-  <%# -- コメント表示機構 --%>
- <%= render "comment-create",post:@post, comments:@comments %>
-  <%# -- [fin]コメント表示機構 --%>
-</div>
 
-
-
-<style>
-
-/* show-左側　*/
-.left_ballon-edit .post-left{
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0px 1.5em 80px;
-  padding: 7px 10px;
-  min-width:80%;
-  max-width: 80%;
-  color: #555;
-  font-size: 16px;
-  background: rgb(182, 235, 182);
-  border-radius: 15px;
-}
-
-.left_ballon-edit 
-.post-left :before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: -30px;
-  margin-top: -20px;
-  border: 10px solid transparent;
-  border-right: 30px solid rgb(182, 235, 182);
-}
-
-/* 画像 - 絶対配置で左上に配置 */
-.left_ballon-edit .icon{
-  position: absolute;
-  left: -40px;
-  top: 20px;
-  color: #000;
-}
-
-
-.left_ballon-edit .post_user_image {
-     width: 110px;
-    height: 110px;
-    margin: 0 auto;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-}
-
-/* ---------------------------- */
-
-/* 吹き出し本体 */
-.balloon_light{
-  position: relative;
-  padding: 20px;
-  border-radius: 10px;
-  color: #555;
-  background-color: rgb(182, 235, 182);
-  margin-left: 10px;          /* 右に余白を設ける */
-}
-/* 画像 - 絶対配置で右上に配置 */
-.balloon_light .icon{
-  position: absolute;
-  right: -200px;
-  top: 0;
-  flex-direction: column;
-  text-align: center;
-  margin-right: 50px;
-}
-
-/* 三角アイコン */
-.balloon_light::before{
-  content: '';
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  right: -15px;
-  top: 20px;
-  border-left: 15px solid rgb(182, 235, 182);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-}
-
-.balloon_light .post_user_image {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-
-
-
-
-
-
-</style> 
 
 

@@ -6,12 +6,14 @@ class PostSelectsController < ApplicationController
     post_select.post_id = params[:post_id]
     post_select.save
     @post = post_select.post
-    #redirect_back(fallback_location: root_path)　非同期処理のためコメントアウト
+    # redirect_back(fallback_location: root_path)　非同期処理のためコメントアウト
   end
 
   def destroy
     post_select = PostSelect.find(params[:id])
-    post_select.delete
+    @post = post_select.post
+    post_select.destroy
+  # redirect_back(fallback_location: root_path) 非同期処理のためコメントアウト
   end
 
   def update

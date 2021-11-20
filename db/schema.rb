@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_065648) do
+ActiveRecord::Schema.define(version: 2021_11_19_055916) do
 
   create_table "comments", force: :cascade do |t|
     t.string "user_id"
     t.text "content"
+    t.string "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "contact_name", null: false
+    t.string "contact_email", null: false
+    t.string "contact_subject", null: false
+    t.text "contact_message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "user_id"
     t.string "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,6 +51,13 @@ ActiveRecord::Schema.define(version: 2021_11_08_065648) do
     t.text "select_a"
     t.text "select_b"
     t.string "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "following_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_065648) do
     t.string "user_photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_valid", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
