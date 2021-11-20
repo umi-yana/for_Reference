@@ -1,8 +1,14 @@
+<%#= render "layouts/header_nav" %>
+<div class="container justify-item-center">
 
-<div class="contaner justify-item-center">
- <% @favorites.each do |post| %>
- <%= render "posts/user-post",post: post.post %>
-<% end %>
+  <% if @favorites.empty? %>
+      <h2 class="text-center">お気に入り登録がありません</h2>
+    <% else %>
+      <% @favorites.each do |post| %>
+      <%= render "posts/user-post",post: post.post %>
+      <% end %>
+  <% end %>
+
 </div>
 
 

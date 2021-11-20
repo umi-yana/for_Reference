@@ -1,93 +1,63 @@
 <%= render "layouts/header_nav" %>
 <%#ーーー ヘッダー　ーーー%>
 
-<div class="container">
-  <div class="col-xs-12 mt-4">
-    <% if @model == "post" %>
-      <h1>投稿内容検索キーワード <span>'<%= @value %>'</span></h1>
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class='w-25'>ユーザーネーム</th>
-              <th>投稿内容</th>
-            </tr>
-          </thead>
-            <% @datas.each do |post| %>
-              <tbody>
-                <tr>
-                  <td>
-                  </td>
-                    <td class='user'>
-                    <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %>
-                    <%= link_to post.user.user_name, user_path(post.user.id) %> 
-                    </td>
-                    <td class='post text-break' >
-                    <%= link_to post.post_body,post_path(post) %>
-                   
-                </tr>
-              </tbody>
-            <% end %>
-
-
-    <% elsif @model == "tag" %>
-      <h2>タグ検索結果 '<%= @value %>'</h2>
-        <table class="table">
-          <thead>
-            <tr>
-            <th></th>
-              <th style="width: 15%">タグ</th>
-              <th >投稿者</th>
-              <th>投稿内容</th>
-            </tr>
-          </thead>
-            <% @datas.each do |tag| %>
-              <tbody>
-                <tr>
+<div class="search">
+  <div class="container">
+    <div class="col-xs-12 mt-4">
+      <% if @model == "post" %>
+        <h1>投稿内容検索キーワード <span>'<%= @value %>'</span></h1>
+          <table class="table">
+            <thead>
+              <tr>
                 <th></th>
-                  <th class='fas fa-tag text-break'><%= tag.tag_name %></th>
-                     <% @tag_post.each do |tag_post| %>
-                    <th class='text-break'><%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %></th>
-                    <th class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></th>
-                    <th id="select-test<%= tag_post.post.id %>" class='w-30'>
-                    <%= render "post_selects/select" ,post: tag_post.post %></th>
-                    <% end %>
-                </tr>
-              </tbody>
-            <% end %>
-        </table>
-    <% end %>
+                <th class='w-25'>ユーザーネーム</th>
+                <th>投稿内容</th>
+              </tr>
+            </thead>
+              <% @datas.each do |post| %>
+                <tbody>
+                  <tr>
+                    <td>
+                    </td>
+                      <td class='user'>
+                      <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %>
+                      <%= link_to post.user.user_name, user_path(post.user.id) %> 
+                      </td>
+                      <td class='post text-break' >
+                      <%= link_to post.post_body,post_path(post) %>
+                    
+                  </tr>
+                </tbody>
+              <% end %>
+
+
+      <% elsif @model == "tag" %>
+        <h2>タグ検索結果 '<%= @value %>'</h2>
+          <table class="table">
+            <thead>
+              <tr>
+              <th></th>
+                <th style="width: 15%">タグ</th>
+                <th >投稿者</th>
+                <th>投稿内容</th>
+              </tr>
+            </thead>
+              <% @datas.each do |tag| %>
+                <tbody>
+                  <tr>
+                  <th></th>
+                    <th class='fas fa-tag text-break'><%= tag.tag_name %></th>
+                      <% @tag_post.each do |tag_post| %>
+                      <th class='text-break'><%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %></th>
+                      <th class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></th>
+                      <th id="select-test<%= tag_post.post.id %>" class='w-30'>
+                      <%= render "post_selects/select" ,post: tag_post.post %></th>
+                      <% end %>
+                  </tr>
+                </tbody>
+              <% end %>
+          </table>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<style>
-
-tbody {
-  justify-content: center;
-  align-items: center;
-
-}
-
-img {
-
-     width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-}
-
-
- .user{
-  display: inline-block;
-  margin:auto;
-  vertical-align: middle;
-  background-color:blue;
-}
-
-.post {
-  height: 30px;
-}
-</style>

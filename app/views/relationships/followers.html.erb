@@ -10,7 +10,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @users.each do |user| %>
+        <% if @users.empty? %>
+          
+          <th>フォローしているユーザーはいません</th>
+
+          <% else %>
+            <% @users.each do |user| %>
             <tr>
               <td scope="row">
               <%= link_to user_path(user) do %>
@@ -21,7 +26,8 @@
               <td><%= user.user_content %></td>
               <% end %>
             </tr>
-          <% end %>
+        <% end %>
+        <% end %>
         </tbody>
       </table>
     </div>
