@@ -4,13 +4,23 @@ Rails.application.routes.draw do
   namespace :users do
     get 'sessions/new_guest'
   end
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> b8db9a3 (fix)
   devise_for :users
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
+<<<<<<< HEAD
 
+=======
+  
+  root "homes#top"
+>>>>>>> b8db9a3 (fix)
   get '/about' => "homes#about"
+  
   resources :posts do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
@@ -30,11 +40,17 @@ Rails.application.routes.draw do
   get 'followers' => 'relationships#followers', as: 'followers'
   get 'favorite_show' => 'favorites#show'
   end
+<<<<<<< HEAD
 
   # ランキングページ
+=======
+  
+  resources :users
+>>>>>>> b8db9a3 (fix)
   get 'post/ranking' => 'posts#ranking'
   # サーチ機能
   get '/search' => 'searchs#search'
+<<<<<<< HEAD
 
   # 退会機能
   get 'user/unsubscribe' => 'users#unsubscribe'
@@ -42,4 +58,7 @@ Rails.application.routes.draw do
 
 
 
+=======
+  
+>>>>>>> b8db9a3 (fix)
 end

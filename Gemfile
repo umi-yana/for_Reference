@@ -71,6 +71,10 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'pry-byebug'
 gem 'rubocop-airbnb'
 gem 'bootstrap4-kaminari-views'
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8db9a3 (fix)
 gem 'rails-i18n'
 gem 'chartkick'
 gem 'devise-i18n'
