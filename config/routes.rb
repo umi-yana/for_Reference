@@ -5,12 +5,15 @@ Rails.application.routes.draw do
     get 'sessions/new_guest'
   end
 
+  
   devise_for :users
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-
+  
+  root "homes#top"
   get '/about' => "homes#about"
+  
   resources :posts do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
@@ -30,8 +33,8 @@ Rails.application.routes.draw do
   get 'followers' => 'relationships#followers', as: 'followers'
   get 'favorite_show' => 'favorites#show'
   end
-
-  # ランキングページ
+  
+  resources :users
   get 'post/ranking' => 'posts#ranking'
   # サーチ機能
   get '/search' => 'searchs#search'
