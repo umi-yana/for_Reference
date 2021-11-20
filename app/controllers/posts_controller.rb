@@ -21,12 +21,15 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split("#")
     if @posts.save
       @posts.save_tag(tag_list)
+      @post_new = Post.new(post_params)
+      @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
+      @tag_list = Tag.includes(:post).all.order(id: "DESC")
       # redirect_to posts_path
     else
       @post_new = Post.new(post_params)
       @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
       @tag_list = Tag.includes(:post).all.order(id: "DESC")
-      render "index"
+      # render "index"
     end
   end
 
