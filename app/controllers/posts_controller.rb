@@ -59,7 +59,7 @@ class PostsController < ApplicationController
     # 投稿者(user)の中で投稿（post）したユーザー番号（user_id)が多いものを3位までピックアップ
     @all_ranks_tag = Tag.find(TagList.group(:tag_id).order(Arel.sql('count(tag_id) desc')).limit(3).pluck(:tag_id))
     # タグ(tag)の中でタグ一覧(taglist)追加されたタグ番号(tag_id）が多いものを3位までピックアップする
-    @all_ranks_select = Post.find(Comment.group(:post_id).order(Arel.sql('count(post_id) desc')).limit(3).pluck(:post_id))
+    @all_ranks_select = Post.find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).limit(3).pluck(:post_id))
     # 投稿(post)の中でコメント(comment)されたPost_id(被投稿ページ）が多いものを3位までピックアップする
   end
 

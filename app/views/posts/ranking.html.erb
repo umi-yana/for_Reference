@@ -25,12 +25,12 @@
         <%# ---コメントランキング--- %>
         <div class="col-4 mt-2">
           <table class="table">
-            <h3 class='tag-header'><i class="fas fa-comments"></i>Most Commnet</h3>
+            <h3 class='tag-header'><i class="fas fa-star"></i>Most Commnet</h3>
               <thead class="ranking-td ">
-                <% @all_ranks_select.each.with_index(1) do |comment,i| %>
+                <% @all_ranks_select.each.with_index(1) do |favorite,i| %>
                 <tr>
                   <td><h3 class="text-center ">第<%= i %>位</h3></td>
-                  <td><h5><%= link_to comment.post_body,post_path(comment.id) %></h5></td>
+                  <td><h5><%= link_to favorite.post_body,post_path(favorite.id) %></h5></td>
                 </tr>
                 <% end %>
               </thead>
