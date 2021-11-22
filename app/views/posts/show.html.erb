@@ -1,4 +1,4 @@
-<%= render "layouts/header_nav" %>
+<%#= render "layouts/header_nav" %>
   <div class="container mt-5 ">
     <div class="row ">
     <%#　ーーーー 投稿詳細　ーーーーー %>
@@ -17,6 +17,7 @@
               <div class="favorite_buttons_<%= @post.id %>">
                 <%= render "favorites/favorite",post: @post %>
               </div>
+
                <%# ----------投稿写真------- %>
               <h5 class="text-break m-4"><%= @post.post_body %></h5>
                 <div class="d-flex flex-column">
@@ -28,6 +29,7 @@
                     </div>
                       
                       <%# -------------------タグ-------------------------%>
+                      <i class="fas fa-tag mt-3"></i>
                       <%= @post.tags.map(&:tag_name).join('#') %>
 
                         <%# ------投稿者なら投稿編集を表示する------- %>
@@ -53,6 +55,10 @@
 
     <%# --右側コメント入力（Comment）--  %> 
     <div class="col-5">
+    <%# ----コメントメッセージ（非同期用）--- %>
+      <div id="comments_error">
+        <%= render 'layouts/error_msg', model: @comment %>
+      </div>
 
       <%# --右側吹き出し　コメント入力機構--  %>
       <div class="show-balloon_light mt-5  ">

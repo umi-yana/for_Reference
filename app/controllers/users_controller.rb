@@ -11,13 +11,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:success] = "User was successfully updated"
-      redirect_to @user
-    else
-      flash[:error] = "Something went wrong"
-      render 'edit'
-    end
+      if @user == User.guest
+        flash[:notice] = "ゲストアカウントは削除できません。"
+        render 'edit'
+      else
+        if @user.update(user_params)
+          flash[:success] = "編集に成功しました。"
+          redirect_to @user
+        else
+          flash[:error] = "編集に失敗しました。"
+          render 'edit'
+        end
+      end
   end
 
   def unsubscribe
@@ -26,10 +31,15 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    @user.update(is_valid: false)
-    reset_session
-    flash[:notice] = "ご利用ありがとうございました。またのご利用をお待ちしております。"
-    redirect_to root_path
+    if current_user == User.guest
+      flash[:notice] = "ゲストアカウントは削除できません。"
+      render 'edit'
+    else
+      @user.update(is_valid: false)
+      reset_session
+      flash[:notice] = "ご利用ありがとうございました。またのご利用をお待ちしております。"
+      redirect_to root_path
+    end
   end
 
   private
