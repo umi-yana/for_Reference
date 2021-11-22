@@ -2,6 +2,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
+        <div class="post-error"></div>
           <div class="new-form">
               <%= form_with model:@post_new,remote:true do |f| %>
                 <%= render 'layouts/error_msg', model: f.object %>
