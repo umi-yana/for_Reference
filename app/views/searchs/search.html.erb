@@ -5,34 +5,41 @@
   <div class="container">
     <div class="col-xs-12 mt-4">
       <% if @model == "post" %>
-        <h1>投稿内容検索キーワード <span>'<%= @value %>'</span></h1>
-          <table class="table">
+        <h1 class="search-title">投稿内容検索キーワード <span>'<%= @value %>'</span></h1>
+          <table class="table text-center mt-5">
             <thead>
               <tr>
-                <th></th>
+                <th class='w-25'>検索順位</th>
                 <th class='w-25'>ユーザーネーム</th>
-                <th>投稿内容</th>
+                <th class='w-25'>投稿内容</th>
+                <th class='w-25'></th>
               </tr>
             </thead>
-              <% @datas.each do |post| %>
+              <% @datas.each.with_index(1) do |post,i| %>
                 <tbody>
                   <tr>
-                    <td>
+                    <td><%= i %>
                     </td>
-                      <td class='user'>
-                      <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %>
-                      <%= link_to post.user.user_name, user_path(post.user.id) %> 
+                      <td>
+                      <%= link_to user_path(post.user.id) do %> 
+                      <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %><br/>
+                      <%= post.user.user_name %>
+                      <% end %>
                       </td>
                       <td class='post text-break' >
                       <%= link_to post.post_body,post_path(post) %>
-                    
+                      <td>
+                        <div class="favorite_buttons_<%= post.id %>">
+                        <%= render "favorites/favorite",post: post %>
+                        </div>
+                      </td>
                   </tr>
                 </tbody>
               <% end %>
 
 
       <% elsif @model == "tag" %>
-        <h2>タグ検索結果 '<%= @value %>'</h2>
+        <h1 class="search-title">タグ検索結果 '<%= @value %>'</h1>
           <table class="table">
             <thead>
               <tr>
@@ -46,12 +53,10 @@
                 <tbody>
                   <tr>
                   <th></th>
-                    <th class='fas fa-tag text-break'><%= tag.tag_name %></th>
+                    <td class='fas fa-tag text-break'><%= tag.tag_name %></td>
                       <% @tag_post.each do |tag_post| %>
-                      <th class='text-break'><%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %></th>
-                      <th class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></th>
-                      <th id="select-test<%= tag_post.post.id %>" class='w-30'>
-                      <%= render "post_selects/select" ,post: tag_post.post %></th>
+                      <td class='text-break'><%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %></td>
+                      <td class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></td>
                       <% end %>
                   </tr>
                 </tbody>
@@ -61,3 +66,10 @@
     </div>
   </div>
 </div>
+
+<style>
+.search-title{
+  padding-top:50px;
+
+}
+</style>

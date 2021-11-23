@@ -28,7 +28,7 @@
                       <%= f.attachment_field :post_image %>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+                      <%= link_to '戻る', posts_path, class:'btn btn-secondary' %>
                         <div class="form-group text-center">
                           <%= f.submit "投稿する",class:'btn btn-danger btn-lg' %>
                         </div>
