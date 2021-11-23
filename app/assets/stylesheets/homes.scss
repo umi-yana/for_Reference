@@ -1,30 +1,37 @@
 .homes {
 
   .container-fluid {
+    background-image: image-url("main-top.jpg");
     height: 100vh;
+    max-height: 50%;
     width:auto;
     object-fit: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-  
+
   }
+  
   
   .top-title{
   position: absolute;
-    top: 100rem;
+    top: 50rem;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
-    width: 80%;
-    height: 10.2rem;
+    color: white;
   }
   
   .top-title h1 {
     font-family: 'Times New Roman', Times, serif;
     font-size:150px;
+    text-shadow:3px -1px 20px black;;
+  }
+
+  .top-title p{
+    text-shadow:1px 0 5px black;
   }
   
   /* about-右側　*/

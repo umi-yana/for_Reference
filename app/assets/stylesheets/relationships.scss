@@ -1,3 +1,16 @@
 // Place all the styles related to the relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.relationships{
+
+  img.attachment.user.user_photo.post_user_image{
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+  }
+}

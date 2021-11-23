@@ -10,6 +10,11 @@
           </tr>
         </thead>
         <tbody>
+        
+        <% if @users.empty? %>
+
+        <th>フォローされているユーザはいません</th>
+        <% else %>
           <% @users.each do |user| %>
             <tr>
               <td scope="row">
@@ -22,6 +27,10 @@
               <% end %>
             </tr>
           <% end %>
+
+          
+        <% end %>
+
         </tbody>
       </table>
     </div>

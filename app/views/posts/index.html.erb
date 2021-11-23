@@ -18,15 +18,26 @@
         <h3>ようこそ！<%=current_user.user_name %>様</h3>
           <!-- Button trigger modal -->
         <div class="d-flex flex-column">
+
+          <%#  %>
           <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
-          新規投稿
+          <i class="fas fa-comment-medical post-new-icon"></i><br/>新規投稿
           </button>
 
-          <%= link_to 'My-page',user_path(current_user.id),class:"btn btn-primary mt-4" %>
+          <%# マイページ %>
+          <%= link_to user_path(current_user.id),class:"btn btn-secondary mt-4"  do %>
+          <i class="fas fa-address-card post-user-icon"></i><br/>My-page
+          <% end %>
 
-          <%= link_to 'ranking',post_ranking_path,class:"btn btn-primary mt-2" %>
+          <%# ランキング %>
+          <%= link_to post_ranking_path,class:"btn btn-success mt-2" do %>
+          <i class="fas fa-crown post-ranking-icon"></i><br/>ranking
+          <% end %>
           
-          <%= link_to 'My-favorites',user_favorite_show_path(current_user.id),class:"btn btn-primary mt-2" %>
+          <%# いいね %>
+          <%= link_to user_favorite_show_path(current_user.id),class:"btn btn-danger mt-2" do%>
+          <i class="fas fa-star post-favorite-icon"></i><br/>My-favorites
+          <% end %>
 
         </div>
 
@@ -40,7 +51,7 @@
   </div>
 
 
-<%= render "posts/new-post",post_new: @post_new %>
+<%= render "posts/new-post",post: @post %>
   <%# ----------------------------固定------------------------------------------%>
 
   <%# 投稿all %>
@@ -56,6 +67,25 @@ body {
   background-color:#17a2b8;
 }
 
+.post-new-icon {
+  font-size:30px;
+  padding:5px;
+}
+
+.post-user-icon {
+  padding:5px;
+  font-size:30px;
+}
+
+.post-ranking-icon {
+  font-size:30px;
+  padding:5px;
+}
+
+.post-favorite-icon {
+  font-size:30px;
+  padding:5px;
+}
 </style>
 
 

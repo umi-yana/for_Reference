@@ -2,13 +2,13 @@
   <% if post.favorited_by?(current_user) %>
   <div class="text-right ">
     <%= link_to post_favorites_path(post.id),method: :delete,remote:true do %>
-    お気に入り<i class="fas fa-star fav-icon"></i></td>
+    <i class="fas fa-star fav-icon">お気に入り</i><i class="fas fa-star fav-icon"></i>
     <% end %>
   </div>
   <% else %>
   <div class="text-right">
     <%= link_to post_favorites_path(post.id),method: :post,remote:true do %>
-    お気に入り<i class="far fa-star fav-icon"></i></td>
+    <i class="fas fa-star fav-icon">お気に入り</i><i class="far fa-star fav-icon"></i>
     <% end %>
   </div>
 <% end %>
