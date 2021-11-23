@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_11_19_055916) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "post_tag_id"
     t.integer "user_id"
     t.text "post_body"
     t.text "select_a"

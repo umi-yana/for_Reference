@@ -34,16 +34,6 @@
     border-bottom: 15px solid transparent;
   }
 
-  .user_photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      object-fit: cover;
-      margin: 0 auto ;
-  }
-
 
   .user-followed{
     padding:10px;
@@ -58,11 +48,12 @@
 /* ------user_edit--- */
 
  .user_photo {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     object-fit: cover;
+    margin-top: 20px;
 }
 

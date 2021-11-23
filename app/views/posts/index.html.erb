@@ -16,11 +16,10 @@
       <div class="d-flex justify-content-start">
         <div class="new-post-leftpop text-center ">
         <h3>ようこそ！<%=current_user.user_name %>様</h3>
-
           <!-- Button trigger modal -->
         <div class="d-flex flex-column">
 
-          <%# 新規投稿 %>
+          <%#  %>
           <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-comment-medical post-new-icon"></i><br/>新規投稿
           </button>
@@ -42,17 +41,17 @@
 
         </div>
 
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
       <div class="w-100"></div>
       <%# -- ↑改行↑ -- %>
     <%# -- [fin]左側吹き出し --%>
   </div>
 
 
-<%= render "posts/new-post",post_new: @post_new %>
+<%= render "posts/new-post",post: @post %>
   <%# ----------------------------固定------------------------------------------%>
 
   <%# 投稿all %>

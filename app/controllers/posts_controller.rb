@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @post_new = Post.new
+    @post = Post.new
     @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
     @tag_list = Tag.includes(:post).all.order(id: "DESC")
 
@@ -16,10 +16,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @posts_new = Post.new(post_params)
-    @posts_new.user_id = current_user.id
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split("#")
-    if @posts_new.save
+    if @post.save
+       @post.save_tag(tag_list)
       @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
       @tag_list = Tag.includes(:post).all.order(id: "DESC")
       # redirect_to posts_path
