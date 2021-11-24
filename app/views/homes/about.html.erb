@@ -18,7 +18,7 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="ef d-flex justify-content-end">
+    <div class="effect d-flex justify-content-end">
       <div class="right-pop">
         <h3 class="m-3">たとえば…</h3>
       </div>
@@ -30,7 +30,7 @@
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="ef d-flex justify-content-start">
+    <div class="effect d-flex justify-content-start">
       <div class="left-pop py-4">
         <h5>今日のランチは何を食べよう。</h5>
         <div class="d-flex flex-column">
@@ -46,7 +46,7 @@
 
 <%# --左側吹き出し--  %> 
    <div class="col">
-    <div class="ef d-flex justify-content-end">
+    <div class="effect d-flex justify-content-end">
       <div class="right-pop">
       <h5>この車を買う予定ですが、<br/>
       新車にするか、中古車か迷っています。<br/>
@@ -66,7 +66,7 @@
 
 <%# --右側吹き出し--  %> 
   <div class="col">
-    <div class="ef d-flex justify-content-end ">
+    <div class="effect d-flex justify-content-end ">
       <div class="right-pop">
         <h5 class="about-text">
           このような感じで、あなたの…<br/>
@@ -86,7 +86,7 @@
 
 <%# --左側吹き出し--  %> 
   <div class="col">
-    <div class="ef d-flex justify-content-start">
+    <div class="effect d-flex justify-content-start">
       <div class="left-pop-end">
       <% if current_user == nil %>
       <div class="d-flex flex-column">
@@ -114,9 +114,9 @@
 <script>
 $("html,body").animate({scrollTop:$('.left-pop-end').offset().bootom});
   $(function(){
-    $(".ef").css({opacity:"0"});
+    $(".effect").css({opacity:"0"});
     $(window).scroll(function (){
-      $(".ef").each(function(){
+      $(".effect").each(function(){
         var post_top = $(this).offset().top;
         var roll = $(window).scrollTop();
         var windowHeight = $(window).height();

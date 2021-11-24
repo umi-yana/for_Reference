@@ -1,32 +1,22 @@
 .homes {
 
   .container-fluid {
-    background-image: image-url("main-top.jpg");
+    background-image: image-url("main_top-l.jpg");
     height: 100vh;
-    max-height: 50%;
-    width:auto;
-    object-fit: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-
+    width:100%;
+    background-size:cover; 
+    background-repeat:  no-repeat; 
+    background-position:center center; 
   }
   
-  
   .top-title{
-  position: absolute;
-    top: 50rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
+    margin:150px auto 0 auto;
     color: white;
   }
   
   .top-title h1 {
     font-family: 'Times New Roman', Times, serif;
-    font-size:150px;
+    font-size:60px;
     text-shadow:3px -1px 20px black;;
   }
 

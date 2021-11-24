@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   root "homes#top"
   get '/about' => "homes#about"
+  get '/profile' => "homes#profile"
   
   resources :posts do
     resource :post_selects, only: [:create, :destroy, :update]
