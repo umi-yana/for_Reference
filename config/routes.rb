@@ -34,8 +34,10 @@ Rails.application.routes.draw do
   get 'favorite_show' => 'favorites#show'
   end
   
+  # ランキング機能
   resources :users
   get 'post/ranking' => 'posts#ranking'
+
   # サーチ機能
   get '/search' => 'searchs#search'
 
