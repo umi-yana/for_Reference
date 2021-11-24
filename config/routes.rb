@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   root "homes#top"
   get '/about' => "homes#about"
+  get '/profile' => "homes#profile"
   
   resources :posts do
     resource :post_selects, only: [:create, :destroy, :update]
@@ -34,8 +35,10 @@ Rails.application.routes.draw do
   get 'favorite_show' => 'favorites#show'
   end
   
+  # ランキング機能
   resources :users
   get 'post/ranking' => 'posts#ranking'
+
   # サーチ機能
   get '/search' => 'searchs#search'
 
