@@ -1,0 +1,21 @@
+<% @post_selects.each do |post_select| %>
+<%  if post_select.is_select == "B" %>
+<%= post_select.user.user_name %>
+<% end %>
+<% end %>
+<%# 
+
+質問1）
+
+PostSelectというテーブルにis_selectというカラムの一覧表を作成したい。
+ただ、そのカラムの情報を抽出させるために、PostSelect.is_selectと記載し
+データの抽出を試みたが、以下のエラーが表示される。
+
+
+たぶん、rails側でselectメソッドと誤認されており、うまく抽出することができない。
+このような場合、カラム名を変えずにメソッドではない
+
+がある。
+
+
+is_selectというカラム %>

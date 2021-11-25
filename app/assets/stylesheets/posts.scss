@@ -227,13 +227,15 @@
   }
 
 
-
-
-
-
-
-
-
+  /* ----------post-edit----------*/
+  #post-preview {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+  }
 
   /* ----------post-ranking------------------ */
   .table th, .table td {

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resource :post_selects, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
     resource :favorites, only:[:create, :destroy]
+    get 'post_selects/show_a' => 'post_selects#show_a'
+    get 'post_selects/show_b' => 'post_selects#show_b'
   end
 
   # 問い合わせ機能

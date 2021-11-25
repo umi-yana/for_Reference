@@ -12,11 +12,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
       if @user == User.guest
-        flash[:notice] = "ゲストアカウントは削除できません。"
+        flash[:error] = "ゲストアカウントは削除できません。"
         render 'edit'
       else
         if @user.update(user_params)
-          flash[:success] = "編集に成功しました。"
           redirect_to @user
         else
           flash[:error] = "編集に失敗しました。"

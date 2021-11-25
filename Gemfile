@@ -79,6 +79,9 @@ gem 'chartkick'
 gem 'devise-i18n'
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'rspec-rails'
+gem 'rspec-rails'
+gem "factory_bot_rails"
+gem 'faker'
 
 # デプロイ用
 gem 'dotenv-rails'

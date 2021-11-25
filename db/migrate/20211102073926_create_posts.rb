@@ -8,6 +8,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :select_b
       # ーー選択肢Bの文章
       t.string :post_image_id
+      # ーー画像選択用
+      t.integer :"post_tag_id"
 
       t.timestamps
     end
