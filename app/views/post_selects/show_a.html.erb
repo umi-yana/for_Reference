@@ -1,0 +1,6 @@
+<%= @post.select_a %>
+<% @post_selects.each do |post_select| %>
+<%  if post_select.is_select == "A" %>
+<%= post_select.user.user_name %>
+<% end %>
+<% end %>

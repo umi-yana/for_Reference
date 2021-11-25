@@ -23,7 +23,7 @@
                       </div>
                       <%# ----------いいね機能------- %>
 
-                  <h3 class="text-break"><%= simple_format(post.post_body) %></h3>
+                  <h6 class="text-break text-left"><%= simple_format(h post.post_body) %></h6>
                       <div class="d-flex flex-column">
                         <%= attachment_image_tag post,:post_image %>
                       <%# -------------------条件分岐-------------------------%>
@@ -73,7 +73,7 @@
                     </div>
                     <%# ----------いいね機能------- %>
 
-                <h3 class="text-break"><%= simple_format(post.post_body) %></h3>
+                <h6 class="text-break"><%= simple_format(h post.post_body) %></h6>
                     <div class="d-flex flex-column">
                       <%= attachment_image_tag post,:post_image %>
                       <%# -------------------条件分岐-------------------------%>

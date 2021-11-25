@@ -22,4 +22,15 @@ class PostSelectsController < ApplicationController
     @post_select.update(is_select: params[:is_select])
     # redirect_back(fallback_location: root_path)　非同期処理のためコメントアウト
   end
+
+  def show_a
+    @post = Post.find(params[:post_id])
+    @post_selects = PostSelect.where(post_id: params[:post_id])
+   
+  end
+
+  def show_b
+    @post = Post.find(params[:post_id])
+    @post_selects = PostSelect.where(post_id: params[:post_id])
+  end
 end
