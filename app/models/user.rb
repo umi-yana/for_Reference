@@ -16,7 +16,6 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'gest@gest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
-      user.user_content = "ゲストアカウントです。"
       user.user_name = 'ゲスト'
     end
   end

@@ -1,90 +1,48 @@
 <div class="container">
  <div class="row">
-  <div class="col-4 text-center mt-5">
-    <div class="profile-image">
-    <%= image_tag 'about_car.jpeg',class:"my-profile"%>
-    </div>
-    <h2 class="my-name" >柳谷　海</h2>
-    <p>YANAGIYA UMI</p>
-    <p>生年月日:1993/05/19(28歳)</p>
-    <p>出身：東京都</p>
-    <p>趣味：スキューバダイビング</p>
-  </div>
-
   <div class="col">
-    <h4>経歴</h4>
-      <table>
-          <tbody>
-          <tr>
-            <th>2016.04</th>
-            <td>東京都立大島海洋国際高校</td>
-            
-          </tr>
-          <tr>
-            <th>2016.04</th>
-            <td>城西大学</td>
-          </tr>
-          <tr>
-            <th>2018.03</th>
-            <td>城西大学　卒業</td>
-          </tr>
-          <tr>
-            <th>2018.04</th>
-            <td>株式会社東京特殊印刷工業株式会社　入社</td>
-          </tr>
-          <tr>
-            <th>2021.08</th>
-            <td>株式会社東京特殊印刷工業株式会社　退社</td>
-          </tr>
-      </tbody>
-      </table>
-    <div class="profile-body">
-      <h4>概要</h4>
-      1993年東京生まれ。城西大学在学中に国際会計学を中心に経営学を履修
-      2016年から東京特殊印刷工業㈱に営業として入社。
-      宇都宮営業所配属　&　海外支援チームに所属し
-      国内では日本を代表する大手建機、医療、産業、家電メーカーを顧客を担当
-      海外支援では、東南アジア（タイ、ベトナム）の展示会出展業務支援を担当
-      
-      印刷技術やを織り込んだ具体的に提案を評価され、営業成績は約3期連続で社内成績5位以内を記録
-
-      VBAを使用した在庫表等の社内管理ツールを開発し、業務の大幅な作業改善を実現したことを理由
-      社内表彰を受ける。
-
-    </div>
-    <div class="skil-set">
-    <h4>スキルセット</h4>
-        <table>
-          <tbody>
-            <tr>
-              <th><i class="fab fa-html5"></i>HTML・CSS</th>
-              <td>☆2</td>
-            </tr>
-            <tr>
-              <th>Ruby & rails</th>
-              <td>☆2</td>
-            </tr>
-
-            <tr>
-              <th>JavaScript（Jquery）</th>
-              <td></td>
-            </tr>
-            
-            <tr>
-            <th>linax</th>
-            <td>☆3</td>
-            </tr>
-            <tr></tr>
+    <div class="mx-auto" style="width: auto;">
+      <div class="text-center">
+        <div class="top-title">
+          <h1 class='display-4' </h1>
+             <p>あなたの悩みに対して</p>
+            <p>ちょっとだけ手助けをします</p>
+            <%= link_to "新規登録",about_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
+          <%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-5 w-50' %> 
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "login" %>
+           
+         </div>
+        </div>
+      </div>
 
 
 
 
+  <h3>作成者：柳谷海</h3>
+  生年月日:1993/05/19
+  出身：東京都
+  趣味：スキューバダイビング
 
 
-          </tbody>
-        </table>
-    
-    </div>
+  経歴
+  城西大学
+  城西大学卒業
+
+  東京特殊印刷工業株式会社　入社
+  宇都宮営業所配属　&　海外支援チームに所属
+  2017年ー2019年まで営業成績を記録
+  （日本を代表する大手建機、医療、産業、家電メーカーを担当）
+  顧客に対して、印刷技術やを織り込んだ具体的に提案を評価され
+  2019　約3年間社内成績5位以内という営業成績を記録
+  VBAを使用した社内管理ツールを開発し、大幅な作業改善を実現したことを理由
+  社内表彰を受ける
+  
+  VBAなど感銘を
+  本格的にプログラマーを組んでみたい
+  
+  との思いから退社　
+
+  現在に至る。
 
 　（スキルセット）
 HTML・CSS
@@ -106,32 +64,13 @@ OS:MA
 
 
 
+<link rel="stylesheet" href="">
 
+
+
+
+
+  
   </div>
-        </div>
-      </div>
-
-
-<style>
-.my-profile{
-  object-fit: cover; 
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-}
-
-.my-name{
-  color:red;
-  margin-top:20px;
-}
-
-th {
-  padding: 15px;
-}
-
-i {
-  font-size:40px;
-  padding:5px;
-
-}
-</style>
+ </div>
+</div>

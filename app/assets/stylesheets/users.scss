@@ -34,26 +34,25 @@
     border-bottom: 15px solid transparent;
   }
 
-
-  .user-followed{
-    padding:10px;
+  .user_photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+      margin: 0 auto ;
   }
-
-  .user-following{
-    padding:10px;
-  }
-
 
   
 /* ------user_edit--- */
 
  .user_photo {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     object-fit: cover;
-    margin-top: 20px;
 }
 

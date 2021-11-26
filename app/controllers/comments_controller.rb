@@ -8,9 +8,6 @@ class CommentsController < ApplicationController
       @comment = Comment.new
       @comments = @post.comments.all.order(id: "DESC")
       # redirect_to post_path(@post)
-    else
-      @comment = comment
-      render 'error'
     end
   end
 
