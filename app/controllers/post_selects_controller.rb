@@ -26,7 +26,7 @@ class PostSelectsController < ApplicationController
   def show_a
     @post = Post.find(params[:post_id])
     @post_selects = PostSelect.where(post_id: params[:post_id])
-   
+    select_alls = PostSelect.all.size 
   end
 
   def show_b
