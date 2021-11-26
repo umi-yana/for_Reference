@@ -15,12 +15,12 @@
 <% if user.is_valid == true %>
   <% if user != current_user  %>
     <% if user.is_followed_by?(current_user) %>
-      <%= link_to user_relationships_path(user),method: :delete, remote:true do %>
-      <botton class="btn btn-danger">フォロー解除</botton>
+      <%= link_to user_relationships_path(user),class:'btn btn-danger',method: :delete, remote:true do %>
+      <i class="fas fa-user-minus user-followed"></i>フォロー解除
       <% end %>
     <% else %>
-      <%= link_to user_relationships_path(user),method: :post, remote:true do %>
-      <botton class="btn btn-primary">フォローする</botton>
+      <%= link_to user_relationships_path(user),class:'btn btn-primary',method: :post, remote:true do %>
+      <i class="fas fa-user-plus user-following"></i>フォロー
       <% end %>
     <% end %>
   <% end %>
@@ -30,3 +30,7 @@
   
 <%# -------(fin)フォロー機能---------- %>
 
+<style>
+
+
+</style>

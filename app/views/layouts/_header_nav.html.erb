@@ -1,7 +1,11 @@
 <!-- ナビゲーションバー -->
  <% if user_signed_in? %>    
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
-      <div class="navbar-brand"><%= link_to "for_Reference", posts_path,class:"header-title navbar-brand text-light" %></div>
+      <div class="navbar-brand">
+      <%= link_to posts_path,class:"header-title navbar-brand text-light" do%>
+      for_Reference
+      <% end %>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,7 +17,11 @@
             <div class="nav-link"><%= link_to "My_timeline",posts_path,class:"fas fa-comments  text-light" %> <span class="sr-only">(current)</span></ｄ>
           </li>
           <li class="nav-item">
-            <div class="nav-link"><%= link_to "My_page",user_path(current_user),class:"fas fa-users text-light " %></div>
+            <div class="nav-link">
+              <%= link_to user_path(current_user),class:"text-light" do %>
+              <i class="fas fa-address-card text-center"></i>My page
+              <% end %>
+            </div>
           </li>
             <li class="nav-item dropdown">
               <div class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,8 +32,9 @@
               <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
                   <%# ------ランキング----  %>
                 <%= link_to "Ranking",post_ranking_path,class:"dropdown-item fas fa-users mt-3 " %>
-                  <%# ------ログアウト----  %>
-                <%= link_to "contact",new_contact_path,class:"dropdown-item far fa-paper-plane mt-3"%>
+                  <%# ------コンタクト----  %>
+                <%= link_to "Contact",new_contact_path,class:"dropdown-item fas fa-paper-plane mt-3"%>
+                  <%# ------ログアウト--- %>
                 <%= link_to "logout",destroy_user_session_path,method: :delete,class:"dropdown-item fas fa-sign-out-alt mt-3",id:'dropdown-logout' %>
               </div>
                 <%# ------（fin）ドロップダウンリスト----  %>
@@ -37,3 +46,17 @@
       </div>
     </nav>
     <% end %>
+
+<style>
+  .nav-link {
+    margin:0 0.25em;
+}
+  .header-title{
+    font-family:'Times New Roman', Times, serif;
+    font-size:30px;
+  }
+
+}
+
+
+</style>

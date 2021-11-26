@@ -2,30 +2,43 @@
 <%#ーーー ヘッダー　ーーー%>
 <div class="container-fluid ">
   <div class="row ">
-  <%= notice %>
-    <%# --左側吹き出し--  %> 
+      <%# --左側吹き出し--  %> 
 
-   <div class="col text-center">
-    <h1 class="timeline-title">My TimeLine</h1>
+    <div class="col text-center mt-5">
+      <h1 class="timeline-title">My TimeLine</h1>
     </div>
+  </div>
     <div class="w-100"></div>
     <%# --　新規投稿用吹き出し --%>
+  <div class="row ">
     <div class="col">
       <div class="d-flex justify-content-start">
         <div class="new-post-leftpop text-center ">
         <h3>ようこそ！<%=current_user.user_name %>様</h3>
           <!-- Button trigger modal -->
         <div class="d-flex flex-column">
+
+          <%#  %>
           <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
-          新規投稿する。
+          <i class="fas fa-comment-medical post-new-icon"></i><br/>新規投稿
           </button>
 
-          <%= link_to 'マイページ',user_path(current_user.id),class:"btn btn-primary btn btn-primary mt-4" %>
+          <%# マイページ %>
+          <%= link_to user_path(current_user.id),class:"btn btn-secondary mt-4"  do %>
+          <i class="fas fa-address-card post-user-icon"></i><br/>My-page
+          <% end %>
 
-          <%= link_to 'ランキング',post_ranking_path,class:"btn btn-primary btn btn-primary mt-2" %>
+          <%# ランキング %>
+          <%= link_to post_ranking_path,class:"btn btn-success mt-2" do %>
+          <i class="fas fa-crown post-ranking-icon"></i><br/>ranking
+          <% end %>
+          
+          <%# いいね %>
+          <%= link_to user_favorite_show_path(current_user.id),class:"btn btn-danger mt-2" do%>
+          <i class="fas fa-star post-favorite-icon"></i><br/>My-favorites
+          <% end %>
+
         </div>
-
-        <%= link_to 'お気に入り',user_favorite_show_path(current_user.id) %>
 
         </div>
       </div>
@@ -37,7 +50,7 @@
   </div>
 
 
-<%= render "posts/new-post",post_new: @post_new %>
+<%= render "posts/new-post",post: @post %>
   <%# ----------------------------固定------------------------------------------%>
 
   <%# 投稿all %>
@@ -53,6 +66,25 @@ body {
   background-color:#17a2b8;
 }
 
+.post-new-icon {
+  font-size:30px;
+  padding:5px;
+}
+
+.post-user-icon {
+  padding:5px;
+  font-size:30px;
+}
+
+.post-ranking-icon {
+  font-size:30px;
+  padding:5px;
+}
+
+.post-favorite-icon {
+  font-size:30px;
+  padding:5px;
+}
 </style>
 
 

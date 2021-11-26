@@ -1,0 +1,58 @@
+
+.fav-icon {
+  font-size:150%;
+  
+}
+
+
+.favorites {
+
+
+/* 吹き出し本体 */
+  .favorite-balloon_light {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color: #555;
+    background-color: rgb(182, 235, 182);
+    margin: 3%;
+    width: 70%;
+  }
+  /* 画像 - 絶対配置で右上に配置 */
+  .favorite-balloon_light .icon{
+    position: absolute;
+    right: -200px;
+    top: 0;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 50px;
+  }
+  /* 三角アイコン */
+  .favorite-balloon_light::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    right: -15px;
+    top: 20px;
+    border-left: 15px solid rgb(182, 235, 182);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+
+  .favorite-balloon_light .post_user_image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+  }
+
+ .favorite-balloon_light .post_image{
+    width:100%;
+  }
+  
+
+}

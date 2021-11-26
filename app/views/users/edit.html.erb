@@ -1,10 +1,11 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-8 ">
+      <div class="text-center" id="flash-error"><%= flash[:error] %></div>
         <%= form_with model:@user,local:true do |f| %>
         <%= render 'layouts/error_msg', model: f.object %>
           <div class="d-flex flex-column">
-              <div class="text-center">
+              <div class="edit-user-photo text-center">
               <%= attachment_image_tag @user,:user_photo,id: "preview",fallback:'no_imag_user.png'%>
                 <div class="user_photos"><%= f.label:user_photo,"画像選択" %></div>
               <%= f.attachment_field :user_photo %>
@@ -52,3 +53,13 @@ $(document).on("turbolinks:load", function(){
   });
 });
 </script>
+
+<style>
+#flash-error{
+ font-size:30px;
+ background-color:pink;
+ 
+
+
+}
+</style>

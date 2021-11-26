@@ -1,32 +1,30 @@
 .homes {
 
   .container-fluid {
+    background-image: image-url("main_top-l.jpg");
     height: 100vh;
-    width:auto;
-    object-fit: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-  
+    width:100%;
+    background-size:cover;
+    background-repeat:  no-repeat;
+    background-position:center center;
   }
-  
+
   .top-title{
-  position: absolute;
-    top: 100rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 80%;
-    height: 10.2rem;
+    margin:200px auto 0 auto;
+    color: white;
   }
-  
+
   .top-title h1 {
     font-family: 'Times New Roman', Times, serif;
-    font-size:150px;
+    font-size:70px;
+    text-shadow:3px -1px 20px black;
   }
-  
+
+  .top-title p{
+    text-shadow:1px 0 5px rgb(253, 251, 251);
+    color:gray;
+  }
+
   /* about-右側　*/
   .right-pop {
     position: relative;
@@ -136,8 +134,5 @@
     font-size:30px
   }
 
-  body{
-    background-color: info;
-  }
 
 }

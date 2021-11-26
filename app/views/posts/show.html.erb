@@ -3,46 +3,56 @@
     <div class="row ">
     <%#　ーーーー 投稿詳細　ーーーーー %>
     <div class="col-6">
-      <div class="left_ballon-edit mt-5">
-        <div class="icon"><%= link_to user_path(@post.user_id) do%>
-          <%= attachment_image_tag @post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
-          <div class="d-flex flex-column text-center"><%= @post.user.user_name %></div>
+
+      <div class="show-balloon_left mt-5">
+        <div class="icon">
+          <%= link_to user_path(@post.user_id) do%>
+            <%= attachment_image_tag @post.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png',size:'110x110' %>
+            <div class="d-flex flex-column text-center"><%= @post.user.user_name %></div>
           <% end %>
         </div>
-
-          <div class="d-flex justify-content-start">
-            <div class="post-left">
-              <h5 class="text-break m-4"><%= @post.post_body %></h5>
-                <div class="d-flex flex-column">
-                  <%= attachment_image_tag @post,:post_image %>
-                    <%# -------------------条件分岐-------------------------%>
-                    <div id="select-test" class='d-flex flex-column' >
-                      <%= render "post_selects/select" ,post: @post %>
-                    </div>
-                      <%# -------------------（fin）条件分岐-------------------------%>
-                      <%= @post.tags.map(&:tag_name).join('#') %>
-                        <%# ------投稿者なら投稿編集を表示する------- %>
-                        <% if @post.user_id == current_user.id %>
-                          <%= link_to "投稿編集", edit_post_path,class:'btn btn-danger btn-lg m-4' %>
-                        <% end %>
-                        <%# ------(fin)投稿者なら投稿編集を表示する------- %>
-                </div>
-                  <div class="d-flex flex-column text-right">
-                    <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-                  </div>
-            </div>
+          <%# ----------いいね機能------- %>
+          <div class="favorite_buttons_<%= @post.id %>">
+            <%= render "favorites/favorite",post: @post %>
           </div>
-            <%# ーーーーーーーーグラフ表示ーーーーーーー %>
-            <div class="chart mt-2 mb-5" id='select_chart'>
-              <%= render 'chart_show',post: @post,legend: false %>
+
+          <%# ----------投稿写真------- %>
+          <h6 class="text-break m-4"><%= simple_format(h @post.post_body) %></h6>
+          <div class="d-flex flex-column">
+            <%= attachment_image_tag @post,:post_image %>
+
+            <%# -------------------条件分岐-------------------------%>
+            <div id="select-test" class='d-flex flex-column' >
+              <%= render "post_selects/select" ,post: @post %>
             </div>
-            <%# ーーーーーーーーグラフ表示ーーーーーーー %>
+            <%# -------------------タグ-------------------------%>
+            <i class="fas fa-tag mt-3"></i>
+            <%= @post.tags.map(&:tag_name).join('#') %>
+            <%# ------投稿者なら投稿編集を表示する------- %>
+            <% if @post.user_id == current_user.id %>
+              <%= link_to "投稿編集", edit_post_path,class:'btn btn-danger btn-lg m-4' %>
+            <% end %>
+          
+          <div class="d-flex flex-column text-right">
+            <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+          </div>
       </div>
     </div>
+      <%# ーーーーーーーーグラフ表示ーーーーーーー %>
+      <div class="chart mt-2 mb-5" id='select_chart'>
+        <%= render 'chart_show',post: @post,legend: false %>
+      </div>
+    </div>
+           
     <%#　ーーーー (End)投稿詳細　ーーーーー %>
 
     <%# --右側コメント入力（Comment）--  %> 
     <div class="col-5">
+    <%# ----koemn--- %>
+      <div id="comments_error", class="mt-5">
+        <%= render 'layouts/error_msg', model: @comment %>
+      </div>
+
       <%# --右側吹き出し　コメント入力機構--  %>
       <div class="show-balloon_light mt-5  ">
         <div class="icon d-flex justify-content-start"><%= link_to user_path(current_user.id) do%>
@@ -52,6 +62,7 @@
             </div>
           <% end %>
         </div>
+
           <%# -----------コメント入力機構-------%>
           <%= form_with(model:[@post,@comment],remote:true) do |f| %>
             <%= render 'layouts/error_msg', model: f.object %>
@@ -59,7 +70,7 @@
             <%= f.text_area :content ,class:'w-75 comment_area_field'%>
             <%= f.submit"決定",class:'box-right btn btn-info'%>
           <% end %>
-          <%# ----------(fin)コメント入力機構------%>
+          
             <div class="w-100"></div>
             <%# -- ↑改行↑ -- %>
       </div>
