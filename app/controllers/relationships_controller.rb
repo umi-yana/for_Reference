@@ -15,17 +15,14 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-      # ーーーーーーーフォロー一覧の表示ーーーーーーーー
+  # ーーーーーーーフォロー一覧の表示ーーーーーーーー
   def followings
     user = User.find(params[:user_id])
     @users = user.followings
  end
 
- def followers
+  def followers
     user = User.find(params[:user_id])
     @users = user.followers
- end
-
-
+  end
 end
-

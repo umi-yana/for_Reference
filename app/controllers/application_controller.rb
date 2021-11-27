@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if current_user.user_name == 'ゲスト'
       # ゲストユーザーならaboutページ
       about_path
-    else 
+    else
       # それ以外ならpost_indexページ
       posts_path
     end

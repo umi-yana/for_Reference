@@ -14,7 +14,7 @@ class PostSelectsController < ApplicationController
     post_select = PostSelect.find(params[:id])
     @post = post_select.post
     post_select.destroy
-  # redirect_back(fallback_location: root_path) 非同期処理のためコメントアウト
+    # redirect_back(fallback_location: root_path) 非同期処理のためコメントアウト
   end
 
   def update
@@ -27,8 +27,6 @@ class PostSelectsController < ApplicationController
   def show_a
     @post = Post.find(params[:post_id])
     @post_selects = PostSelect.where(post_id: params[:post_id]).order(creat_at: "DESC")
-    
-    
   end
 
   def show_b
