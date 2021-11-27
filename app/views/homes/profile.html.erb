@@ -1,3 +1,6 @@
+
+<%= render "layouts/header_nav" %>
+
 <div class="container">
  <div class="row">
   <div class="col-4 text-center mt-5">
@@ -9,27 +12,32 @@
     <p>生年月日:1993/05/19(28歳)</p>
     <p>出身：東京都</p>
     <p>趣味：スキューバダイビング</p>
+    <%= link_to 'https://github.com/yanagiya-umi/for_Reference' do %>
+    <i class="fab fa-github"></i>git hub
+    <% end %>
   </div>
+  
 
   <div class="col">
+  <div class="profile-body">
     <h4>経歴</h4>
       <table>
           <tbody>
           <tr>
-            <th>2016.04</th>
-            <td>東京都立大島海洋国際高校</td>
+            <th>2012.03</th>
+            <td>東京都立大島海洋国際高校 卒業</td>
             
           </tr>
           <tr>
+            <th>2012.04</th>
+            <td>城西大学　経営学部　マネジメント総合経営学科　入学</td>
+          </tr>
+          <tr>
+            <th>2016.03</th>
+            <td>城西大学　経営学部　マネジメント総合経営学科　卒業</td>
+          </tr>
+          <tr>
             <th>2016.04</th>
-            <td>城西大学</td>
-          </tr>
-          <tr>
-            <th>2018.03</th>
-            <td>城西大学　卒業</td>
-          </tr>
-          <tr>
-            <th>2018.04</th>
             <td>株式会社東京特殊印刷工業株式会社　入社</td>
           </tr>
           <tr>
@@ -38,8 +46,7 @@
           </tr>
       </tbody>
       </table>
-    <div class="profile-body">
-      <h4>概要</h4>
+      <h4 class="mt-5">概要</h4>
       1993年東京生まれ。城西大学在学中に国際会計学を中心に経営学を履修
       2016年から東京特殊印刷工業㈱に営業として入社。
       宇都宮営業所配属　&　海外支援チームに所属し
@@ -53,7 +60,7 @@
 
     </div>
     <div class="skil-set">
-    <h4>スキルセット</h4>
+    <h4 class="mt-5">スキルセット</h4>
         <table>
           <tbody>
             <tr>
@@ -113,25 +120,5 @@ OS:MA
 
 
 <style>
-.my-profile{
-  object-fit: cover; 
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-}
 
-.my-name{
-  color:red;
-  margin-top:20px;
-}
-
-th {
-  padding: 15px;
-}
-
-i {
-  font-size:40px;
-  padding:5px;
-
-}
 </style>

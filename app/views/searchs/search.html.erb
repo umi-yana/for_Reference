@@ -22,12 +22,14 @@
                     </td>
                       <td>
                       <%= link_to user_path(post.user.id) do %> 
-                      <%= attachment_image_tag(post.user, :user_photo, size:'100x100') %><br/>
+                      <%= attachment_image_tag(post.user, :user_photo, fallback:'no_imag_user.png',size:'100x100') %><br/>
                       <%= post.user.user_name %>
                       <% end %>
                       </td>
                       <td class='post text-break' >
-                      <%= link_to post.post_body,post_path(post) %>
+                      <%= link_to post_path(post) do %>
+                      <%= simple_format(h(post.post_body)).truncate(20, omission: '~~~') %>
+                      end
                       <td>
                         <div class="favorite_buttons_<%= post.id %>">
                         <%= render "favorites/favorite",post: post %>
@@ -43,8 +45,8 @@
           <table class="table">
             <thead>
               <tr>
-              <th></th>
-                <th style="width: 15%">タグ</th>
+                <th>""</th>
+                <th>タグ</th>
                 <th >投稿者</th>
                 <th>投稿内容</th>
               </tr>
@@ -52,20 +54,8 @@
               <% @datas.each do |tag| %>
                 <tbody>
                   <tr>
-                  <td></td>
+                    <td>''</td>
                     <td class='fas fa-tag text-break'><%= tag.tag_name %></td>
-                      <% @tag_post.each do |tag_post| %>
-                      <td class='text-break'>
-                      
-                      
-                      <%= link_to tag_post.post.user.user_name,user_path(tag_post.post.user.id) %>
-                      
-                       <%= attachment_image_tag(tag_post.post.user, :user_photo, size:'100x100') %><br/>
-                      
-                      </td>
-                      <td class='text-break'><%= link_to tag_post.post.post_body,post_path(tag_post.post) %></td>
-                      
-                      <% end %>
                   </tr>
                 </tbody>
               <% end %>
@@ -76,8 +66,5 @@
 </div>
 
 <style>
-.search-title{
-  padding-top:50px;
 
-}
 </style>
