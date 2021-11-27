@@ -1,4 +1,5 @@
 class PostSelectsController < ApplicationController
+  before_action :authenticate_user!
   def create
     post_select = PostSelect.new
     post_select.is_select = params[:is_select]
