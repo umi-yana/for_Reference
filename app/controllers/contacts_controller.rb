@@ -1,10 +1,9 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @contact = Contact.new
   end
-
 
   def confirm
     @contact = Contact.new(contact_params)
@@ -34,12 +33,11 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact)
-          .permit(:contact_email,
+    params.require(:contact).
+      permit(:contact_email,
                   :contact_name,
                   :contact_phone_number,
                   :contact_subject,
-                  :contact_message
-                 )
+                  :contact_message)
   end
 end

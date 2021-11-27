@@ -4,7 +4,6 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
     @tag_list = Tag.includes(:post).all.order(id: "DESC")
-
   end
 
   def show
@@ -12,7 +11,6 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.all.order(id: "DESC")
     @post_tags = @post.tags
-  
   end
 
   def create
@@ -20,14 +18,14 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split("#")
     if @post.save
-       @post.save_tag(tag_list)
+      @post.save_tag(tag_list)
       @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
       @tag_list = Tag.includes(:post).all.order(id: "DESC")
       # redirect_to posts_path
     else
       @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
       @tag_list = Tag.includes(:post).all.order(id: "DESC")
-       render "error"
+      render "error"
     end
   end
 
