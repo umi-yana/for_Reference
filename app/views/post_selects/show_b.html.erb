@@ -1,21 +1,46 @@
-<% @post_selects.each do |post_select| %>
-<%  if post_select.is_select == "B" %>
-<%= post_select.user.user_name %>
-<% end %>
-<% end %>
-<%# 
-
-質問1）
-
-PostSelectというテーブルにis_selectというカラムの一覧表を作成したい。
-ただ、そのカラムの情報を抽出させるために、PostSelect.is_selectと記載し
-データの抽出を試みたが、以下のエラーが表示される。
-
-
-たぶん、rails側でselectメソッドと誤認されており、うまく抽出することができない。
-このような場合、カラム名を変えずにメソッドではない
-
-がある。
+<%= render "layouts/header_nav" %>
+<div class="container">
+  <div class="row justify-content-center">
+          <div class="col-5">
+            <div class="select-balloon_left">
+              <h6><%= simple_format(h(@post.post_body)) %></h6>
+                <div class="text-center"> 
+                  <%= attachment_image_tag @post,:post_image %>
+                </div>
+              <h4 class="mt-4">【選択肢B】</h4>
+              <h2 class="text-danger"><%= @post.select_b %></h2>
+            </div>
+          </div>
 
 
-is_selectというカラム %>
+    <%# ----hennkou--- %>
+    <div class="d-flex flex-column ">
+      <div class="col">
+        <div class="like-menber">
+          <h1 class='text-center mt-5'>投票者</h1>
+            <table class='table select_table mt-3'>
+              <tbody>
+                <% @post_selects.each.with_index(1) do |post_select, i| %>
+                  <%  if post_select.is_select == "B" %>
+                    <tr>
+                      <th>#<%= i %></th>
+                      <td>
+                        <div class="icons">
+                          <%= link_to user_path(post_select.user_id) do%>
+                          <%= attachment_image_tag post_select.user,:user_photo,class:'select_user_image',fallback:'no_imag_user.png',size:'50x50'%>
+                          <div class="d-flex flex-column text-center"><%= post_select.user.user_name %></div>
+                          <% end %>
+                        </div>
+                      </td>
+                      <td><%= post_select.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                    </tr>
+                  <% end %>
+                  
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

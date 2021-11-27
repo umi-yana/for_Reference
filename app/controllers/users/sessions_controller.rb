@@ -6,7 +6,7 @@ class Users::SessionsController < ApplicationController
   def new_guest
     user = User.guest
     sign_in user   # ユーザーをログインさせる
-    redirect_to about_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to about_path
   end
 
   protected

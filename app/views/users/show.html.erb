@@ -35,9 +35,11 @@
       <% @posts.each do |post| %>
       <div class="user_posts">
         <div class="balloon_left">
-      <h3 class="text-break"><%= post.post_body %></h3>
+      <h6 class="text-break"><%= simple_format(h(post.post_body)) %></h6>
           <div class="d-flex flex-column">
-            <%= attachment_image_tag post,:post_image,style:'object-fit: cover;  width: 100%; height: 90%;' %>
+            <div class="text-center">
+            <%= attachment_image_tag post,:post_image,class:'user-post-imag' %>
+            </div>
            <%# -------------------（fin）条件分岐------------------------%>
             <div id="select-test<%= post.id %>" class="d-flex flex-column" >
             <%= render "post_selects/select" ,post: post %>
@@ -63,5 +65,4 @@
 
   </div>
 </div>
-
 

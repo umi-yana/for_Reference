@@ -1,4 +1,5 @@
 class PostSelectsController < ApplicationController
+  before_action :authenticate_user!
   def create
     post_select = PostSelect.new
     post_select.is_select = params[:is_select]
@@ -25,8 +26,9 @@ class PostSelectsController < ApplicationController
 
   def show_a
     @post = Post.find(params[:post_id])
-    @post_selects = PostSelect.where(post_id: params[:post_id])
-    select_alls = PostSelect.all.size 
+    @post_selects = PostSelect.where(post_id: params[:post_id]).order(creat_at: "DESC")
+    
+    
   end
 
   def show_b
