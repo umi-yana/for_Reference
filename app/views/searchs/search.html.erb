@@ -29,7 +29,6 @@
                       <td class='post text-break' >
                       <%= link_to post_path(post) do %>
                       <%= simple_format(h(post.post_body)).truncate(20, omission: '~~~') %>
-                      end
                       <td>
                         <div class="favorite_buttons_<%= post.id %>">
                         <%= render "favorites/favorite",post: post %>
