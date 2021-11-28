@@ -28,8 +28,8 @@
                       </td>
                       <td class='post text-break' >
                       <%= link_to post_path(post) do %>
-                      <%= simple_format(h(post.post_body)).truncate(20, omission: '~~~') %>
-                      end
+                      <%= post.post_body.truncate(20, omission: '...') %>
+                      <% end %>
                       <td>
                         <div class="favorite_buttons_<%= post.id %>">
                         <%= render "favorites/favorite",post: post %>
@@ -38,23 +38,50 @@
                   </tr>
                 </tbody>
               <% end %>
-            <% end %>
-      <% elsif @model == "tag" %>
-        <h1 class="search-title">タグ検索結果 :<%= @value %></h1>
-          <table class="table">
+      <% elsif @model == "user" %>
+        <h1 class="search-title">User検索キーワード :<%= @value %></h1>
+          <table class="table text-center">
             <thead>
               <tr>
-                <th>""</th>
-                <th>タグ</th>
-                <th >投稿者</th>
-                <th>投稿内容</th>
+                <th><h2>#</h2></th>
+                <th><h2>ユーザー名</h2></th>
+                <th><h2>投稿数</h2></th>
+                <th><h2>フォロワー数</h2></th>
+                <th><h2>フォロー数</h2></th>
               </tr>
             </thead>
-              <% @datas.each do |tag| %>
+              <% @datas.each.with_index(1) do |user, i| %>
                 <tbody>
                   <tr>
-                    <td>''</td>
-                    <td class='fas fa-tag text-break'><%= tag.tag_name %></td>
+                    <td><%= i %></td>
+                    <td class='text-center'>
+                     <%= link_to user_path(user.id) do %> 
+                        <%= attachment_image_tag(user, :user_photo, fallback:'no_imag_user.png',size:'100x100') %><br/>
+                        <%= user.user_name %>
+                      <% end %>
+                    </td>
+
+                    <td>
+                      <h3><%= link_to user_path(user.id) do %> 
+                          <i class="fas fa-comment-dots"></i><%= user.posts.count %>
+                          <% end %>
+                      </h3>
+                    </td>
+
+                    <td>
+                      <h3><%= link_to user_followers_path(user.id) do %>
+                          <i class="fas fa-user-friends"></i><%= user.followers.count %>
+                          <% end %>
+                      </h3>
+                    </td>
+
+                    <td>
+                      <h3>  <%= link_to user_followings_path(user.id) do %>
+                              <i class="fas fa-user-plus"></i><%= user.followings.count %>
+                            <% end %>
+                      </h3>
+                    </td>
+
                   </tr>
                 </tbody>
               <% end %>
@@ -64,6 +91,3 @@
   </div>
 </div>
 
-<style>
-
-</style>

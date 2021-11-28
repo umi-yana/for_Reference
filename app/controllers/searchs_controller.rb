@@ -13,8 +13,8 @@ class SearchsController < ApplicationController
   def partical(model, value)
     if model == 'post'
       Post.where("post_body LIKE ?", "%#{value}%")
-    elsif model == 'tag'
-      Tag.where("tag_name LIKE ?", "%#{value}%")
+    elsif model == 'user'
+      User.where("user_name LIKE ?", "%#{value}%")
     end
   end
 
