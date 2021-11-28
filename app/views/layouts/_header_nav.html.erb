@@ -32,6 +32,9 @@
               <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
                   <%# ------ランキング----  %>
                 <%= link_to "Ranking",post_ranking_path,class:"dropdown-item fas fa-users mt-3 " %>
+                  
+                  <%= link_to 'Tag_list', tags_path %>
+
                   <%# ------コンタクト----  %>
                 <%= link_to "Contact",new_contact_path,class:"dropdown-item fas fa-paper-plane mt-3"%>
                   <%# ------ログアウト--- %>

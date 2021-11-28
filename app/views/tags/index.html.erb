@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+    <h1>タグリスト</h1>
+      <div class="d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class='w-25'>タグNo.</th>
+              <th scope="col">タグ名</th>
+              <th scope="col">タグ使用回数</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <% @tag_list.each do |list, i|%>
+              <tr>
+                <td><%= i %></td>
+                <td>
+                  <%= link_to tag_path(list) do %>
+                    <%= list.tag_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= "使用回数:#{list.posts.count}" %>
+                </td>
+              </tr>
+            <% end %> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

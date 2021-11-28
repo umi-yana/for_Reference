@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   root "homes#top"
 
   namespace :users do
@@ -46,4 +47,7 @@ Rails.application.routes.draw do
   # 退会機能
   get 'user/unsubscribe' => 'users#unsubscribe'
   put "/users/:id/withdraw" => "users#withdraw", as: 'users_withdraw'
+
+  # タグリスト
+  resources :tags, only: [:index, :show]
 end
