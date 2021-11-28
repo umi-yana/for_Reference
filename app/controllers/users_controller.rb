@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     else
       @user.update(is_valid: false)
       reset_session
-      flash[:notice] = "ご利用ありがとうございました。またのご利用をお待ちしております。"
       redirect_to root_path
     end
   end
