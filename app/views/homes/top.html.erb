@@ -9,7 +9,8 @@
               <p>ちょっとだけ手助けをします</p>
               <div><%= link_to "新規登録",about_path,class:'btn btn-danger btn-lg mt-3 w-50' %> </div>
             <div><%= link_to "ログイン",user_session_path,class:'btn btn-primary btn-lg mt-2 w-50' %> </div>
-            <div><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:'btn btn-success btn-lg mt-5 w-70' %></div>
+            <div class="guest-login-btn">
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:'btn btn-success btn-lg mt-5 w-70' %></div>
             </div>
             <div class="col">
             <div class="top-image"></div>

@@ -21,7 +21,7 @@
             <table class='table select_table mt-3'>
               <tbody>
                 <% @post_selects.each.with_index(1) do |post_select, i| %>
-                  <%  if post_select.is_select == "B" %>
+                  <% if post_select.is_select == "B" %>
                     <tr>
                       <th>#<%= i %></th>
                       <td>
