@@ -4,12 +4,22 @@ ja:
       user: ユーザー
       post: 投稿
       comment: コメント
+      contact: 問い合わせ
     attributes:
       user:
         user_name: 名前
         user_content: 自己紹介
       comment:
         content:　本文
+      contact:
+        contact_email: メールアドレス
+        contact_name: お名前
+        contact_subject: ご用件
+        contact_message: 本文
+      post:
+        post_body: 本文
+        select_a: 選択肢A
+        select_b: 選択肢B
     errors:
       format: "%{attribute}%{message}"
       messages:
