@@ -29,6 +29,7 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+
   validates :post_body, presence: true, length: { maximum: 120 }
   validates :select_a, presence: true, length: { maximum: 50 }
   validates :select_b, presence: true, length: { maximum: 50 }

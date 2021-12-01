@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
     comment.post_id = @post.id
+    comment.score = Language.get_data(comment_params[:content])
     if comment.save(comment_params)
       @comment = Comment.new
       @comments = @post.comments.all.order(id: "DESC")
