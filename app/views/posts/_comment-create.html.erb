@@ -8,21 +8,29 @@
           <% end %>
 
         </div>
-          <h6 class="text-break"><%= simple_format(comment.content) %></h6>
-              <div class="d-flex flex-column text-right">
+            <% if comment.score <= -40 %>
+              <h6>ネガティブなコメントとして、認識しました。</h6>
+                <p>*確認したい場合は以下ボタンを選択してください</p>
+                <button>表示する</button>
+
+            <% else %>
+              <h6 class="text-break"><%= simple_format(comment.content) %></h6>
+            <% end %>
 
               　<%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
+              <div class="d-flex flex-column text-right">
                 <% if comment.user == current_user %>
                 <%= link_to "コメント削除",post_comment_path(comment.post_id,comment.id),method: :delete,remoto:true %>
                 <% end %>
                 <%#ーーーーーーー (fin）もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
-                <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                <div><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></div>
               </div>
                 <div class="w-100"></div>
       </div>
   <% end %>
   </div>
 
-
+<script>
+</script>
 
   

@@ -22,6 +22,9 @@
                         <%= render "favorites/favorite",post: post %>
                       </div>
                       <%# ----------いいね機能------- %>
+                      <div class="score">
+                        評価値<%= @post.score %>
+                      </div>
 
                   <h6 class="text-break text-left"><%= simple_format(h post.post_body) %></h6>
                       <div class="d-flex flex-column">

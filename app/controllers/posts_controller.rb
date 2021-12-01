@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.score = Language.get_data(post_params[:post_body])
     tag_list = params[:post][:tag_name].split("#")
     if @post.save
       @post.save_tag(tag_list)
