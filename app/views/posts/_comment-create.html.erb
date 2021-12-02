@@ -8,13 +8,21 @@
           <% end %>
 
         </div>
-            <% if comment.score <= -40 %>
-              <h6>ネガティブなコメントとして、認識しました。</h6>
-                <p>*確認したい場合は以下ボタンを選択してください</p>
-                <button>表示する</button>
-
-            <% else %>
+            
+            <% if comment.score.nil? %>
               <h6 class="text-break"><%= simple_format(comment.content) %></h6>
+            <% else %>
+              <% if comment.score <= -40 %>
+              
+                <div id="comment_alart_<%= comment.id %>">
+                  <h6>ネガティブなコメントとして、認識しました。</h6>
+                  <p>*確認したい場合は以下ボタンを選択してください</p>
+                  <button onclick="comment_show(<%= comment.id %>)">表示する</button>
+                </div>
+                <h6 id="comment_<%= comment.id %>" class="text-break d-none"><%= simple_format(comment.content) %></h6>
+              <% else %>
+                <h6 class="text-break"><%= simple_format(comment.content) %></h6>
+              <% end %>
             <% end %>
 
               　<%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
@@ -31,6 +39,10 @@
   </div>
 
 <script>
+function comment_show(id) {
+  $(`#comment_${id}`).removeClass('d-none');
+  $(`#comment_alart_${id}`).addClass('d-none');
+}
 </script>
 
   
