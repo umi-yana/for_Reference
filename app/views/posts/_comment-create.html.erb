@@ -17,7 +17,7 @@
                 <div id="comment_alart_<%= comment.id %>">
                   <h6>ネガティブなコメントとして、認識しました。</h6>
                   <p>*確認したい場合は以下ボタンを選択してください</p>
-                  <button onclick="comment_show(<%= comment.id %>)">表示する</button>
+                  <button onclick="comment_show(<%= comment.id %>)" class='btn btn-danger'>表示する</button>
                 </div>
                 <h6 id="comment_<%= comment.id %>" class="text-break d-none"><%= simple_format(comment.content) %></h6>
               <% else %>
