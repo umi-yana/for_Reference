@@ -20,6 +20,8 @@ ja:
         post_body: 本文
         select_a: 選択肢A
         select_b: 選択肢B
+      comment:
+        content: コメント本文
     errors:
       format: "%{attribute}%{message}"
       messages:
