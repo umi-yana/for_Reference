@@ -2,7 +2,7 @@
   <% comments.each do |comment| %>
   
       <div class="show-balloon_light mt-5  ">
-        <div class="icon d-flex justify-content-start"><%= link_to user_path(post.user_id) do%>
+        <div class="icon d-flex justify-content-start"><%= link_to user_path(comment.user_id) do%>
           <%= attachment_image_tag comment.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
           <div class="d-flex flex-column justify-content-end"><%= comment.user.user_name %></div>
           <% end %>
@@ -17,7 +17,9 @@
                 <div id="comment_alart_<%= comment.id %>">
                   <h6>ネガティブなコメントとして、認識しました。</h6>
                   <p>*確認したい場合は以下ボタンを選択してください</p>
-                  <button onclick="comment_show(<%= comment.id %>)" class='btn btn-danger'>表示する</button>
+                  <div class="text-center">
+                    <button onclick="comment_show(<%= comment.id %>)" class='btn btn-danger w-50'>表示する</button>
+                  </div>
                 </div>
                 <h6 id="comment_<%= comment.id %>" class="text-break d-none"><%= simple_format(comment.content) %></h6>
               <% else %>

@@ -102,6 +102,13 @@
     color:#007bff;
   }
 
+  .post_score_right{
+    text-align: end;
+    top: -90px;
+    left: -52%;
+    position: relative;
+  }
+
   /*----------index-左側--------*/
   .balloon_left{
     position: relative;
@@ -143,7 +150,14 @@
     color:#007bff;
   }
 
-     
+  .post_score_left{
+      top: -90px;
+      right: -100%;
+      position: relative;
+}
+
+
+
 
   /* ----------post_show------------------ */
 

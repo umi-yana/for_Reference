@@ -22,38 +22,53 @@
                         <%= render "favorites/favorite",post: post %>
                       </div>
                       <%# ----------いいね機能------- %>
-                      <div class="score">
-                        評価値<%= @post.score %>
-                      </div>
 
+                    <%# -------------------投稿本文-------------------------%>
                   <h6 class="text-break text-left"><%= simple_format(h post.post_body) %></h6>
                       <div class="d-flex flex-column">
                         <%= attachment_image_tag post,:post_image %>
+
                       <%# -------------------条件分岐-------------------------%>
                         <div id="select-test<%= post.id %>" class="d-flex flex-column" >
                         <%= render "post_selects/select" ,post: post %>
                         </div>
-                      <%# -------------------（fin）条件分岐------------------------%>
+
                       <%# -------------------タグ表示-------------------------%>
                       <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
-                      <%# -------------------タグ表示-------------------------%>
+
                         <%# -----------コメント判断------------ %>
                         <% if post.comments.exists? %>
                           <%= link_to post_path(post.id),class:'text-right' do %>
                           <div class="text-right fas fa-comments fa-lg comment-icon"><%= post.comments.count %></div>
                           <% end %>
                         <% end %>
-                        <%# -----------(fin)コメント判断------------ %>
                       </div>
+
                       <div class="d-flex flex-column text-right mt-2">
-                      <div class="text-righ">
-                      <%= link_to "詳細を見る",post_path(post.id),class:'btn btn-info' %>
+                        <div class="text-righ">
+                          <%= link_to "詳細を見る",post_path(post.id),class:'btn btn-info' %>
                       </div>
                         <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
                       </div>
                           <div class="w-100"></div>
                           <%# -- ↑改行↑ -- %>
               </div>
+
+                  <%# ----投稿評価（左）---  %>
+                <div class="post_score_left">
+                  <p class="text-white">Emotions</p>
+                  <% if post.score.nil? %>
+                    <% else %>
+                      <% if -100 < post.score && post.score <= -30 %>
+                        <i class="fas fa-grin-squint-tears text-white text-center" style="font-size:20px;"><br>Negative</i>
+                      <% elsif -20 <= post.score && post.score <= 30 %>
+                        <i class="fas fa-smile text-white text-center" style="font-size:20px;"><br/>Normal</i>
+                      <% else %>
+                        <i class="fas fa-laugh-beam text-white text-center" style="font-size:20px;"><br/>Positive</i>
+                      <% end %>
+                    <% end %>
+                </div>
+
             </div>
           </div>
         <%#= -----投稿者側の投稿内容 ----- %>
@@ -74,40 +89,58 @@
                     <div class="favorite_buttons_<%= post.id %>">
                       <%= render "favorites/favorite",post: post %>
                     </div>
-                    <%# ----------いいね機能------- %>
 
-                <h6 class="text-break"><%= simple_format(h post.post_body) %></h6>
-                    <div class="d-flex flex-column">
-                      <%= attachment_image_tag post,:post_image %>
+                    <%#----投稿本文--- %>
+                    <h6 class="text-break"><%= simple_format(h post.post_body) %></h6>
+                      <div class="d-flex flex-column">
+                        <%= attachment_image_tag post,:post_image %>
+
                       <%# -------------------条件分岐-------------------------%>
                       <div id="select-test<%= post.id %>" class="d-flex flex-column text-right">
                           <%= render "post_selects/select" ,post: post %>
                       </div>
-                      <%# -------------------（fin）条件分岐-------------------------%>
+
                       <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
-                                  <%# -----------コメント判断------------ %>
+
+                    <%# -----------コメント判断------------ %>
                     <% if post.comments.exists? %>
                       <%= link_to post_path(post.id),class:'text-right' do%>
                       <div class="text-right fas fa-comments fa-lg comment-icon"><%= post.comments.count %></div>
                       <% end %>
                     <% end %>
-                    <%# -----------(fin)コメント判断------------ %>
 
 
                     </div>
                     <div class="d-flex flex-column text-right">
-                    <div class="text-right">
-                      <%= link_to "詳細を見る",post_path(post.id), data: { "turbolinks"=> false }, class:"btn btn-info right-block mt-3" %>
+                      <div class="text-right">
+                        <%= link_to "詳細を見る",post_path(post.id), data: { "turbolinks"=> false }, class:"btn btn-info right-block mt-3" %>
+                      </div>
+                      <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
                     </div>
-                    <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-                    </div>
-                      <div class="w-100"></div>
-          <%# -- ↑改行↑ -- %>
-        <%# -- [fin]右側吹き出し --%>
+                    <div class="w-100"></div>
+                    <%# -- ↑改行↑ -- %>
         </div>
+        <%# -- [fin]右側吹き出し --%>
+
+                <%# ----投稿評価（右）---  %>
+                <div class="post_score_right">
+                  <p class="text-white">Emotions</p>
+                    <% if post.score.nil? %>
+                      <% else %>
+                        <% if -100 < post.score && post.score <= -30 %>
+                          <i class="fas fa-grin-squint-tears text-white text-center" style="font-size:20px;"><br>Negative</i>
+                        <% elsif -20 <= post.score && post.score <= 30 %>
+                          <i class="fas fa-smile text-white text-center" style="font-size:20px;"><br/>Normal</i>
+                        <% else %>
+                          <i class="fas fa-laugh-beam text-white text-center" style="font-size:20px;"><br/>Positive</i>
+                        <% end %>
+                      <% end %>
+                </div>
       </div>
       <% end %>
     </div>
   <% end %>
 </div>
 
+
+　
