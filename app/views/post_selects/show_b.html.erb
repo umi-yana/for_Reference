@@ -20,10 +20,10 @@
           <h1 class='text-center mt-5'>投票者</h1>
             <table class='table select_table mt-3'>
               <tbody>
-                <% @post_selects.each.with_index(1) do |post_select, i| %>
+                <% @post_selects.each do |post_select| %>
                   <% if post_select.is_select == "B" %>
                     <tr>
-                      <th>#<%= i %></th>
+                      <th>#</th>
                       <td>
                         <div class="icons">
                           <%= link_to user_path(post_select.user_id) do%>
