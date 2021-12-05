@@ -17,27 +17,32 @@
         <h3>ようこそ！<%=current_user.user_name %>様</h3>
           <!-- Button trigger modal -->
         <div class="d-flex flex-column">
+          <div class="row">
+            <div class="col">
 
-          <%#  %>
-          <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3" data-toggle="modal" data-target="#exampleModal">
-          <i class="fas fa-comment-medical post-new-icon"></i><br/>New Post
-          </button>
+              <%# ---新規投稿--- %>
+              <button type="button" class="btn btn-primary btn btn-primary btn-lg mt-3 w-75" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-comment-medical post-new-icon"></i><br/>New Post
+              </button>
+                <div class="w-100"></div>
+              
+              <%# マイページ %>
+              <%= link_to user_path(current_user.id),class:"btn btn-secondary mt-2 ml-3 w-25"  do %>
+                <i class="fas fa-address-card post-user-icon"></i><br/>My page
+              <% end %>
 
-          <%# マイページ %>
-          <%= link_to user_path(current_user.id),class:"btn btn-secondary mt-4"  do %>
-          <i class="fas fa-address-card post-user-icon"></i><br/>My page
-          <% end %>
-
-          <%# ランキング %>
-          <%= link_to post_ranking_path,class:"btn btn-success mt-2" do %>
-          <i class="fas fa-crown post-ranking-icon"></i><br/>Ranking
-          <% end %>
-          
-          <%# いいね %>
-          <%= link_to user_favorite_show_path(current_user.id),class:"btn btn-danger mt-2" do%>
-          <i class="fas fa-star post-favorite-icon"></i><br/>My favorites
-          <% end %>
-
+              <%# ランキング %>
+              <%= link_to post_ranking_path,class:"btn btn-success mt-2 w-25" do %>
+                <i class="fas fa-crown post-ranking-icon"></i><br/>Ranking
+              <% end %>
+              
+              <%# いいね %>
+              <%= link_to user_favorite_show_path(current_user.id),class:"btn btn-danger mt-2 " do%>
+                <i class="fas fa-star post-favorite-icon "></i><br/>My favorites
+              <% end %>
+              
+            </div>
+          </div>
         </div>
       </div>
     </div>
