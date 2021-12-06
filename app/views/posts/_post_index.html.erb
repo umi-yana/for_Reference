@@ -106,7 +106,14 @@
                           <%= render "post_selects/select" ,post: post %>
                       </div>
 
-                      <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
+                      <%# -------------------タグ表示-------------------------%>
+                      <% if post.tags.blank? %>
+                        <%# （もしタグがブランクであれば表示しない） %>
+                      <% else %>
+                        <%= link_to tag_path(post.tags.ids) do %>
+                        <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
+                        <% end %>
+                      <% end %>
 
                     <%# -----------コメント判断------------ %>
                     <% if post.comments.exists? %>
