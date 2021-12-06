@@ -28,12 +28,10 @@
                       </td>
                       <td class='post text-break' >
                       <%= link_to post_path(post) do %>
-<<<<<<< HEAD
-                      <%= simple_format(h(post.post_body)).truncate(20, omission: '~~~') %>
-=======
+
                       <%= post.post_body.truncate(20, omission: '...') %>
                       <% end %>
->>>>>>> b51b66f ([fix]error)
+
                       <td>
                         <div class="favorite_buttons_<%= post.id %>">
                         <%= render "favorites/favorite",post: post %>
