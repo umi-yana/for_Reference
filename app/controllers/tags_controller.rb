@@ -11,7 +11,6 @@ class TagsController < ApplicationController
   def show
     tags = TagList.where(tag_id: params[:id]).pluck(:post_id)
     @posts = Post.find(tags)
-    binding.pry
     @tag = Tag.find(params[:id])
 
       
