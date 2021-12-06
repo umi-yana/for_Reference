@@ -1,3 +1,65 @@
-// Place all the styles related to the tags controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ .tags{
+
+  .fav-icon {
+    font-size:150%;
+    
+  }
+  
+  /* 吹き出し本体 */
+    .tag-balloon_light {
+      position: relative;
+      padding: 20px;
+      border-radius: 10px;
+      color: #555;
+      background-color: #dfedfe;
+      margin: 3%;
+      width: 70%;
+    }
+    /* 画像 - 絶対配置で右上に配置 */
+    .tag-balloon_light .icon{
+      position: absolute;
+      right: -200px;
+      top: 0;
+      flex-direction: column;
+      text-align: center;
+      margin-right: 50px;
+    }
+    /* 三角アイコン */
+    .tag-balloon_light::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      right: -15px;
+      top: 20px;
+      border-left: 15px solid #dfedfe;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+  
+    .tag-balloon_light .post_user_image {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+    }
+  
+   .tag-balloon_light .post_image{
+      width:100%;
+    }
+  
+  .tag-title {
+    margin-top: 100px;
+  }
+  
+  .tag-title h1{
+     font-family : 'Times New Roman', Times, serif;
+     background-color: lightgray;
+     text-align:center
+  }
+
+
+}

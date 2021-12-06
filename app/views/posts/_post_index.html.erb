@@ -34,8 +34,14 @@
                         </div>
 
                       <%# -------------------タグ表示-------------------------%>
-                      <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
-
+                      <% if post.tags.blank? %>
+                        <%# （もしタグがブランクであれば表示しない） %>
+                      <% else %>
+                        <%= link_to tag_path(post.tags.ids) do %>
+                        <i class="fas fa-tag mt-3"><%= post.tags.map(&:tag_name).join('#')%></i>
+                        <% end %>
+                      <% end %>
+                      
                         <%# -----------コメント判断------------ %>
                         <% if post.comments.exists? %>
                           <%= link_to post_path(post.id),class:'text-right' do %>
