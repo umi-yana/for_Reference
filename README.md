@@ -31,9 +31,12 @@ https://docs.google.com/spreadsheets/d/1bXh_QBY1jYRh0WOV0ovm1XxInC4vYN3sM-YBnE_N
 
 2. 詳細設計書
 ```
-
+https://docs.google.com/spreadsheets/d/1vr7O6h4hhrZeU75vJJGhB9BmHSLkW686/edit?usp=sharing&ouid=105481290636251836497&rtpof=true&sd=true
 ```
-3. 
+3. ER図
+```
+https://app.diagrams.net/#G1S6GoUdZz9nzzglFbxU9nc82Gr74Pj-Mt
+```
 
 
 ## チャレンジ要素一覧
