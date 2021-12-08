@@ -23,22 +23,14 @@ Rails.application.routes.draw do
     get 'post_selects/show_b' => 'post_selects#show_b'
   end
 
-  # 問い合わせ機能
-  resources :contacts, only: [:new, :create]
-  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
-  post 'contacts/back', to: 'contacts#back', as: 'back'
-  get 'thanks', to: 'contacts#thanks', as: 'thanks'
-
-  # フォロー機能
-  resources :users do
+  resources :users, only: [:edit, :update, :show, :destory] do
     resource :relationships, only: [:create, :destroy]
+    # フォロー機能
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
     get 'favorite_show' => 'favorites#show'
   end
-
   # ランキング機能
-  resources :users
   get 'post/ranking' => 'posts#ranking'
 
   # サーチ機能
@@ -50,4 +42,12 @@ Rails.application.routes.draw do
 
   # タグリスト
   resources :tags, only: [:index, :show]
+
+  # 問い合わせ機能
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'thanks', to: 'contacts#thanks', as: 'thanks'
+  
+
 end
