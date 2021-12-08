@@ -8,7 +8,7 @@
 <span style="color: red; ">人間毎日なにかを選択し決断</span>をしていると思います。
 
 なにかを選択する際の迷いを仲間の意見を参考にして、
- **あなた自身の決断を少しばかり手伝う**ことを目的としたSNSです。
+ **あなた自身の決断をちょっとだけ手伝う**ことを目的としたSNSです。
 
 ### サイトテーマ
 小さな選択でも大きな選択でも、
@@ -24,7 +24,18 @@
 ### 主な利用シーン
 新しくなにかを始めたい、なにかを迷ってる時
 ## 設計書
->作成後に記載します。
+1. テーブル定義書
+```
+https://docs.google.com/spreadsheets/d/1bXh_QBY1jYRh0WOV0ovm1XxInC4vYN3sM-YBnE_N-ng/edit?usp=sharing
+```
+
+2. 詳細設計書
+```
+
+```
+3. 
+
+
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1A2NEeEXz0hGIki9YJv5U3snMvr5cC0PiSdOyLwPzX0g/edit?usp=sharing
 
