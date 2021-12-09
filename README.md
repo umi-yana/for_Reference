@@ -5,6 +5,7 @@
 https://for-reference.net/
 ```
 
+<img width="1116" alt="Readme_for_reference" src="https://user-images.githubusercontent.com/79035389/145416765-74e0f68e-f51f-4bae-8254-f1b0e60e8457.png">
 
 ## サイト概要
 <span style="color: red; ">**あなたの迷いをみんなで考えるSNS**</span>
