@@ -7,17 +7,17 @@
               <%= form_with model: post, remote:true do |f| %>
                 <%= render 'layouts/error_msg', model: f.object %>
                       <div class="form-group ">
-                        <%= f.label :post_body,"投稿本文" %>
-                        <%= f.text_area :post_body,placeholder:"あなた自身の悩みを記入してください。(~120文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"5"  %>
+                        <%= f.label :post_body, "投稿本文" %>
+                        <%= f.text_area :post_body, placeholder:"あなた自身の悩みを記入してください。(~120文字)",class:"form-control",id:"exampleFormControlTextarea1", rows:"5"  %>
                       </div>
 
                       <div class="form-group">
-                        <%= f.label :select_a,"選択肢A" %>
-                        <%= f.text_area :select_a,placeholder:"選択肢を記入してください(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
+                        <%= f.label :select_a, "選択肢A" %>
+                        <%= f.text_area :select_a, placeholder:"選択肢を記入してください(~50文字)", class:"form-control",id:"exampleFormControlTextarea1", rows:"2" %>
                       </div>
 
                       <div class="form-group">
-                        <%= f.label:select_b,"選択肢B" %>
+                        <%= f.label:select_b, "選択肢B" %>
                         <%= f.text_area :select_b,class:'h-200',placeholder:"選択肢を記入してください(~50文字)",class:"form-control",id:"exampleFormControlTextarea1",rows:"2" %>
                       </div>
 
