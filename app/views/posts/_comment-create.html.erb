@@ -1,19 +1,15 @@
 <div class="comment_area">
   <% comments.each do |comment| %>
-  
       <div class="show-balloon_light mt-5  ">
         <div class="icon d-flex justify-content-start"><%= link_to user_path(comment.user_id) do%>
           <%= attachment_image_tag comment.user,:user_photo,class:'post_user_image',fallback:'no_imag_user.png' %>
           <div class="d-flex flex-column justify-content-end"><%= comment.user.user_name %></div>
           <% end %>
-
         </div>
-            
             <% if comment.score.nil? %>
               <h6 class="text-break"><%= simple_format(comment.content) %></h6>
             <% else %>
               <% if comment.score <= -40 %>
-              
                 <div id="comment_alart_<%= comment.id %>">
                   <h6>ネガティブなコメントとして、認識しました。</h6>
                   <p>*確認したい場合は以下ボタンを選択してください</p>
@@ -27,7 +23,7 @@
               <% end %>
             <% end %>
 
-              　<%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
+              <%#ーーーーーーー もしコメントユーザーなら削除ボタンを表示するーーーーーーーーー　%>
               <div class="d-flex flex-column text-right">
                 <% if comment.user == current_user %>
                 <%= link_to "コメント削除",post_comment_path(comment.post_id,comment.id),method: :delete,remoto:true %>
@@ -38,7 +34,7 @@
                 <div class="w-100"></div>
       </div>
   <% end %>
-  </div>
+</div>
 
 <script>
 function comment_show(id) {
@@ -46,5 +42,3 @@ function comment_show(id) {
   $(`#comment_alart_${id}`).addClass('d-none');
 }
 </script>
-
-  

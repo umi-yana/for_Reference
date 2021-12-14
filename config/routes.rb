@@ -49,5 +49,4 @@ Rails.application.routes.draw do
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'thanks', to: 'contacts#thanks', as: 'thanks'
   
-
 end
