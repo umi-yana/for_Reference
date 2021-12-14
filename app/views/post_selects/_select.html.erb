@@ -19,7 +19,7 @@
           <%= post.post_selects.where(is_select: "B").size%>
         <% end %>
       </h5>
-      
+
   <% elsif current_user_select.is_select == "B" %> <%# そのユーザーが過去に"B"だったら、"A"はupdate　"B"はdelete %>
     <%= link_to "A.#{post.select_a}", post_post_selects_path(post_id:post.id, id:current_user_select.id, is_select:"A" ), method: :PATCH, class:"text-break btn btn-primary btn-lg mt-3", remote:true %>
       <h5 class="select-count text-right">
@@ -38,7 +38,7 @@
           <%= post.post_selects.where(is_select: "B").size%>
         <% end %>
       </h5>
-    
+
   <% end %>
 
 <% else %><%# もしユーザーが投稿に対して、選択していなかったら、両方ともcreate %>
