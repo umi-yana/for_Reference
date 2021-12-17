@@ -1,12 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
-  describe "正常系" do
-    context "回答する" do
-      it "正しく回答できる" do
-        post_new =  FactoryBot.build(:post)
-        expect(post_new).to be_valid
-      end
+RSpec.describe Post, "Userモデルのテスト", type: :model do
+  let(:post) { build(:post) }
+
+  context "空白のバリデーションチェック" do
+    it "postが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      user.last_name = ''
+      expect(user).to be_invalid
+      expect(user.errors[:last_name]).to include("を入力してください")
+    end
+    it "first_nameが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      user.first_name = ''
+      expect(user).to be_invalid
+      expect(user.errors[:first_name]).to include("を入力してください")
+    end
+    it "phone_numberが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      user.phone_number = ''
+      expect(user).to be_invalid
+      expect(user.errors[:phone_number]).to include("を入力してください")
     end
   end
 end
