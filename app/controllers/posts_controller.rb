@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post = Post.new
-    @posts = Post.includes(:user, :comments, :post_selects).order(id: "DESC").page(params[:page]).per(20)
+    @posts = Post.includes(:user, :comments, :post_selects, :tags).order(id: "DESC").page(params[:page]).per(20)
     @tag_list = Tag.includes(:post).all.order(id: "DESC")
   end
 
