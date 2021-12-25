@@ -1,6 +1,9 @@
 <% @count_A = post.post_selects.where(is_select: "A").size %>
 <% @count_B = post.post_selects.where(is_select: "B").size %>
-<% if current_user_select = post.post_selects.find_by(user_id: current_user.id ) %><%# もしユーザーが投稿に対して、選択したことがあるか？否か？ %>
+
+<%# もしユーザーが投稿に対して、選択したことがあるか？否か？ %>
+<% if current_user_select = post.post_selects.find_by(user_id: current_user.id ) %>
+
 
   <% if current_user_select.is_select == "A" %> <%# そのユーザーが過去に"A"だったら、"A"はdelete　"B"はupdate %>
     <%= link_to post_post_selects_path(post_id:post.id, id:current_user_select.id), method: :DELETE, class:"text-break btn btn-info btn-lg mt-3 text-white-50",remote:true do %>
@@ -68,9 +71,3 @@
 }
 
 </style>
-
-
-<%#
- [post] = Post.allをeach で回している。
-
-%>
