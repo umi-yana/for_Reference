@@ -12,7 +12,5 @@ class TagsController < ApplicationController
     tags = TagList.where(tag_id: params[:id]).pluck(:post_id)
     @posts = Post.find(tags)
     @tag = Tag.find(params[:id])
-
-      
   end
 end
