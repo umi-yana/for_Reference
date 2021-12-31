@@ -25,7 +25,7 @@
                 <i class="fas fa-comment-medical post-new-icon"></i><br/>New Post
               </button>
                 <div class="w-100"></div>
-              
+
               <%# マイページ %>
               <%= link_to user_path(current_user.id),class:"btn btn-secondary mt-2 w-25"  do %>
                 <i class="fas fa-address-card post-user-icon"></i><br/>My page
@@ -35,12 +35,12 @@
               <%= link_to post_ranking_path,class:"btn btn-success mt-2 w-25" do %>
                 <i class="fas fa-crown post-ranking-icon"></i><br/>Ranking
               <% end %>
-              
+
               <%# いいね %>
               <%= link_to user_favorite_show_path(current_user.id),class:"btn btn-danger mt-2 " do%>
                 <i class="fas fa-star post-favorite-icon "></i><br/>Fravorites
               <% end %>
-              
+
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
   <div class="posts_index">
     <%= render 'posts/post_index',posts: @posts %>
   </div>
-  
+
   <div class="paginete">
     <%= paginate @posts, theme: 'twitter-bootstrap-4',class:'paginete' %>
   </div>
