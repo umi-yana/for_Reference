@@ -12,9 +12,7 @@
         </thead>
         <tbody>
         <% if @users.empty? %>
-          
           <th>フォローしているユーザーはいません</th>
-
           <% else %>
             <% @users.each do |user| %>
             <tr>
@@ -27,7 +25,7 @@
               <td><%= user.user_content.truncate(20, omission: '...') %></td>
               <% end %>
             </tr>
-        <% end %>
+         <% end %>
         <% end %>
         </tbody>
       </table>
