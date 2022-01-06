@@ -18,3 +18,7 @@ RSpec.describe Blog, "Blogモデルのテスト", type: :model do
     end
   end
 end
+
+
+
+d
